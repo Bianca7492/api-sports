@@ -21,6 +21,9 @@ import { dirname, join } from "node:path";
 import { ENDPOINTS, COUNTRY } from "./catalog.mjs";
 import { call, loadSession, sessionLooksSignedIn, buildUrl } from "./client.mjs";
 import { buildOpenApi } from "./openapi.mjs";
+import { buildOpenApi as buildIlotbetOpenApi, MOUNT as ILOTBET_MOUNT } from "./ilotbet/openapi.mjs";
+import { call as callIlotbet } from "./ilotbet/client.mjs";
+import { ENDPOINTS as ILOTBET_ENDPOINTS, WRITE_PATHS } from "./ilotbet/catalog.mjs";
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
 const PORT = Number(process.env.PORT || 3000);
@@ -52,6 +55,93 @@ async function getDoc() {
   return cache.doc;
 }
 
+let ilotCache = { at: 0, doc: null };
+async function getIlotDoc() {
+  if (ilotCache.doc && Date.now() - ilotCache.at < CACHE_MS) return ilotCache.doc;
+  ilotCache = { at: Date.now(), doc: await buildIlotbetOpenApi() };
+  return ilotCache.doc;
+}
+
+/**
+ * iLOTBET routes, mounted under /ilotbet so they never collide with SportyBet's /api/{country}.
+ * Returns undefined when the request is not ours, so the SportyBet routes still run.
+ */
+async function handleIlotbet(url) {
+  if (url.pathname === "/openapi.ilotbet.json") return { status: 200, body: await getIlotDoc() };
+  if (url.pathname === "/openapi.ilotbet.yaml") {
+    const file = join(ROOT, "openapi.ilotbet.yaml");
+    return existsSync(file)
+      ? { status: 200, body: readFileSync(file, "utf8"), type: "text/yaml" }
+      : { status: 404, body: "run `npm run generate:ilotbet` first", type: "text/plain" };
+  }
+  if (url.pathname === ILOTBET_MOUNT || url.pathname === `${ILOTBET_MOUNT}/docs`) {
+    return { status: 200, body: ILOTBET_DOCS_HTML, type: "text/html" };
+  }
+  if (url.pathname === `${ILOTBET_MOUNT}/routes`) {
+    const file = join(ROOT, "routes.ilotbet.html");
+    return existsSync(file)
+      ? { status: 200, body: readFileSync(file, "utf8"), type: "text/html" }
+      : { status: 404, body: "run `npm run routes:ilotbet` first", type: "text/plain" };
+  }
+  if (!url.pathname.startsWith(`${ILOTBET_MOUNT}/`)) return undefined;
+
+  const path = url.pathname.slice(ILOTBET_MOUNT.length);
+  const ep = ILOTBET_ENDPOINTS.find((e) => e.path === path);
+  if (!ep) {
+    return { status: 404, body: { error: "not_found", message: `no iLOTBET endpoint at ${path}. See /openapi.ilotbet.json` } };
+  }
+  if (WRITE_PATHS.has(ep.path)) {
+    return {
+      status: 403,
+      body: {
+        error: "write_not_proxied",
+        message: "This endpoint moves money or places a bet, so the proxy does not forward it. Use the SDK directly if you mean to.",
+        operationId: ep.operationId,
+      },
+    };
+  }
+
+  const args = Object.fromEntries(url.searchParams.entries());
+  const result = await callIlotbet(ep, args);
+  if (result.blocked) {
+    return {
+      status: 403,
+      body: {
+        error: "prohibited_jurisdiction",
+        message:
+          "iLOTBET refused this server's network (403: visiting from a prohibited jurisdiction). It geolocates by IP; run the proxy from a region iLOTBET serves.",
+        operationId: ep.operationId,
+      },
+    };
+  }
+  if (result.status === 401 || result.status === 403) {
+    return {
+      status: result.status,
+      body: {
+        error: "unauthorized",
+        message: `iLOTBET refused the request (HTTP ${result.status}). This endpoint needs a valid account token; set ILOTBET_TOKEN and retry.`,
+        operationId: ep.operationId,
+        upstreamUrl: result.url,
+      },
+    };
+  }
+  if (result.json === undefined) {
+    return {
+      status: 502,
+      body: { error: "upstream_not_json", message: "iLOTBET did not return JSON.", status: result.status, body: result.text.slice(0, 500) },
+    };
+  }
+  return { status: result.status, body: result.json };
+}
+
+const ILOTBET_DOCS_HTML = `<!doctype html>
+<html><head><meta charset="utf-8"><title>iLOTBET API</title>
+<link rel="stylesheet" href="https://unpkg.com/swagger-ui-dist@5/swagger-ui.css"></head>
+<body><div id="swagger-ui"></div>
+<script src="https://unpkg.com/swagger-ui-dist@5/swagger-ui-bundle.js"></script>
+<script>SwaggerUIBundle({ url: "/openapi.ilotbet.json", dom_id: "#swagger-ui" });</script>
+</body></html>`;
+
 function send(res, status, body, type = "application/json") {
   const text = typeof body === "string" ? body : JSON.stringify(body, null, 2);
   res.writeHead(status, {
@@ -73,6 +163,10 @@ const DOCS_HTML = `<!doctype html>
 const server = createServer(async (req, res) => {
   const url = new URL(req.url, `http://localhost:${PORT}`);
   try {
+    // iLOTBET first: its own mount and spec paths, then fall through to SportyBet.
+    const ilot = await handleIlotbet(url);
+    if (ilot) return send(res, ilot.status, ilot.body, ilot.type);
+
     if (url.pathname === "/openapi.json") return send(res, 200, await getDoc());
     if (url.pathname === "/openapi.yaml") {
       const yaml = existsSync(join(ROOT, "openapi.yaml")) ? readFileSync(join(ROOT, "openapi.yaml"), "utf8") : "";
@@ -85,6 +179,7 @@ const server = createServer(async (req, res) => {
         session: sessionLooksSignedIn(),
         cookies: loadSession().length,
         endpoints: ENDPOINTS.length,
+        ilotbet: { endpoints: ILOTBET_ENDPOINTS.length, mount: ILOTBET_MOUNT, spec: "/openapi.ilotbet.json" },
       });
     }
 

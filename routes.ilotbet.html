@@ -1,0 +1,1705 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>iLOTBET routes (247)</title>
+<style>
+  :root { color-scheme: dark; --bg:#0b0e14; --panel:#131824; --line:#232b3d; --ink:#e6e9f0; --dim:#8b93a7;
+          --get:#3fb950; --post:#58a6ff; --put:#d29922; --del:#f85149; --public:#3fb950; --auth:#d29922; --write:#f85149; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:14px/1.5 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,sans-serif; }
+  header { padding:28px 24px 12px; border-bottom:1px solid var(--line); }
+  h1 { margin:0 0 6px; font-size:20px; }
+  .meta { color:var(--dim); font-size:13px; }
+  nav { display:flex; flex-wrap:wrap; gap:8px; padding:14px 24px; border-bottom:1px solid var(--line); position:sticky; top:0; background:rgba(11,14,20,.94); backdrop-filter:blur(6px); }
+  nav a { color:var(--ink); text-decoration:none; background:var(--panel); border:1px solid var(--line); border-radius:999px; padding:4px 10px; font-size:12px; }
+  nav a:hover { border-color:var(--dim); }
+  main { padding:8px 24px 60px; }
+  section { margin-top:26px; }
+  h2 { font-size:15px; text-transform:uppercase; letter-spacing:.06em; color:var(--dim); margin:0 0 10px; }
+  .count { color:var(--dim); font-weight:400; font-size:11px; }
+  table { width:100%; border-collapse:collapse; background:var(--panel); border:1px solid var(--line); border-radius:10px; overflow:hidden; }
+  th { text-align:left; font-weight:600; font-size:12px; color:var(--dim); padding:9px 12px; border-bottom:1px solid var(--line); }
+  td { padding:9px 12px; border-bottom:1px solid var(--line); vertical-align:top; }
+  tr:last-child td { border-bottom:0; }
+  td.m { font-weight:700; font-size:12px; width:64px; }
+  td.m.get { color:var(--get); } td.m.post { color:var(--post); } td.m.put { color:var(--put); } td.m.delete { color:var(--del); }
+  td.p code { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:12.5px; }
+  .alias { margin-left:8px; color:var(--dim); font-size:11.5px; font-style:italic; }
+  td.op { color:var(--dim); font-size:12.5px; }
+  .t { display:inline-block; font-size:11px; border-radius:999px; padding:1px 8px; margin-right:4px; border:1px solid; }
+  .t.public { color:var(--public); border-color:var(--public); }
+  .t.auth { color:var(--auth); border-color:var(--auth); }
+  .t.write { color:var(--write); border-color:var(--write); }
+</style>
+</head>
+<body>
+<header>
+  <h1>iLOTBET routes</h1>
+  <div class="meta">247 routes &middot; 22 services &middot; generated 2026-11-01T00:28:20.360Z &middot; source https://www.ilotbet.com</div>
+  <div class="meta">Proxy mount <code>/ilotbet</code> &middot; <span class="t public">public</span> no token &middot; <span class="t auth">token</span> needs ILOTBET_TOKEN &middot; <span class="t write">write</span> not proxied</div>
+</header>
+<nav><a href="#activity">activity <span class="count">7</span></a><a href="#cagent">cagent <span class="count">3</span></a><a href="#casino">casino <span class="count">9</span></a><a href="#coupon">coupon <span class="count">25</span></a><a href="#engine">engine <span class="count">10</span></a><a href="#funds">funds <span class="count">39</span></a><a href="#game">game <span class="count">4</span></a><a href="#group">group <span class="count">1</span></a><a href="#lottgame">lottgame <span class="count">2</span></a><a href="#market">market <span class="count">6</span></a><a href="#notice">notice <span class="count">24</span></a><a href="#opact">opact <span class="count">2</span></a><a href="#sbc">sbc <span class="count">1</span></a><a href="#sbt">sbt <span class="count">21</span></a><a href="#sbu">sbu <span class="count">29</span></a><a href="#share">share <span class="count">10</span></a><a href="#spo">spo <span class="count">4</span></a><a href="#sqb-quickbets">sqb-quickbets <span class="count">1</span></a><a href="#ssim">ssim <span class="count">7</span></a><a href="#user">user <span class="count">33</span></a><a href="#virtualgame">virtualgame <span class="count">8</span></a><a href="#worldcup">worldcup <span class="count">1</span></a></nav>
+<main>
+  <section>
+    <h2 id="activity">activity <span class="count">7</span></h2>
+    <table>
+      <thead><tr><th>Method</th><th>Path</th><th>operationId</th><th>Access</th></tr></thead>
+      <tbody>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/activity/api/betraward/detail</code></td>
+        <td class="op">queryBtaskDetail</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/activity/api/betraward/ready</code></td>
+        <td class="op">btaskReady</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/activity/un/betraward/config</code><span class="alias">bettingActivity</span></td>
+        <td class="op">queryBtaskConfig</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/activity/un/championship/getChampionshipList</code></td>
+        <td class="op">getChampionshipList</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m get">GET</td>
+        <td class="p"><code>/activity/un/championship/marquee</code></td>
+        <td class="op">getChampionshipMarquee</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/activity/un/wc2026/matchmap</code></td>
+        <td class="op">getWc2026MatchMap</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/activity/un/wc2026/scoreboard</code></td>
+        <td class="op">getWc2026Scoreboard</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+  <section>
+    <h2 id="cagent">cagent <span class="count">3</span></h2>
+    <table>
+      <thead><tr><th>Method</th><th>Path</th><th>operationId</th><th>Access</th></tr></thead>
+      <tbody>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/cagent/api/applyAgent</code></td>
+        <td class="op">applyAgentForm</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/cagent/api/queryAgentAuditStatus</code></td>
+        <td class="op">queryAgentAuditStatus</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/cagent/un/agentCommissionDetails</code></td>
+        <td class="op">agentCommissionDetails</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+  <section>
+    <h2 id="casino">casino <span class="count">9</span></h2>
+    <table>
+      <thead><tr><th>Method</th><th>Path</th><th>operationId</th><th>Access</th></tr></thead>
+      <tbody>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/casino/api/game/play</code></td>
+        <td class="op">getCasinoGameUrl</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m get">GET</td>
+        <td class="p"><code>/casino/api/tags</code></td>
+        <td class="op">getCasinoTagsCanary</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m get">GET</td>
+        <td class="p"><code>/casino/un/game_search</code><span class="alias">casinoGameSearch</span></td>
+        <td class="op">searchCasinoGame</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m get">GET</td>
+        <td class="p"><code>/casino/un/game/home</code><span class="alias">casinoHome</span></td>
+        <td class="op">getCasinoGames</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/casino/un/game/play</code></td>
+        <td class="op">getIlotCasinoGameUrl</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m get">GET</td>
+        <td class="p"><code>/casino/un/games</code><span class="alias">casinoGames</span></td>
+        <td class="op">getCasinoGameList</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m get">GET</td>
+        <td class="p"><code>/casino/un/games/recommend</code><span class="alias">casinoRecommend</span></td>
+        <td class="op">getCasinoHotList</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m get">GET</td>
+        <td class="p"><code>/casino/un/games/v2</code><span class="alias">casinoGamesV2</span></td>
+        <td class="op">getVideoVirtualGamesApi</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m get">GET</td>
+        <td class="p"><code>/casino/un/tags</code><span class="alias">casinoTags</span></td>
+        <td class="op">getCasinoTags</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+  <section>
+    <h2 id="coupon">coupon <span class="count">25</span></h2>
+    <table>
+      <thead><tr><th>Method</th><th>Path</th><th>operationId</th><th>Access</th></tr></thead>
+      <tbody>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/coupon/api/availableCoupon</code></td>
+        <td class="op">availableCoupon</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/coupon/api/coupons</code><span class="alias">couponList</span></td>
+        <td class="op">queryCoupons</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/coupon/api/freebet-detail</code></td>
+        <td class="op">getFreeBetDetail</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/coupon/api/getUnpopDiscount</code></td>
+        <td class="op">getUnpopDiscount</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/coupon/api/member/me</code><span class="alias">memberMe</span></td>
+        <td class="op">getMyVipInfo</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/coupon/api/member/v2/draw</code></td>
+        <td class="op">memberDraw</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/coupon/api/mtask/getLuckHistory</code></td>
+        <td class="op">getLuckHistory</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/coupon/api/mtask/getLuckyTimes</code></td>
+        <td class="op">getLuckyTimes</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/coupon/api/mtask/lucky</code></td>
+        <td class="op">mtaskLucky</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/coupon/api/mtask/luckyv2</code></td>
+        <td class="op">mtaskLuckyV2</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/coupon/api/redraw</code></td>
+        <td class="op">rechargeDraw</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/coupon/api/srdraw</code></td>
+        <td class="op">srdraw</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/coupon/api/v2/queryCoupon</code></td>
+        <td class="op">giftList</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/coupon/api/v2/sr-dailygift</code></td>
+        <td class="op">getSilentRecallConfig</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/coupon/red/activity/getVipUserRechargeActivity</code></td>
+        <td class="op">getVipUserRechargeActivity</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/coupon/signIn/api/signIn</code></td>
+        <td class="op">signIn</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/coupon/signIn/un/querySignIn</code></td>
+        <td class="op">querySignIn</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/coupon/un/dailyTaskDetail</code></td>
+        <td class="op">dailyTaskDetail</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/coupon/un/mtask/progress</code></td>
+        <td class="op">mtaskProgress</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/coupon/un/mtask/winHistory</code></td>
+        <td class="op">mtaskWinHistory</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/coupon/un/mtask/winRank</code></td>
+        <td class="op">mtaskWinRank</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/coupon/un/resendHis</code></td>
+        <td class="op">getRechargeHistory</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/coupon/un/winHistory</code></td>
+        <td class="op">winHistory</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/coupon/un/winList?payCode=</code></td>
+        <td class="op">winList</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/coupon/un/winRank</code></td>
+        <td class="op">lotteryWinRank</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+  <section>
+    <h2 id="engine">engine <span class="count">10</span></h2>
+    <table>
+      <thead><tr><th>Method</th><th>Path</th><th>operationId</th><th>Access</th></tr></thead>
+      <tbody>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/engine/T300100</code></td>
+        <td class="op">heartbeat</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/engine/T300101</code></td>
+        <td class="op">updateTime</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/engine/T300110</code></td>
+        <td class="op">checkSaleGame</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/engine/T300111</code></td>
+        <td class="op">gameIssue</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/engine/T300113</code></td>
+        <td class="op">getLotteryMatchDetail</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/engine/T300140</code></td>
+        <td class="op">getBetHistory</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/engine/T300141</code></td>
+        <td class="op">getBetDetail</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/engine/T300153</code></td>
+        <td class="op">getLotteryResult</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/engine/T300154</code></td>
+        <td class="op">getGameInfo</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="write">
+        <td class="m post">POST</td>
+        <td class="p"><code>/engine/T301200</code></td>
+        <td class="op">gameBet</td>
+        <td class="flags"><span class="t public">public</span><span class="t write">write</span></td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+  <section>
+    <h2 id="funds">funds <span class="count">39</span></h2>
+    <table>
+      <thead><tr><th>Method</th><th>Path</th><th>operationId</th><th>Access</th></tr></thead>
+      <tbody>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/funds/api/accountBank</code><span class="alias">accountBankList</span></td>
+        <td class="op">bankAccountList</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/funds/api/accountUpdateUserPwd</code></td>
+        <td class="op">updatePayPwd</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="write">
+        <td class="m post">POST</td>
+        <td class="p"><code>/funds/api/addAccountBanks</code></td>
+        <td class="op">addAccountBank</td>
+        <td class="flags"><span class="t auth">token</span><span class="t write">write</span></td>
+      </tr>
+      <tr class="write">
+        <td class="m post">POST</td>
+        <td class="p"><code>/funds/api/addAccountBanksV2</code></td>
+        <td class="op">addAccountBankV2</td>
+        <td class="flags"><span class="t auth">token</span><span class="t write">write</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/funds/api/bankList</code></td>
+        <td class="op">bankList</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/funds/api/calculateUserFee</code></td>
+        <td class="op">calculateUserFee</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/funds/api/channelCommission</code></td>
+        <td class="op">channelCommission</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/funds/api/checkAccountUserPwd</code></td>
+        <td class="op">checkAccountUserPwd</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/funds/api/checkWithdrawalUserPwd</code></td>
+        <td class="op">checkPwdValid</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/funds/api/createVirtualBank</code></td>
+        <td class="op">createIlotBank</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="write">
+        <td class="m post">POST</td>
+        <td class="p"><code>/funds/api/delAccountBanks</code></td>
+        <td class="op">delAccountBank</td>
+        <td class="flags"><span class="t auth">token</span><span class="t write">write</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/funds/api/fundsDetail</code><span class="alias">accountTransactions</span></td>
+        <td class="op">transaction</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/funds/api/fundsParam</code></td>
+        <td class="op">getWithdrawConfig</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/funds/api/getAvailableRedPacketActivityInfoList</code></td>
+        <td class="op">getAvailableRedPacketList</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/funds/api/getVirtualBank</code></td>
+        <td class="op">getIlotBank</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/funds/api/getWithdrawlRule</code></td>
+        <td class="op">getWithdrawlRule</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/funds/api/joinInRedPacketActivity</code></td>
+        <td class="op">joinRedPacketActivity</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="write">
+        <td class="m post">POST</td>
+        <td class="p"><code>/funds/api/payment</code><span class="alias">deposit</span></td>
+        <td class="op">payment</td>
+        <td class="flags"><span class="t auth">token</span><span class="t write">write</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/funds/api/payment-tax-config</code></td>
+        <td class="op">getPaymentTaxConfig</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/funds/api/payment/status</code></td>
+        <td class="op">checkDeposit</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/funds/api/payMode</code></td>
+        <td class="op">payMode</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/funds/api/queryAccountInfo</code><span class="alias">accountInfo</span></td>
+        <td class="op">queryAccountInfo</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/funds/api/queryFundsParams</code></td>
+        <td class="op">queryFundsParams</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/funds/api/recharge_param</code></td>
+        <td class="op">queryRechargeParams</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/funds/api/reportCommission</code></td>
+        <td class="op">reportCommission</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/funds/api/selectAgentGgr</code></td>
+        <td class="op">selectAgentGgr</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/funds/api/selectAgentStakeList</code></td>
+        <td class="op">selectAgentStakeList</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/funds/api/statkeCommission</code></td>
+        <td class="op">statkeCommission</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/funds/api/transferAgent</code></td>
+        <td class="op">transferAgent</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/funds/api/userRedPacketAndAccountInfo</code></td>
+        <td class="op">getUserRedPacketList</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/funds/api/verfiyBvn</code></td>
+        <td class="op">verfiyBvn</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/funds/api/verifyBank</code></td>
+        <td class="op">verifyBank</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/funds/api/verifyPalmMember</code></td>
+        <td class="op">verifyPalmMember</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/funds/api/verifyPayMember</code></td>
+        <td class="op">verifyPayMember</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="write">
+        <td class="m post">POST</td>
+        <td class="p"><code>/funds/api/withdrawal</code><span class="alias">withdraw</span></td>
+        <td class="op">withDrawal</td>
+        <td class="flags"><span class="t auth">token</span><span class="t write">write</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/funds/api/withdrawAuditQuery</code></td>
+        <td class="op">queryWithdrawList</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/funds/manager/bankList</code></td>
+        <td class="op">bankListnotoken</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/funds/un/getAvailableVipRechargeActivity</code></td>
+        <td class="op">vipRechargeActivity</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/funds/un/getLatestAvailableRechargeActivity</code></td>
+        <td class="op">getLatestAvailableRechargeActivity</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+  <section>
+    <h2 id="game">game <span class="count">4</span></h2>
+    <table>
+      <thead><tr><th>Method</th><th>Path</th><th>operationId</th><th>Access</th></tr></thead>
+      <tbody>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/game/api/gameContent</code></td>
+        <td class="op">gameContent</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m get">GET</td>
+        <td class="p"><code>/game/un/gameList</code></td>
+        <td class="op">gameList</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/game/un/gamePlayUrl</code></td>
+        <td class="op">getGamePlayUrl</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m get">GET</td>
+        <td class="p"><code>/game/un/getBetHistory</code></td>
+        <td class="op">gameBetList</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+  <section>
+    <h2 id="group">group <span class="count">1</span></h2>
+    <table>
+      <thead><tr><th>Method</th><th>Path</th><th>operationId</th><th>Access</th></tr></thead>
+      <tbody>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/group/reportForm</code></td>
+        <td class="op">mcAllList</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+  <section>
+    <h2 id="lottgame">lottgame <span class="count">2</span></h2>
+    <table>
+      <thead><tr><th>Method</th><th>Path</th><th>operationId</th><th>Access</th></tr></thead>
+      <tbody>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/lottgame/api/bet-detail</code></td>
+        <td class="op">jackpotBetDetail</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/lottgame/api/bet-history</code></td>
+        <td class="op">jackpotBetHistory</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+  <section>
+    <h2 id="market">market <span class="count">6</span></h2>
+    <table>
+      <thead><tr><th>Method</th><th>Path</th><th>operationId</th><th>Access</th></tr></thead>
+      <tbody>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/market/api/chat/booking-code/send</code></td>
+        <td class="op">sendBookingCode</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/market/api/gg/discuss/ban?id=</code></td>
+        <td class="op">discussBan</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/market/api/gg/discuss/comment</code></td>
+        <td class="op">sendComment</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/market/api/gg/discuss/del?id=</code></td>
+        <td class="op">delComment</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/market/api/gg/discuss/like_toggle?id=</code></td>
+        <td class="op">likeToggle</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m get">GET</td>
+        <td class="p"><code>/market/un/gg/discuss/comments</code></td>
+        <td class="op">comments</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+  <section>
+    <h2 id="notice">notice <span class="count">24</span></h2>
+    <table>
+      <thead><tr><th>Method</th><th>Path</th><th>operationId</th><th>Access</th></tr></thead>
+      <tbody>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/notice/api/bulletWin</code></td>
+        <td class="op">bulletWin</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/notice/api/businessMsgRead</code></td>
+        <td class="op">businessMsgRead</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/notice/api/count</code><span class="alias">messageCount</span></td>
+        <td class="op">msgNum</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/notice/api/feedback/send</code></td>
+        <td class="op">feedbackSend</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/notice/api/list</code><span class="alias">messageList</span></td>
+        <td class="op">msgList</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/notice/api/readAlready</code></td>
+        <td class="op">markAllMessageAsRead</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/notice/api/toolbar</code></td>
+        <td class="op">queryToolbar</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/notice/api/updateStatus</code></td>
+        <td class="op">unpdateState</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/notice/api/writeExctionMessage</code></td>
+        <td class="op">increaseWithdrawalLimit</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/notice/un/bananerPage/v2</code><span class="alias">banners</span></td>
+        <td class="op">getBannerPage</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/notice/un/businessMsgPage</code></td>
+        <td class="op">getBusinessMsgPage</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/notice/un/feedback</code></td>
+        <td class="op">feedback</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/notice/un/gameWinRank</code></td>
+        <td class="op">gameWinRank</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/notice/un/gameWinRank/v2</code><span class="alias">gameWinRank</span></td>
+        <td class="op">gameTotalWinRank</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m get">GET</td>
+        <td class="p"><code>/notice/un/grand/home/list</code><span class="alias">grandPrizeHome</span></td>
+        <td class="op">getGrandPrizeHomeList</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/notice/un/hotNews</code><span class="alias">hotNews</span></td>
+        <td class="op">getHomeHotNews</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/notice/un/hotNewsPage</code><span class="alias">hotNewsPage</span></td>
+        <td class="op">getHotNewsListV2</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/notice/un/msg/floating</code></td>
+        <td class="op">getFloatingMsg</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/notice/un/packageComp</code></td>
+        <td class="op">getPackageComp</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/notice/un/page</code></td>
+        <td class="op">winMessage</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/notice/un/postback</code></td>
+        <td class="op">adPostBackAPI</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/notice/un/promotionPage</code><span class="alias">promotionPage</span></td>
+        <td class="op">queryPromotion</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/notice/un/routeComp</code></td>
+        <td class="op">routeComp</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/notice/un/winnerList</code><span class="alias">winnerList</span></td>
+        <td class="op">getWinnerList</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+  <section>
+    <h2 id="opact">opact <span class="count">2</span></h2>
+    <table>
+      <thead><tr><th>Method</th><th>Path</th><th>operationId</th><th>Access</th></tr></thead>
+      <tbody>
+      <tr class="public">
+        <td class="m get">GET</td>
+        <td class="p"><code>/opact/un/tmp/v</code></td>
+        <td class="op">getActivityPV</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/opact/un/tmp/v?an=</code></td>
+        <td class="op">setActivityPV</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+  <section>
+    <h2 id="sbc">sbc <span class="count">1</span></h2>
+    <table>
+      <thead><tr><th>Method</th><th>Path</th><th>operationId</th><th>Access</th></tr></thead>
+      <tbody>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/sbc/un/pre_create</code></td>
+        <td class="op">multipleCreate</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+  <section>
+    <h2 id="sbt">sbt <span class="count">21</span></h2>
+    <table>
+      <thead><tr><th>Method</th><th>Path</th><th>operationId</th><th>Access</th></tr></thead>
+      <tbody>
+      <tr class="auth">
+        <td class="m get">GET</td>
+        <td class="p"><code>/sbt/api/rec/act/cashback</code></td>
+        <td class="op">getCashbackActAmount</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m get">GET</td>
+        <td class="p"><code>/sbt/api/rec/act/status</code></td>
+        <td class="op">getCashbackActStatus</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/sbt/api/rec/create</code></td>
+        <td class="op">betBuilderCreate</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/sbt/api/sub/list</code></td>
+        <td class="op">getSbtSubList</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m get">GET</td>
+        <td class="p"><code>/sbt/api/sub/status</code></td>
+        <td class="op">getSbtSubStatus</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/sbt/api/sub/subscribe</code></td>
+        <td class="op">sbtSubscribe</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="write">
+        <td class="m post">POST</td>
+        <td class="p"><code>/sbt/api/t/cashout</code></td>
+        <td class="op">confirmCashout</td>
+        <td class="flags"><span class="t auth">token</span><span class="t write">write</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/sbt/api/t/cashout?id=</code></td>
+        <td class="op">cashout</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m get">GET</td>
+        <td class="p"><code>/sbt/api/t/cashout/tickets</code></td>
+        <td class="op">getCashoutList</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m get">GET</td>
+        <td class="p"><code>/sbt/api/t/cashout/tickets_count</code></td>
+        <td class="op">getCashoutCount</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="write">
+        <td class="m post">POST</td>
+        <td class="p"><code>/sbt/api/t/create</code><span class="alias">createBetTicket</span></td>
+        <td class="op">ticketCreate</td>
+        <td class="flags"><span class="t auth">token</span><span class="t write">write</span></td>
+      </tr>
+      <tr class="write">
+        <td class="m post">POST</td>
+        <td class="p"><code>/sbt/api/t/delete</code></td>
+        <td class="op">deleteTickets</td>
+        <td class="flags"><span class="t auth">token</span><span class="t write">write</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m get">GET</td>
+        <td class="p"><code>/sbt/api/t/list</code><span class="alias">betHistory</span></td>
+        <td class="op">sportBetList</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m get">GET</td>
+        <td class="p"><code>/sbt/api/t/view</code><span class="alias">betHistoryDetail</span></td>
+        <td class="op">getTicketsInfo</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m get">GET</td>
+        <td class="p"><code>/sbt/un/api/rec</code></td>
+        <td class="op">getSportsRecommendList</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m get">GET</td>
+        <td class="p"><code>/sbt/un/api/rec/list</code></td>
+        <td class="op">querySportsRecommendList</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m get">GET</td>
+        <td class="p"><code>/sbt/un/api/rec/selection</code></td>
+        <td class="op">getBetBuilderSelections</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m get">GET</td>
+        <td class="p"><code>/sbt/un/api/rec/v2/booking-code</code></td>
+        <td class="op">getBetBuilderList</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m get">GET</td>
+        <td class="p"><code>/sbt/un/t/booking_code</code></td>
+        <td class="op">bookingCodeInfo</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m get">GET</td>
+        <td class="p"><code>/sbt/un/t/cfg</code></td>
+        <td class="op">getCfg</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m get">GET</td>
+        <td class="p"><code>/sbt/un/t/cfg/v2</code></td>
+        <td class="op">queryBetslipConfig</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+  <section>
+    <h2 id="sbu">sbu <span class="count">29</span></h2>
+    <table>
+      <thead><tr><th>Method</th><th>Path</th><th>operationId</th><th>Access</th></tr></thead>
+      <tbody>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/sbu/api/m/like</code></td>
+        <td class="op">like</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m get">GET</td>
+        <td class="p"><code>/sbu/api/m/likes</code></td>
+        <td class="op">likeList</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/sbu/api/m/unlike</code></td>
+        <td class="op">unLike</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m get">GET</td>
+        <td class="p"><code>/sbu/un/m/categories</code><span class="alias">categories</span></td>
+        <td class="op">getCountry</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m get">GET</td>
+        <td class="p"><code>/sbu/un/m/featured/v2</code><span class="alias">featured</span></td>
+        <td class="op">queryH5HotSport</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m get">GET</td>
+        <td class="p"><code>/sbu/un/m/live/matches</code><span class="alias">liveMatches</span></td>
+        <td class="op">queryLiveMatch</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m get">GET</td>
+        <td class="p"><code>/sbu/un/m/live/search</code><span class="alias">searchLive</span></td>
+        <td class="op">queryLiveSearch</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m get">GET</td>
+        <td class="p"><code>/sbu/un/m/live/sports</code><span class="alias">sportsLive</span></td>
+        <td class="op">homeLivesMenu</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m get">GET</td>
+        <td class="p"><code>/sbu/un/m/live/sports_w_upcoming</code><span class="alias">sportsLiveWithUpcoming</span></td>
+        <td class="op">livesMenu</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/sbu/un/m/markets/odds</code><span class="alias">marketOdds</span></td>
+        <td class="op">queryMarketOdds</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m get">GET</td>
+        <td class="p"><code>/sbu/un/m/match</code><span class="alias">matchDetail</span></td>
+        <td class="op">getMatchDetail</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m get">GET</td>
+        <td class="p"><code>/sbu/un/m/matches</code><span class="alias">matches</span></td>
+        <td class="op">queryOutrightMatches</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m get">GET</td>
+        <td class="p"><code>/sbu/un/m/popular/highlights</code><span class="alias">highlights</span></td>
+        <td class="op">queryHighlights</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m get">GET</td>
+        <td class="p"><code>/sbu/un/m/popular/highlights2</code></td>
+        <td class="op">queryHighlights2</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m get">GET</td>
+        <td class="p"><code>/sbu/un/m/popular/live</code><span class="alias">popularLive</span></td>
+        <td class="op">queryLive</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m get">GET</td>
+        <td class="p"><code>/sbu/un/m/popular/live/v2</code><span class="alias">popularLiveV2</span></td>
+        <td class="op">queryLiveV2</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m get">GET</td>
+        <td class="p"><code>/sbu/un/m/popular/upcoming</code><span class="alias">popularUpcoming</span></td>
+        <td class="op">queryUpcoming</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m get">GET</td>
+        <td class="p"><code>/sbu/un/m/popular/v2/highlights</code><span class="alias">highlightsV2</span></td>
+        <td class="op">queryHighlightsV2</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m get">GET</td>
+        <td class="p"><code>/sbu/un/m/pre/matches</code><span class="alias">preMatches</span></td>
+        <td class="op">queryMatch</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m get">GET</td>
+        <td class="p"><code>/sbu/un/m/pre/sports</code><span class="alias">sportsPre</span></td>
+        <td class="op">sportMenu</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m get">GET</td>
+        <td class="p"><code>/sbu/un/m/search</code><span class="alias">search</span></td>
+        <td class="op">queryMatchByTeamName</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m get">GET</td>
+        <td class="p"><code>/sbu/un/m/sports</code><span class="alias">sportsAll</span></td>
+        <td class="op">normalMenu</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m get">GET</td>
+        <td class="p"><code>/sbu/un/m/top</code><span class="alias">topGames</span></td>
+        <td class="op">getTopGame</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m get">GET</td>
+        <td class="p"><code>/sbu/un/m/tournaments</code><span class="alias">tournaments</span></td>
+        <td class="op">getTournamentInfo</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m get">GET</td>
+        <td class="p"><code>/sbu/un/m/tournaments/recommends/v2</code><span class="alias">tournamentsRecommended</span></td>
+        <td class="op">getTournamentRecommend</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/sbu/un/m/tournaments/schedule</code><span class="alias">tournamentSchedule</span></td>
+        <td class="op">getTournamentSchedule</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m get">GET</td>
+        <td class="p"><code>/sbu/un/o/categories</code></td>
+        <td class="op">queryCategories</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m get">GET</td>
+        <td class="p"><code>/sbu/un/o/outright</code><span class="alias">outrights</span></td>
+        <td class="op">queryOutright</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m get">GET</td>
+        <td class="p"><code>/sbu/un/o/sports</code><span class="alias">outrightMenu</span></td>
+        <td class="op">queryOutrightMenu</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+  <section>
+    <h2 id="share">share <span class="count">10</span></h2>
+    <table>
+      <thead><tr><th>Method</th><th>Path</th><th>operationId</th><th>Access</th></tr></thead>
+      <tbody>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/share/api/help</code></td>
+        <td class="op">shareHelp</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/share/api/invite/check</code></td>
+        <td class="op">inviteCheck</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/share/api/invite/detail</code></td>
+        <td class="op">inviteDetail</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/share/api/invite/fin</code></td>
+        <td class="op">inviteFin</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/share/api/invite/url</code></td>
+        <td class="op">queryInviteUrl</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/share/api/joinShare</code></td>
+        <td class="op">joinShare</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/share/api/queryShareRecordDetail</code></td>
+        <td class="op">queryShareRecordDetail</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/share/api/queryWinDetail</code></td>
+        <td class="op">queryWinDetail</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/share/un/queryShareRecord</code></td>
+        <td class="op">queryShareRecord</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/share/un/winRank</code></td>
+        <td class="op">winRank</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+  <section>
+    <h2 id="spo">spo <span class="count">4</span></h2>
+    <table>
+      <thead><tr><th>Method</th><th>Path</th><th>operationId</th><th>Access</th></tr></thead>
+      <tbody>
+      <tr class="write">
+        <td class="m post">POST</td>
+        <td class="p"><code>/spo/api/cancel</code></td>
+        <td class="op">cancelPreBetOrder</td>
+        <td class="flags"><span class="t auth">token</span><span class="t write">write</span></td>
+      </tr>
+      <tr class="write">
+        <td class="m post">POST</td>
+        <td class="p"><code>/spo/api/create</code></td>
+        <td class="op">createPreBetOrder</td>
+        <td class="flags"><span class="t auth">token</span><span class="t write">write</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m get">GET</td>
+        <td class="p"><code>/spo/api/list</code></td>
+        <td class="op">getPreBetOrderList</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m get">GET</td>
+        <td class="p"><code>/spo/api/view</code></td>
+        <td class="op">getPreBetOrderDetail</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+  <section>
+    <h2 id="sqb-quickbets">sqb-quickbets <span class="count">1</span></h2>
+    <table>
+      <thead><tr><th>Method</th><th>Path</th><th>operationId</th><th>Access</th></tr></thead>
+      <tbody>
+      <tr class="auth">
+        <td class="m get">GET</td>
+        <td class="p"><code>/sqb-quickbets/api/token</code></td>
+        <td class="op">getSessionToken</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+  <section>
+    <h2 id="ssim">ssim <span class="count">7</span></h2>
+    <table>
+      <thead><tr><th>Method</th><th>Path</th><th>operationId</th><th>Access</th></tr></thead>
+      <tbody>
+      <tr class="write">
+        <td class="m post">POST</td>
+        <td class="p"><code>/ssim/api/create/v2</code></td>
+        <td class="op">createSimuOrder</td>
+        <td class="flags"><span class="t auth">token</span><span class="t write">write</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m get">GET</td>
+        <td class="p"><code>/ssim/api/history/list</code></td>
+        <td class="op">getSimuBetHistory</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/ssim/api/ticket/delete</code></td>
+        <td class="op">deleteSimuTickets</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m get">GET</td>
+        <td class="p"><code>/ssim/un/cfg/v2</code></td>
+        <td class="op">getSimConfigV2</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m get">GET</td>
+        <td class="p"><code>/ssim/un/odds/config</code></td>
+        <td class="op">getSimuMarketConfig</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m get">GET</td>
+        <td class="p"><code>/ssim/un/ticket/betslip</code></td>
+        <td class="op">getSimuTicketBetslip</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m get">GET</td>
+        <td class="p"><code>/ssim/un/win/rank</code></td>
+        <td class="op">getSimuWinRank</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+  <section>
+    <h2 id="user">user <span class="count">33</span></h2>
+    <table>
+      <thead><tr><th>Method</th><th>Path</th><th>operationId</th><th>Access</th></tr></thead>
+      <tbody>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/user/api/agentApproval</code></td>
+        <td class="op">agentApproval</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/user/api/agentLogin</code></td>
+        <td class="op">agentLogin</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/user/api/applyAgent</code></td>
+        <td class="op">applyAgent</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/user/api/bindMobile</code></td>
+        <td class="op">bindMobile</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/user/api/cancellation</code></td>
+        <td class="op">apiCancellation</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/user/api/id_verify</code></td>
+        <td class="op">identityAuth</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/user/api/logout</code><span class="alias">logout</span></td>
+        <td class="op">logout</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/user/api/playerCount</code></td>
+        <td class="op">playerCount</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/user/api/queryAgentAccountCode</code></td>
+        <td class="op">queryAgentAccountCode</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/user/api/queryMarketingTools</code></td>
+        <td class="op">queryMarketingTools</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/user/api/queryPlayer</code></td>
+        <td class="op">queryPlayer</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/user/api/update</code></td>
+        <td class="op">userUpdate</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/user/api/updatePwd</code></td>
+        <td class="op">updatePwd</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/user/un/authregister</code></td>
+        <td class="op">authregister</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/user/un/cancellation</code></td>
+        <td class="op">cancellation</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/user/un/checkBindMobile</code></td>
+        <td class="op">checkBindMobile</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/user/un/checkPlayerAccount</code></td>
+        <td class="op">checkPlayerAccount</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/user/un/checkVerificationCode</code></td>
+        <td class="op">checkVerificationCode</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/user/un/getVerificationCode</code></td>
+        <td class="op">mobileNumber</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/user/un/preregister</code></td>
+        <td class="op">preregister</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/user/un/queryPasswordReg</code></td>
+        <td class="op">queryPasswordReg</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/user/un/queryRegion</code></td>
+        <td class="op">queryRegion</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/user/un/reactivate</code></td>
+        <td class="op">accountReactivate</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/user/un/rebindAccount</code></td>
+        <td class="op">rebindAccount</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/user/un/register</code><span class="alias">register</span></td>
+        <td class="op">register</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/user/un/retrievePwd</code></td>
+        <td class="op">retrievePwd</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/user/un/self-discipline-release</code></td>
+        <td class="op">selfDisciplineRelease</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/user/un/slideshow</code></td>
+        <td class="op">slideshow</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/user/un/tauth/check</code></td>
+        <td class="op">authLoginByAccountNumber</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/user/un/tauth/login</code></td>
+        <td class="op">authLogin</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/user/un/tauth/pre_auth</code></td>
+        <td class="op">getPalmpayLoginUrl</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/user/un/third/login</code></td>
+        <td class="op">loginThrid</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/user/un/v2/login</code><span class="alias">login</span></td>
+        <td class="op">getLogin</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+  <section>
+    <h2 id="virtualgame">virtualgame <span class="count">8</span></h2>
+    <table>
+      <thead><tr><th>Method</th><th>Path</th><th>operationId</th><th>Access</th></tr></thead>
+      <tbody>
+      <tr class="write">
+        <td class="m post">POST</td>
+        <td class="p"><code>/virtualgame/api/bet</code></td>
+        <td class="op">virtualgameBet</td>
+        <td class="flags"><span class="t auth">token</span><span class="t write">write</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m get">GET</td>
+        <td class="p"><code>/virtualgame/api/bet_detail</code></td>
+        <td class="op">getBetHistoryLeagueDetail</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/virtualgame/api/bet_histories</code></td>
+        <td class="op">virtualgameBetHistories</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/virtualgame/api/bet_tax_histories</code></td>
+        <td class="op">getKeBetHistoryLeague</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/virtualgame/api/mybets</code></td>
+        <td class="op">getMyBetLeague</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m post">POST</td>
+        <td class="p"><code>/virtualgame/un/agg_tour_info</code><span class="alias">virtualTourInfo</span></td>
+        <td class="op">virtualgameAggTourInfo</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m get">GET</td>
+        <td class="p"><code>/virtualgame/un/qucik_tour_info</code></td>
+        <td class="op">quickTourInfo</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      <tr class="public">
+        <td class="m get">GET</td>
+        <td class="p"><code>/virtualgame/un/tours</code><span class="alias">virtualTours</span></td>
+        <td class="op">getTourListLeague</td>
+        <td class="flags"><span class="t public">public</span></td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+  <section>
+    <h2 id="worldcup">worldcup <span class="count">1</span></h2>
+    <table>
+      <thead><tr><th>Method</th><th>Path</th><th>operationId</th><th>Access</th></tr></thead>
+      <tbody>
+      <tr class="auth">
+        <td class="m post">POST</td>
+        <td class="p"><code>/worldcup/api/af/quiz/invite/fin</code></td>
+        <td class="op">afInviteFin</td>
+        <td class="flags"><span class="t auth">token</span></td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+</body>
+</html>

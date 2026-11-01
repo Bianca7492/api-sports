@@ -1,0 +1,45 @@
+name: refresh iLOTBET
+
+# Re-reads iLOTBET's live JS bundles and refreshes the endpoint catalog, the signing key, the
+# OpenAPI document and the route inventory. Opens a PR when anything changed, so a site update
+# shows up as a reviewable diff. If the signature test fails, the site changed its scheme.
+
+on:
+  schedule:
+    - cron: "23 5 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Regenerate from the live site
+        run: |
+          npm run generate:ilotbet
+          npm run routes:ilotbet
+
+      - name: Verify the signature still matches the site
+        run: npm test
+
+      - name: Open a PR if anything changed
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: refresh-ilotbet
+          title: "chore: refresh iLOTBET endpoints, key, OpenAPI and routes"
+          commit-message: "chore: refresh iLOTBET from the live site"
+          body: |
+            Automated refresh: the generator re-read the site's bundles and updated
+            `src/ilotbet/endpoints.generated.mjs`, `keys/ilot-sign.pem`,
+            `openapi.ilotbet.json/.yaml` and `routes.ilotbet.md/.html`.
+
+            Review the diff before merging. If the signature test failed, the site changed its
+            signing scheme and `src/ilotbet/sign.mjs` needs updating.

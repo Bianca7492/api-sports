@@ -136,3 +136,110 @@ npm run smoke # live: starts a server, calls public and account endpoints
 - Response bodies are returned unchanged, including SportyBet's `bizCode` envelope
   (`10000` = success, `19000` invalid, `19001` not found, `19003` forbidden).
 - Use it within SportyBet's terms and at human volume. The session is your own account's.
+
+---
+
+# iLOTBET
+
+The same idea, applied to iLOTBET (ilotbet.com). It is a second provider in this repo, mounted
+under `/ilotbet` so it never collides with the SportyBet routes.
+
+The difference: iLOTBET does not use a cookie session. **Every request carries a signature** -
+an RSA-MD5 signature over the sorted request body - so a catalog alone is not enough. The
+provider reproduces the signature in code (`src/ilotbet/sign.mjs`), verified byte-for-byte
+against a real request the site's own browser sent.
+
+## What it does
+
+- **Discovers the API from the live site.** iLOTBET documents nothing; its endpoints exist only
+  as calls inside two JS bundles. `src/ilotbet/extract.mjs` reads the page, fetches the bundles,
+  and pulls out every endpoint *and* the RSA signing key. Nothing is hard-coded, so a site change
+  is picked up by the next run.
+- **Signs the calls.** `src/ilotbet/client.mjs` merges the common params, sorts and signs the
+  body, and sends the headers the site's own frontend sends.
+- **Serves it as OpenAPI.** The server exposes `/openapi.ilotbet.json` and proxies
+  `/ilotbet/{path}` to iLOTBET with the signature, so any OpenAPI client works unchanged.
+- **Dumps every route.** `npm run routes:ilotbet` writes a browsable inventory of all routes
+  (`routes.ilotbet.html`, `routes.ilotbet.md`), and the server serves it at `/ilotbet/routes`.
+
+## Quick start
+
+```sh
+npm run generate:ilotbet   # read the live bundles -> catalog, signing key, OpenAPI, schemas
+npm run routes:ilotbet     # write the route inventory (HTML + Markdown)
+npm run serve              # then open http://localhost:3000/ilotbet/routes
+```
+
+```sh
+# call a route through the proxy (it adds the signature)
+curl "http://localhost:3000/ilotbet/sbu/un/m/featured/v2?marketId=1"
+
+# the spec, and the browsable route list
+curl http://localhost:3000/openapi.ilotbet.json
+open http://localhost:3000/ilotbet/routes
+```
+
+## Layout
+
+```
+src/ilotbet/config.mjs             origin, headers, common params, key path (no catalog import)
+src/ilotbet/extract.mjs            live bundles -> endpoints + signing key
+src/ilotbet/sign.mjs               RSA-MD5 signature over the sorted body
+src/ilotbet/endpoints.generated.mjs  the generated catalog (do not edit)
+src/ilotbet/aliases.mjs            friendly names -> paths (the only hand-maintained mapping)
+src/ilotbet/catalog.mjs            catalog + policy (write paths), alias resolution
+src/ilotbet/client.mjs             builds and signs a call
+src/ilotbet/openapi.mjs            catalog + live probes -> OpenAPI 3.1
+src/ilotbet/generate.mjs           writes the catalog, key and spec
+src/ilotbet/routes.mjs             writes the route inventory (HTML + Markdown)
+```
+
+## Routes
+
+`npm run routes:ilotbet` lists every route with its method, path, alias, and access:
+
+- **public** (120) - sports, odds, news, casino, virtual games. No token.
+- **token** (114) - account, bets, funds. Need `ILOTBET_TOKEN`.
+- **write** (13) - money and bets. The proxy refuses these; the SDK can still call them.
+
+Open `routes.ilotbet.html` for the full UI, or read `routes.ilotbet.md`.
+
+## The signature
+
+The site's frontend builds the `sign` header as: sort the body's params, join `key=value` with
+`&` (dropping empty and null), MD5 the string to lowercase hex, then RSA-sign that digest with
+RSA-MD5 (PKCS#1 v1.5) and base64 the result. `test/ilotbet.test.mjs` pins this to a signature the
+site actually sent, so if iLOTBET changes the scheme the test fails loudly.
+
+The key in `keys/ilot-sign.pem` is the key the site ships to every visitor inside its own bundle.
+It is the site's shared signing key, not a per-user credential, and it is public.
+
+## Configuration
+
+| variable | default | purpose |
+|---|---|---|
+| `ILOTBET_ORIGIN` | `https://www.ilotbet.com` | upstream origin |
+| `ILOTBET_TOKEN` | — | account token for the account endpoints |
+| `ILOTBET_COUNTRY` | `gh` | `country-code` header |
+| `ILOTBET_LANG` | `en` | `lang` header |
+| `ILOTBET_DEVICE` | a fixed uuid | `deviceCode` sent with every call |
+| `ILOTBET_VERSION` | the site's current build | `version` header / `deviceSoftVersion` |
+| `ILOTBET_KEY_FILE` | `keys/ilot-sign.pem` | where the signing key is read from |
+
+## Staying current
+
+The generator re-reads the live bundles on every run, so the catalog, the key and the spec all
+follow the site. `.github/workflows/refresh-ilotbet.yml` runs it daily and opens a PR when
+anything changed. A change in the signature scheme shows up as a failing test in that PR.
+
+## Notes and limits
+
+- **iLOTBET geolocates by IP.** From an unsupported region every API call answers `403` (a bare
+  HTML `403 Forbidden`, or a body saying "prohibited jurisdiction"), while the homepage still
+  loads. This is the site's block, not a bug: run the generator and the proxy from a region
+  iLOTBET serves and the schemas fill in. The client reports this distinctly
+  (`error: "prohibited_jurisdiction"`).
+- **Writes are not proxied.** The 13 money/bet endpoints are refused by the proxy by design. The
+  SDK can call them if you mean to, but the proxy will not.
+- Account endpoints need `ILOTBET_TOKEN`. Without it they answer 401.
+- Use it within iLOTBET's terms and at human volume, with an account you are entitled to use.
