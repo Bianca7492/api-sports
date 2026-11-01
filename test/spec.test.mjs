@@ -40,6 +40,22 @@ test("inferSchema tolerates an empty list", () => {
   assert.deepEqual(inferSchema([]), { type: "array", items: {}, example: [] });
 });
 
+test("inferSchema drops the example of a personal field", () => {
+  const schema = inferSchema({ phone: "08031234567", email: "a@b.com", firstName: "Ada", loyaltyTier: 3 });
+  assert.equal(schema.properties.phone.example, undefined, "phone keeps its type but no value");
+  assert.equal(schema.properties.phone.type, "string");
+  assert.equal(schema.properties.email.example, undefined);
+  assert.equal(schema.properties.firstName.example, undefined);
+  assert.equal(schema.properties.loyaltyTier.example, 3, "a non-personal field keeps its example");
+});
+
+test("inferSchema never emits a redacted value as an example", () => {
+  const secret = "08031234567";
+  const schema = inferSchema({ contact: secret, note: `call ${secret} now` }, { redact: [secret] });
+  assert.equal(schema.properties.contact.example, undefined);
+  assert.equal(schema.properties.note.example, undefined, "a value that merely contains the secret is redacted too");
+});
+
 test("buildUrl fills path and query params", () => {
   const ep = ENDPOINTS.find((e) => e.operationId === "getBalance");
   const url = buildUrl(ep, { currency: "NGN" });

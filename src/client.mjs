@@ -35,6 +35,21 @@ export function sessionLooksSignedIn() {
   return SESSION_COOKIES.some((n) => names.has(n));
 }
 
+/**
+ * Literal values that must never appear in a published schema: the session's own cookie values
+ * (tokens, user id) and any phone number the session carries. The generator passes these to the
+ * schema inference so account responses cannot leak the signed-in user's data into openapi.json.
+ */
+export function redactValues() {
+  const values = loadSession()
+    .filter((c) => SESSION_COOKIES.includes(c.name))
+    .map((c) => c.value);
+  for (const v of [process.env.SPORTYBET_PHONE, process.env.Sporty_number, process.env.Sporty_number1]) {
+    if (v) values.push(v);
+  }
+  return [...new Set(values.filter((v) => v && v.length > 4))];
+}
+
 function cookieHeader(cookies) {
   return cookies.map((c) => `${c.name}=${c.value}`).join("; ");
 }

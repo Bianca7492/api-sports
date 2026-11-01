@@ -92,7 +92,7 @@
                           },
                           "eventSize": {
                             "type": "integer",
-                            "example": 14
+                            "example": 13
                           }
                         },
                         "required": [
@@ -103,14 +103,14 @@
                         "example": {
                           "id": "sr:sport:1",
                           "name": "Football",
-                          "eventSize": 14
+                          "eventSize": 13
                         }
                       },
                       "example": [
                         {
                           "id": "sr:sport:1",
                           "name": "Football",
-                          "eventSize": 14
+                          "eventSize": 13
                         }
                       ]
                     }
@@ -127,7 +127,7 @@
                       {
                         "id": "sr:sport:1",
                         "name": "Football",
-                        "eventSize": 14
+                        "eventSize": 13
                       }
                     ]
                   }
@@ -186,7 +186,7 @@
                           },
                           "eventSize": {
                             "type": "integer",
-                            "example": 15
+                            "example": 13
                           }
                         },
                         "required": [
@@ -197,14 +197,14 @@
                         "example": {
                           "id": "sr:sport:1",
                           "name": "Football",
-                          "eventSize": 15
+                          "eventSize": 13
                         }
                       },
                       "example": [
                         {
                           "id": "sr:sport:1",
                           "name": "Football",
-                          "eventSize": 15
+                          "eventSize": 13
                         }
                       ]
                     }
@@ -221,7 +221,7 @@
                       {
                         "id": "sr:sport:1",
                         "name": "Football",
-                        "eventSize": 15
+                        "eventSize": 13
                       }
                     ]
                   }
@@ -319,7 +319,7 @@
                       "properties": {
                         "totalNum": {
                           "type": "integer",
-                          "example": 1552
+                          "example": 1553
                         },
                         "tournaments": {
                           "type": "array",
@@ -912,7 +912,7 @@
                         "tournaments"
                       ],
                       "example": {
-                        "totalNum": 1552,
+                        "totalNum": 1553,
                         "tournaments": [
                           {
                             "id": "sr:tournament:23",
@@ -945,7 +945,7 @@
                     "bizCode": 10000,
                     "message": "0#0",
                     "data": {
-                      "totalNum": 1552,
+                      "totalNum": 1553,
                       "tournaments": [
                         {
                           "id": "sr:tournament:23",
@@ -1114,7 +1114,7 @@
                                 },
                                 "playedSeconds": {
                                   "type": "string",
-                                  "example": "8:57"
+                                  "example": "13:28"
                                 },
                                 "homeTeamId": {
                                   "type": "string",
@@ -1273,7 +1273,7 @@
                                             },
                                             "probability": {
                                               "type": "string",
-                                              "example": "0.7515221393"
+                                              "example": "0.7621809464"
                                             },
                                             "voidProbability": {
                                               "type": "string",
@@ -1288,8 +1288,7 @@
                                               "example": "Home"
                                             },
                                             "isWinning": {
-                                              "type": "integer",
-                                              "example": 1
+                                              "type": "integer"
                                             },
                                             "refundFactor": {
                                               "type": "integer",
@@ -1299,13 +1298,13 @@
                                               "type": "integer",
                                               "example": 1
                                             },
-                                            "cashOutIsActive": {
-                                              "type": "integer",
-                                              "example": 0
-                                            },
                                             "oddsBoostLfb": {
                                               "type": "boolean",
                                               "example": false
+                                            },
+                                            "cashOutIsActive": {
+                                              "type": "integer",
+                                              "example": 0
                                             }
                                           },
                                           "required": [
@@ -1319,7 +1318,7 @@
                                           "example": {
                                             "id": "1",
                                             "odds": "1.25",
-                                            "probability": "0.7515221393",
+                                            "probability": "0.7621809464",
                                             "voidProbability": "0E-10",
                                             "isActive": 1,
                                             "desc": "Home"
@@ -1372,7 +1371,7 @@
                                       },
                                       "lastOddsChangeTime": {
                                         "type": "integer",
-                                        "example": 1793491769343
+                                        "example": 1793492039685
                                       },
                                       "earlyPayoutMarkets": {
                                         "type": "array",
@@ -1432,7 +1431,7 @@
                                       },
                                       "suspendedReason": {
                                         "type": "string",
-                                        "example": "POSSIBLE_GOAL_HOME"
+                                        "example": "POSSIBLE_GOAL_AWAY"
                                       }
                                     },
                                     "required": [
@@ -1587,11 +1586,10 @@
                                 },
                                 "pointScore": {
                                   "type": "string",
-                                  "example": "[\"2:1\",\"0:1\"]"
+                                  "example": "[\"1:0\",\"0:0\"]"
                                 },
                                 "remainingTimeInPeriod": {
-                                  "type": "string",
-                                  "example": "02:06"
+                                  "type": "string"
                                 }
                               },
                               "required": [
@@ -3129,6 +3127,10 @@
                                       "specifier": {
                                         "type": "string",
                                         "example": "total=1"
+                                      },
+                                      "availableScore": {
+                                        "type": "string",
+                                        "example": "0:0"
                                       }
                                     },
                                     "required": [
@@ -3242,11 +3244,11 @@
                                       "properties": {
                                         "sourceType": {
                                           "type": "string",
-                                          "example": "BET_RADAR"
+                                          "example": "BET_GENIUS"
                                         },
                                         "sourceId": {
                                           "type": "string",
-                                          "example": "73265472"
+                                          "example": "111111113397534"
                                         }
                                       },
                                       "required": [
@@ -3254,8 +3256,8 @@
                                         "sourceId"
                                       ],
                                       "example": {
-                                        "sourceType": "BET_RADAR",
-                                        "sourceId": "73265472"
+                                        "sourceType": "BET_GENIUS",
+                                        "sourceId": "111111113397534"
                                       }
                                     }
                                   },
@@ -3269,8 +3271,8 @@
                                       "sourceId": "73265472"
                                     },
                                     "liveSource": {
-                                      "sourceType": "BET_RADAR",
-                                      "sourceId": "73265472"
+                                      "sourceType": "BET_GENIUS",
+                                      "sourceId": "111111113397534"
                                     }
                                   }
                                 },
@@ -3281,6 +3283,18 @@
                                 "banned": {
                                   "type": "boolean",
                                   "example": false
+                                },
+                                "setScore": {
+                                  "type": "string",
+                                  "example": "0:0"
+                                },
+                                "pointScore": {
+                                  "type": "string",
+                                  "example": ""
+                                },
+                                "period": {
+                                  "type": "string",
+                                  "example": "1"
                                 }
                               },
                               "required": [
@@ -3521,28 +3535,22 @@
                           "example": 1606474177354
                         },
                         "dobVerifiedByNin": {
-                          "type": "boolean",
-                          "example": false
+                          "type": "boolean"
                         },
                         "editableBirthday": {
-                          "type": "boolean",
-                          "example": true
+                          "type": "boolean"
                         },
                         "editableFirstName": {
-                          "type": "boolean",
-                          "example": false
+                          "type": "boolean"
                         },
                         "editableLastName": {
-                          "type": "boolean",
-                          "example": false
+                          "type": "boolean"
                         },
                         "email": {
-                          "type": "string",
-                          "example": "uchesaintbasil.o@gmail.com"
+                          "type": "string"
                         },
                         "firstName": {
-                          "type": "string",
-                          "example": "Uche"
+                          "type": "string"
                         },
                         "isCreator": {
                           "type": "boolean",
@@ -3561,8 +3569,7 @@
                           "example": "en"
                         },
                         "lastName": {
-                          "type": "string",
-                          "example": "Bianca"
+                          "type": "string"
                         },
                         "loyaltyCurrentTier": {
                           "type": "integer",
@@ -3577,36 +3584,28 @@
                           "example": 0
                         },
                         "nicknameVerified": {
-                          "type": "boolean",
-                          "example": false
+                          "type": "boolean"
                         },
                         "ninDobVerificationEnabled": {
-                          "type": "boolean",
-                          "example": true
+                          "type": "boolean"
                         },
                         "ninEnabled": {
-                          "type": "boolean",
-                          "example": false
+                          "type": "boolean"
                         },
                         "ninNameUpdateEnabled": {
-                          "type": "boolean",
-                          "example": false
+                          "type": "boolean"
                         },
                         "phone": {
-                          "type": "string",
-                          "example": "9035537887"
+                          "type": "string"
                         },
                         "phoneCountryCode": {
-                          "type": "string",
-                          "example": "234"
+                          "type": "string"
                         },
                         "phoneNumberE164": {
-                          "type": "string",
-                          "example": "+2349035537887"
+                          "type": "string"
                         },
                         "qualifiedForNinDobGift": {
-                          "type": "boolean",
-                          "example": true
+                          "type": "boolean"
                         },
                         "theme": {
                           "type": "string",
@@ -3650,11 +3649,7 @@
                           "smallAvatarFrameUrl": "common/avatar_frame/tier_empty.png"
                         },
                         "betslipTheme": "common/betslip/theme/basic.png",
-                        "createTime": 1606474177354,
-                        "dobVerifiedByNin": false,
-                        "editableBirthday": true,
-                        "editableFirstName": false,
-                        "editableLastName": false
+                        "createTime": 1606474177354
                       }
                     },
                     "message": {
@@ -3677,11 +3672,7 @@
                         "smallAvatarFrameUrl": "common/avatar_frame/tier_empty.png"
                       },
                       "betslipTheme": "common/betslip/theme/basic.png",
-                      "createTime": 1606474177354,
-                      "dobVerifiedByNin": false,
-                      "editableBirthday": true,
-                      "editableFirstName": false,
-                      "editableLastName": false
+                      "createTime": 1606474177354
                     },
                     "message": "Success"
                   }
@@ -3747,8 +3738,7 @@
                       "type": "object",
                       "properties": {
                         "avlBal": {
-                          "type": "integer",
-                          "example": 1300
+                          "type": "integer"
                         },
                         "status": {
                           "type": "integer",
@@ -3780,7 +3770,6 @@
                         "userFinAccNotExist"
                       ],
                       "example": {
-                        "avlBal": 1300,
                         "status": 20,
                         "avlCoins": 0,
                         "coinsStatus": 20,
@@ -3798,7 +3787,6 @@
                     "bizCode": 10000,
                     "message": "Success",
                     "data": {
-                      "avlBal": 1300,
                       "status": 20,
                       "avlCoins": 0,
                       "coinsStatus": 20,
@@ -3857,8 +3845,7 @@
                       "type": "object",
                       "properties": {
                         "balance": {
-                          "type": "integer",
-                          "example": 1300
+                          "type": "integer"
                         },
                         "validGiftNum": {
                           "type": "integer",
@@ -3890,7 +3877,6 @@
                         "skipAuditPopup"
                       ],
                       "example": {
-                        "balance": 1300,
                         "validGiftNum": 0,
                         "validGiftAmount": 0,
                         "coins": 0,
@@ -3908,7 +3894,6 @@
                     "bizCode": 10000,
                     "message": "Success",
                     "data": {
-                      "balance": 1300,
                       "validGiftNum": 0,
                       "validGiftAmount": 0,
                       "coins": 0,
@@ -4118,7 +4103,7 @@
       }
     }
   },
-  "x-generated-at": "2026-11-01T00:09:35.846Z",
+  "x-generated-at": "2026-11-01T00:14:07.017Z",
   "x-upstream": "https://www.sportybet.com",
   "x-country": "ng"
 }

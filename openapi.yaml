@@ -1,4 +1,4 @@
-# Generated 2026-11-01T00:09:35.846Z from https://www.sportybet.com
+# Generated 2026-11-01T00:14:07.017Z from https://www.sportybet.com
 openapi: 3.1.0
 info:
   title: SportyBet API
@@ -66,7 +66,7 @@ paths:
                           example: Football
                         eventSize:
                           type: integer
-                          example: 14
+                          example: 13
                       required:
                         - id
                         - name
@@ -74,11 +74,11 @@ paths:
                       example:
                         id: "sr:sport:1"
                         name: Football
-                        eventSize: 14
+                        eventSize: 13
                     example:
                       - id: "sr:sport:1"
                         name: Football
-                        eventSize: 14
+                        eventSize: 13
                 required:
                   - bizCode
                   - message
@@ -89,7 +89,7 @@ paths:
                   data:
                     - id: "sr:sport:1"
                       name: Football
-                      eventSize: 14
+                      eventSize: 13
         default:
           description: "A SportyBet error body: { bizCode, message, data }. bizCode 10000 is success; 19000 invalid, 19001 not found, 19003 forbidden."
       security: []
@@ -132,7 +132,7 @@ paths:
                           example: Football
                         eventSize:
                           type: integer
-                          example: 15
+                          example: 13
                       required:
                         - id
                         - name
@@ -140,11 +140,11 @@ paths:
                       example:
                         id: "sr:sport:1"
                         name: Football
-                        eventSize: 15
+                        eventSize: 13
                     example:
                       - id: "sr:sport:1"
                         name: Football
-                        eventSize: 15
+                        eventSize: 13
                 required:
                   - bizCode
                   - message
@@ -155,7 +155,7 @@ paths:
                   data:
                     - id: "sr:sport:1"
                       name: Football
-                      eventSize: 15
+                      eventSize: 13
         default:
           description: "A SportyBet error body: { bizCode, message, data }. bizCode 10000 is success; 19000 invalid, 19001 not found, 19003 forbidden."
       security: []
@@ -223,7 +223,7 @@ paths:
                     properties:
                       totalNum:
                         type: integer
-                        example: 1552
+                        example: 1553
                       tournaments:
                         type: array
                         items:
@@ -671,7 +671,7 @@ paths:
                       - totalNum
                       - tournaments
                     example:
-                      totalNum: 1552
+                      totalNum: 1553
                       tournaments:
                         - id: "sr:tournament:23"
                           name: Serie A
@@ -694,7 +694,7 @@ paths:
                   bizCode: 10000
                   message: "0#0"
                   data:
-                    totalNum: 1552
+                    totalNum: 1553
                     tournaments:
                       - id: "sr:tournament:23"
                         name: Serie A
@@ -816,7 +816,7 @@ paths:
                                 example: H1
                               playedSeconds:
                                 type: string
-                                example: "8:57"
+                                example: "13:28"
                               homeTeamId:
                                 type: string
                                 example: "sr:competitor:260739"
@@ -936,7 +936,7 @@ paths:
                                             example: 1.25
                                           probability:
                                             type: string
-                                            example: 0.7515221393
+                                            example: 0.7621809464
                                           voidProbability:
                                             type: string
                                             example: "0E-10"
@@ -948,19 +948,18 @@ paths:
                                             example: Home
                                           isWinning:
                                             type: integer
-                                            example: 1
                                           refundFactor:
                                             type: integer
                                             example: 0
                                           deadHeatFactor:
                                             type: integer
                                             example: 1
-                                          cashOutIsActive:
-                                            type: integer
-                                            example: 0
                                           oddsBoostLfb:
                                             type: boolean
                                             example: false
+                                          cashOutIsActive:
+                                            type: integer
+                                            example: 0
                                         required:
                                           - id
                                           - odds
@@ -971,7 +970,7 @@ paths:
                                         example:
                                           id: 1
                                           odds: 1.25
-                                          probability: 0.7515221393
+                                          probability: 0.7621809464
                                           voidProbability: "0E-10"
                                           isActive: 1
                                           desc: Home
@@ -1009,7 +1008,7 @@ paths:
                                       example: "1:0"
                                     lastOddsChangeTime:
                                       type: integer
-                                      example: 1793491769343
+                                      example: 1793492039685
                                     earlyPayoutMarkets:
                                       type: array
                                       items:
@@ -1055,7 +1054,7 @@ paths:
                                       example: "total=0.5"
                                     suspendedReason:
                                       type: string
-                                      example: POSSIBLE_GOAL_HOME
+                                      example: POSSIBLE_GOAL_AWAY
                                   required:
                                     - id
                                     - product
@@ -1169,10 +1168,9 @@ paths:
                                 example: false
                               pointScore:
                                 type: string
-                                example: "[\"2:1\",\"0:1\"]"
+                                example: "[\"1:0\",\"0:0\"]"
                               remainingTimeInPeriod:
                                 type: string
-                                example: "02:06"
                             required:
                               - eventId
                               - gameId
@@ -2322,6 +2320,9 @@ paths:
                                     specifier:
                                       type: string
                                       example: "total=1"
+                                    availableScore:
+                                      type: string
+                                      example: "0:0"
                                   required:
                                     - id
                                     - product
@@ -2408,16 +2409,16 @@ paths:
                                     properties:
                                       sourceType:
                                         type: string
-                                        example: BET_RADAR
+                                        example: BET_GENIUS
                                       sourceId:
                                         type: string
-                                        example: 73265472
+                                        example: 111111113397534
                                     required:
                                       - sourceType
                                       - sourceId
                                     example:
-                                      sourceType: BET_RADAR
-                                      sourceId: 73265472
+                                      sourceType: BET_GENIUS
+                                      sourceId: 111111113397534
                                 required:
                                   - preMatchSource
                                   - liveSource
@@ -2426,14 +2427,23 @@ paths:
                                     sourceType: BET_RADAR
                                     sourceId: 73265472
                                   liveSource:
-                                    sourceType: BET_RADAR
-                                    sourceId: 73265472
+                                    sourceType: BET_GENIUS
+                                    sourceId: 111111113397534
                               containsPcbb:
                                 type: boolean
                                 example: false
                               banned:
                                 type: boolean
                                 example: false
+                              setScore:
+                                type: string
+                                example: "0:0"
+                              pointScore:
+                                type: string
+                                example: ""
+                              period:
+                                type: string
+                                example: 1
                             required:
                               - eventId
                               - gameId
@@ -2611,22 +2621,16 @@ paths:
                         example: 1606474177354
                       dobVerifiedByNin:
                         type: boolean
-                        example: false
                       editableBirthday:
                         type: boolean
-                        example: true
                       editableFirstName:
                         type: boolean
-                        example: false
                       editableLastName:
                         type: boolean
-                        example: false
                       email:
                         type: string
-                        example: "uchesaintbasil.o@gmail.com"
                       firstName:
                         type: string
-                        example: Uche
                       isCreator:
                         type: boolean
                         example: false
@@ -2641,7 +2645,6 @@ paths:
                         example: en
                       lastName:
                         type: string
-                        example: Bianca
                       loyaltyCurrentTier:
                         type: integer
                         example: 0
@@ -2653,28 +2656,20 @@ paths:
                         example: 0
                       nicknameVerified:
                         type: boolean
-                        example: false
                       ninDobVerificationEnabled:
                         type: boolean
-                        example: true
                       ninEnabled:
                         type: boolean
-                        example: false
                       ninNameUpdateEnabled:
                         type: boolean
-                        example: false
                       phone:
                         type: string
-                        example: 9035537887
                       phoneCountryCode:
                         type: string
-                        example: 234
                       phoneNumberE164:
                         type: string
-                        example: +2349035537887
                       qualifiedForNinDobGift:
                         type: boolean
-                        example: true
                       theme:
                         type: string
                         example: Dark
@@ -2714,10 +2709,6 @@ paths:
                         smallAvatarFrameUrl: common/avatar_frame/tier_empty.png
                       betslipTheme: common/betslip/theme/basic.png
                       createTime: 1606474177354
-                      dobVerifiedByNin: false
-                      editableBirthday: true
-                      editableFirstName: false
-                      editableLastName: false
                   message:
                     type: string
                     example: Success
@@ -2735,10 +2726,6 @@ paths:
                       smallAvatarFrameUrl: common/avatar_frame/tier_empty.png
                     betslipTheme: common/betslip/theme/basic.png
                     createTime: 1606474177354
-                    dobVerifiedByNin: false
-                    editableBirthday: true
-                    editableFirstName: false
-                    editableLastName: false
                   message: Success
         401:
           description: "No valid session. Run `npm run login`, then retry."
@@ -2784,7 +2771,6 @@ paths:
                     properties:
                       avlBal:
                         type: integer
-                        example: 1300
                       status:
                         type: integer
                         example: 20
@@ -2808,7 +2794,6 @@ paths:
                       - lastUpdatedTime
                       - userFinAccNotExist
                     example:
-                      avlBal: 1300
                       status: 20
                       avlCoins: 0
                       coinsStatus: 20
@@ -2822,7 +2807,6 @@ paths:
                   bizCode: 10000
                   message: Success
                   data:
-                    avlBal: 1300
                     status: 20
                     avlCoins: 0
                     coinsStatus: 20
@@ -2865,7 +2849,6 @@ paths:
                     properties:
                       balance:
                         type: integer
-                        example: 1300
                       validGiftNum:
                         type: integer
                         example: 0
@@ -2889,7 +2872,6 @@ paths:
                       - auditStatus
                       - skipAuditPopup
                     example:
-                      balance: 1300
                       validGiftNum: 0
                       validGiftAmount: 0
                       coins: 0
@@ -2903,7 +2885,6 @@ paths:
                   bizCode: 10000
                   message: Success
                   data:
-                    balance: 1300
                     validGiftNum: 0
                     validGiftAmount: 0
                     coins: 0
@@ -3044,6 +3025,6 @@ components:
       in: cookie
       name: accessToken
       description: "SportyBet session cookies. This proxy adds them from the stored session file, so clients never handle them directly."
-x-generated-at: "2026-11-01T00:09:35.846Z"
+x-generated-at: "2026-11-01T00:14:07.017Z"
 x-upstream: "https://www.sportybet.com"
 x-country: ng

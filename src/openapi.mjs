@@ -9,7 +9,7 @@
  */
 
 import { ENDPOINTS, COUNTRY, ORIGIN } from "./catalog.mjs";
-import { call, sessionLooksSignedIn } from "./client.mjs";
+import { call, sessionLooksSignedIn, redactValues } from "./client.mjs";
 import { inferSchema } from "./infer.mjs";
 
 /** Turn the catalog's param description into an OpenAPI parameter object. */
@@ -27,7 +27,7 @@ function paramObject(name, spec, where) {
  * Probe one endpoint and return { schema, probed, status, error, ms }.
  * Never throws: a failed probe is data the document reports.
  */
-export async function probe(endpoint) {
+export async function probe(endpoint, redact = []) {
   if (endpoint.schemaFrom === "static" && endpoint.schema) {
     return { schema: endpoint.schema, probed: false, status: 200, source: "static" };
   }
@@ -39,18 +39,18 @@ export async function probe(endpoint) {
     // SportyBet wraps errors as { bizCode, message, data: {} }; only infer from real payloads.
     const body = res.json;
     if (res.status >= 400) {
-      return { schema: inferSchema(body), probed: true, status: res.status, source: "sample", error: `HTTP ${res.status}` };
+      return { schema: inferSchema(body, { redact }), probed: true, status: res.status, source: "sample", error: `HTTP ${res.status}` };
     }
     if (body && typeof body === "object" && !Array.isArray(body) && body.bizCode && body.bizCode !== 10000) {
       return {
-        schema: inferSchema(body),
+        schema: inferSchema(body, { redact }),
         probed: true,
         status: res.status,
         source: "sample",
         error: `site answered bizCode ${body.bizCode}: ${body.message ?? ""}`.trim(),
       };
     }
-    return { schema: inferSchema(body), probed: true, status: res.status, source: "sample", ms: res.ms };
+    return { schema: inferSchema(body, { redact }), probed: true, status: res.status, source: "sample", ms: res.ms };
   } catch (e) {
     return { schema: {}, probed: true, status: 0, source: "sample", error: e.message };
   }
@@ -58,13 +58,14 @@ export async function probe(endpoint) {
 
 /** Build the whole document, probing every sample endpoint concurrently (bounded). */
 export async function buildOpenApi({ version = new Date().toISOString(), probe: doProbe = true } = {}) {
+  const redact = redactValues();
   const results = new Map();
   if (doProbe) {
     const queue = [...ENDPOINTS];
     const workers = Array.from({ length: 4 }, async () => {
       while (queue.length) {
         const ep = queue.shift();
-        results.set(ep.operationId, await probe(ep));
+        results.set(ep.operationId, await probe(ep, redact));
       }
     });
     await Promise.all(workers);

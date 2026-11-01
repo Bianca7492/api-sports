@@ -127,6 +127,9 @@ npm run smoke # live: starts a server, calls public and account endpoints
 
 - This is a read API. It exposes the GET endpoints the site's own frontend uses; it does not
   place bets or move money.
+- **Personal data is kept out of the spec.** Account responses carry your phone, email, name and
+  tokens; the generator redacts any such field to its type and drops the session's literal
+  values, so `openapi.json` never contains them. The session file itself is git-ignored.
 - The paths mirror SportyBet's internal API. SportyBet may change them; that is exactly what
   regeneration is for - if an endpoint starts failing, its probe status in the generated
   document says so, and the fix is an edit in `src/catalog.mjs`.
