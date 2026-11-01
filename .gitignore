@@ -1,0 +1,5 @@
+node_modules/
+.sportybet-cookies.json
+cookies.txt
+*.log
+.DS_Store

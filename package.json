@@ -1,0 +1,21 @@
+{
+  "name": "sportybet-api",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Turn SportyBet into an auto-updating OpenAPI. A generator probes the live site and infers JSON Schemas; a server serves the spec and proxies the endpoints.",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "generate": "node src/generate.mjs",
+    "serve": "node src/server.mjs",
+    "start": "node src/server.mjs",
+    "login": "node src/login.mjs",
+    "smoke": "node test/smoke.mjs",
+    "test": "node --test \"test/*.test.mjs\""
+  },
+  "optionalDependencies": {
+    "playwright-core": "^1.40.0"
+  }
+}

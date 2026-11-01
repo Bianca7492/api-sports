@@ -1,0 +1,4124 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "SportyBet API",
+    "version": "2026-11-01",
+    "description": "A live, auto-generated OpenAPI for SportyBet (sportybet.com).\n\nThe paths mirror SportyBet's own frontend API (`/api/ng` on https://www.sportybet.com), so this document is a proxy surface: call these paths on this server and it forwards them to SportyBet with the stored session, then returns the site's JSON unchanged.\n\nSchemas are inferred from live responses at generation time, so they follow the site. Regenerate with `npm run generate` to pick up new fields.\n\nA signed-in session is loaded: Account endpoints will return data."
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "This proxy server"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Sports"
+    },
+    {
+      "name": "Events"
+    },
+    {
+      "name": "Account"
+    }
+  ],
+  "paths": {
+    "/api/ng/factsCenter/sportList": {
+      "get": {
+        "operationId": "getSports",
+        "summary": "List sports",
+        "description": "Every sport SportyBet offers with its event count and the categories/tournaments under it. Use the returned sport id (e.g. sr:sport:1) as sportId elsewhere.",
+        "tags": [
+          "Sports"
+        ],
+        "parameters": [
+          {
+            "name": "timeline",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Look-ahead window in hours (24 shows the next day)."
+          },
+          {
+            "name": "productId",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1
+            },
+            "description": "1 = pre-match, 3 = live."
+          },
+          {
+            "name": "option",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "SportyBet's JSON response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "bizCode": {
+                      "type": "integer",
+                      "example": 10000
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "0#0"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "example": "sr:sport:1"
+                          },
+                          "name": {
+                            "type": "string",
+                            "example": "Football"
+                          },
+                          "eventSize": {
+                            "type": "integer",
+                            "example": 14
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "name",
+                          "eventSize"
+                        ],
+                        "example": {
+                          "id": "sr:sport:1",
+                          "name": "Football",
+                          "eventSize": 14
+                        }
+                      },
+                      "example": [
+                        {
+                          "id": "sr:sport:1",
+                          "name": "Football",
+                          "eventSize": 14
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "bizCode",
+                    "message",
+                    "data"
+                  ],
+                  "example": {
+                    "bizCode": 10000,
+                    "message": "0#0",
+                    "data": [
+                      {
+                        "id": "sr:sport:1",
+                        "name": "Football",
+                        "eventSize": 14
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "A SportyBet error body: { bizCode, message, data }. bizCode 10000 is success; 19000 invalid, 19001 not found, 19003 forbidden."
+          }
+        },
+        "security": [],
+        "x-sportybet-path": "/api/ng/factsCenter/sportList",
+        "x-auth-required": false,
+        "x-schema-source": "sample",
+        "x-probed-status": 200
+      }
+    },
+    "/api/ng/factsCenter/orderedSportList": {
+      "get": {
+        "operationId": "getOrderedSports",
+        "summary": "List sports in display order",
+        "description": "The sports list in the order the site's own menu shows them.",
+        "tags": [
+          "Sports"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "SportyBet's JSON response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "bizCode": {
+                      "type": "integer",
+                      "example": 10000
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "0#0"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "example": "sr:sport:1"
+                          },
+                          "name": {
+                            "type": "string",
+                            "example": "Football"
+                          },
+                          "eventSize": {
+                            "type": "integer",
+                            "example": 15
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "name",
+                          "eventSize"
+                        ],
+                        "example": {
+                          "id": "sr:sport:1",
+                          "name": "Football",
+                          "eventSize": 15
+                        }
+                      },
+                      "example": [
+                        {
+                          "id": "sr:sport:1",
+                          "name": "Football",
+                          "eventSize": 15
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "bizCode",
+                    "message",
+                    "data"
+                  ],
+                  "example": {
+                    "bizCode": 10000,
+                    "message": "0#0",
+                    "data": [
+                      {
+                        "id": "sr:sport:1",
+                        "name": "Football",
+                        "eventSize": 15
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "A SportyBet error body: { bizCode, message, data }. bizCode 10000 is success; 19000 invalid, 19001 not found, 19003 forbidden."
+          }
+        },
+        "security": [],
+        "x-sportybet-path": "/api/ng/factsCenter/orderedSportList",
+        "x-auth-required": false,
+        "x-schema-source": "sample",
+        "x-probed-status": 200
+      }
+    },
+    "/api/ng/factsCenter/pcUpcomingEvents": {
+      "get": {
+        "operationId": "getUpcomingEvents",
+        "summary": "Pre-match events with odds",
+        "description": "Upcoming (pre-match) events grouped by tournament, each with its main markets and odds. Paginated by pageNum/pageSize.",
+        "tags": [
+          "Events"
+        ],
+        "parameters": [
+          {
+            "name": "sportId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "sr:sport:1"
+            },
+            "description": "Sport id from getSports."
+          },
+          {
+            "name": "marketId",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Comma-separated market ids to include, e.g. 1,18,10."
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 100
+            },
+            "description": "Events per page."
+          },
+          {
+            "name": "pageNum",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1
+            },
+            "description": "1-based page number."
+          },
+          {
+            "name": "option",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "SportyBet's JSON response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "bizCode": {
+                      "type": "integer",
+                      "example": 10000
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "0#0"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "totalNum": {
+                          "type": "integer",
+                          "example": 1552
+                        },
+                        "tournaments": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "example": "sr:tournament:23"
+                              },
+                              "name": {
+                                "type": "string",
+                                "example": "Serie A"
+                              },
+                              "events": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "eventId": {
+                                      "type": "string",
+                                      "example": "sr:match:71945366"
+                                    },
+                                    "gameId": {
+                                      "type": "string",
+                                      "example": "34800"
+                                    },
+                                    "productStatus": {
+                                      "type": "string",
+                                      "example": "0#0"
+                                    },
+                                    "estimateStartTime": {
+                                      "type": "integer",
+                                      "example": 1793648700000
+                                    },
+                                    "status": {
+                                      "type": "integer",
+                                      "example": 0
+                                    },
+                                    "matchStatus": {
+                                      "type": "string",
+                                      "example": "Not start"
+                                    },
+                                    "homeTeamId": {
+                                      "type": "string",
+                                      "example": "sr:competitor:2686"
+                                    },
+                                    "homeTeamName": {
+                                      "type": "string",
+                                      "example": "Atalanta"
+                                    },
+                                    "awayTeamName": {
+                                      "type": "string",
+                                      "example": "Parma Calcio"
+                                    },
+                                    "awayTeamId": {
+                                      "type": "string",
+                                      "example": "sr:competitor:2690"
+                                    },
+                                    "sport": {
+                                      "type": "object",
+                                      "properties": {
+                                        "id": {
+                                          "type": "string",
+                                          "example": "sr:sport:1"
+                                        },
+                                        "name": {
+                                          "type": "string",
+                                          "example": "Football"
+                                        },
+                                        "category": {
+                                          "type": "object",
+                                          "properties": {
+                                            "id": {
+                                              "type": "string",
+                                              "example": "sr:category:31"
+                                            },
+                                            "name": {
+                                              "type": "string",
+                                              "example": "Italy"
+                                            },
+                                            "tournament": {
+                                              "type": "object",
+                                              "properties": {
+                                                "id": {
+                                                  "type": "string",
+                                                  "example": "sr:tournament:23"
+                                                },
+                                                "name": {
+                                                  "type": "string",
+                                                  "example": "Serie A"
+                                                }
+                                              },
+                                              "required": [
+                                                "id",
+                                                "name"
+                                              ],
+                                              "example": {
+                                                "id": "sr:tournament:23",
+                                                "name": "Serie A"
+                                              }
+                                            }
+                                          },
+                                          "required": [
+                                            "id",
+                                            "name",
+                                            "tournament"
+                                          ],
+                                          "example": {
+                                            "id": "sr:category:31",
+                                            "name": "Italy",
+                                            "tournament": {
+                                              "id": "sr:tournament:23",
+                                              "name": "Serie A"
+                                            }
+                                          }
+                                        }
+                                      },
+                                      "required": [
+                                        "id",
+                                        "name",
+                                        "category"
+                                      ],
+                                      "example": {
+                                        "id": "sr:sport:1",
+                                        "name": "Football",
+                                        "category": {
+                                          "id": "sr:category:31",
+                                          "name": "Italy",
+                                          "tournament": {
+                                            "id": "sr:tournament:23",
+                                            "name": "Serie A"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "totalMarketSize": {
+                                      "type": "integer",
+                                      "example": 1299
+                                    },
+                                    "markets": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object",
+                                        "properties": {
+                                          "id": {
+                                            "type": "string",
+                                            "example": "1"
+                                          },
+                                          "product": {
+                                            "type": "integer",
+                                            "example": 3
+                                          },
+                                          "desc": {
+                                            "type": "string",
+                                            "example": "1X2"
+                                          },
+                                          "status": {
+                                            "type": "integer",
+                                            "example": 0
+                                          },
+                                          "group": {
+                                            "type": "string",
+                                            "example": "Main"
+                                          },
+                                          "groupId": {
+                                            "type": "string",
+                                            "example": "171121135724MGI11262166"
+                                          },
+                                          "marketGuide": {
+                                            "type": "string",
+                                            "example": "Which team will win the match. Overtime not included."
+                                          },
+                                          "title": {
+                                            "type": "string",
+                                            "example": "1,X,2"
+                                          },
+                                          "name": {
+                                            "type": "string",
+                                            "example": "1X2"
+                                          },
+                                          "favourite": {
+                                            "type": "integer",
+                                            "example": 0
+                                          },
+                                          "outcomes": {
+                                            "type": "array",
+                                            "items": {
+                                              "type": "object",
+                                              "properties": {
+                                                "id": {
+                                                  "type": "string",
+                                                  "example": "1"
+                                                },
+                                                "odds": {
+                                                  "type": "string",
+                                                  "example": "1.57"
+                                                },
+                                                "probability": {
+                                                  "type": "string",
+                                                  "example": "0.6283440000"
+                                                },
+                                                "voidProbability": {
+                                                  "type": "string",
+                                                  "example": "0E-10"
+                                                },
+                                                "isActive": {
+                                                  "type": "integer",
+                                                  "example": 1
+                                                },
+                                                "desc": {
+                                                  "type": "string",
+                                                  "example": "Home"
+                                                }
+                                              },
+                                              "required": [
+                                                "id",
+                                                "odds",
+                                                "probability",
+                                                "voidProbability",
+                                                "isActive",
+                                                "desc"
+                                              ],
+                                              "example": {
+                                                "id": "1",
+                                                "odds": "1.57",
+                                                "probability": "0.6283440000",
+                                                "voidProbability": "0E-10",
+                                                "isActive": 1,
+                                                "desc": "Home"
+                                              }
+                                            }
+                                          },
+                                          "farNearOdds": {
+                                            "type": "integer",
+                                            "example": 0
+                                          },
+                                          "marketExtendVOS": {
+                                            "type": "array",
+                                            "items": {
+                                              "type": "object",
+                                              "properties": {
+                                                "name": {
+                                                  "type": "string",
+                                                  "example": "2UP"
+                                                },
+                                                "rootMarketId": {
+                                                  "type": "string",
+                                                  "example": "1"
+                                                },
+                                                "nodeMarketId": {
+                                                  "type": "string",
+                                                  "example": "60100"
+                                                },
+                                                "notSupport": {
+                                                  "type": "boolean",
+                                                  "example": false
+                                                }
+                                              },
+                                              "required": [
+                                                "name",
+                                                "rootMarketId",
+                                                "nodeMarketId",
+                                                "notSupport"
+                                              ],
+                                              "example": {
+                                                "name": "2UP",
+                                                "rootMarketId": "1",
+                                                "nodeMarketId": "60100",
+                                                "notSupport": false
+                                              }
+                                            }
+                                          },
+                                          "sourceType": {
+                                            "type": "string",
+                                            "example": "BET_RADAR"
+                                          },
+                                          "lastOddsChangeTime": {
+                                            "type": "integer",
+                                            "example": 1793484154619
+                                          },
+                                          "earlyPayoutMarkets": {
+                                            "type": "array",
+                                            "items": {
+                                              "type": "object",
+                                              "properties": {
+                                                "name": {
+                                                  "type": "string",
+                                                  "example": "1UP"
+                                                },
+                                                "sourceMarketId": {
+                                                  "type": "string",
+                                                  "example": "1"
+                                                },
+                                                "sourceSpecifier": {
+                                                  "type": "string",
+                                                  "example": ""
+                                                },
+                                                "mappedMarketId": {
+                                                  "type": "string",
+                                                  "example": "60200"
+                                                },
+                                                "mappedSpecifier": {
+                                                  "type": "string",
+                                                  "example": ""
+                                                },
+                                                "supported": {
+                                                  "type": "boolean",
+                                                  "example": true
+                                                }
+                                              },
+                                              "required": [
+                                                "name",
+                                                "sourceMarketId",
+                                                "sourceSpecifier",
+                                                "mappedMarketId",
+                                                "mappedSpecifier",
+                                                "supported"
+                                              ],
+                                              "example": {
+                                                "name": "1UP",
+                                                "sourceMarketId": "1",
+                                                "sourceSpecifier": "",
+                                                "mappedMarketId": "60200",
+                                                "mappedSpecifier": "",
+                                                "supported": true
+                                              }
+                                            }
+                                          },
+                                          "banned": {
+                                            "type": "boolean",
+                                            "example": false
+                                          },
+                                          "specifier": {
+                                            "type": "string",
+                                            "example": "total=1"
+                                          }
+                                        },
+                                        "required": [
+                                          "id",
+                                          "product",
+                                          "desc",
+                                          "status",
+                                          "group",
+                                          "groupId",
+                                          "marketGuide",
+                                          "title",
+                                          "name",
+                                          "favourite",
+                                          "outcomes",
+                                          "farNearOdds",
+                                          "sourceType",
+                                          "lastOddsChangeTime",
+                                          "banned"
+                                        ],
+                                        "example": {
+                                          "id": "1",
+                                          "product": 3,
+                                          "desc": "1X2",
+                                          "status": 0,
+                                          "group": "Main",
+                                          "groupId": "171121135724MGI11262166",
+                                          "marketGuide": "Which team will win the match. Overtime not included.",
+                                          "title": "1,X,2"
+                                        }
+                                      }
+                                    },
+                                    "bookingStatus": {
+                                      "type": "string",
+                                      "example": "Booked"
+                                    },
+                                    "topTeam": {
+                                      "type": "boolean",
+                                      "example": false
+                                    },
+                                    "fixtureVenue": {
+                                      "type": "object",
+                                      "properties": {
+                                        "name": {
+                                          "type": "string",
+                                          "example": "New Balance Arena"
+                                        }
+                                      },
+                                      "required": [
+                                        "name"
+                                      ],
+                                      "example": {
+                                        "name": "New Balance Arena"
+                                      }
+                                    },
+                                    "giftGrabActivityResultVO": {
+                                      "type": "object",
+                                      "properties": {
+                                        "activityEnabled": {
+                                          "type": "boolean",
+                                          "example": false
+                                        },
+                                        "enabled": {
+                                          "type": "boolean",
+                                          "example": false
+                                        }
+                                      },
+                                      "required": [
+                                        "activityEnabled",
+                                        "enabled"
+                                      ],
+                                      "example": {
+                                        "activityEnabled": false,
+                                        "enabled": false
+                                      }
+                                    },
+                                    "ai": {
+                                      "type": "boolean",
+                                      "example": false
+                                    },
+                                    "bgEvent": {
+                                      "type": "boolean",
+                                      "example": false
+                                    },
+                                    "matchTrackerNotAllowed": {
+                                      "type": "boolean",
+                                      "example": false
+                                    },
+                                    "eventSource": {
+                                      "type": "object",
+                                      "properties": {
+                                        "preMatchSource": {
+                                          "type": "object",
+                                          "properties": {
+                                            "sourceType": {
+                                              "type": "string",
+                                              "example": "BET_RADAR"
+                                            },
+                                            "sourceId": {
+                                              "type": "string",
+                                              "example": "71945366"
+                                            }
+                                          },
+                                          "required": [
+                                            "sourceType",
+                                            "sourceId"
+                                          ],
+                                          "example": {
+                                            "sourceType": "BET_RADAR",
+                                            "sourceId": "71945366"
+                                          }
+                                        },
+                                        "liveSource": {
+                                          "type": "object",
+                                          "properties": {
+                                            "sourceType": {
+                                              "type": "string",
+                                              "example": "BET_RADAR"
+                                            },
+                                            "sourceId": {
+                                              "type": "string",
+                                              "example": "71945366"
+                                            }
+                                          },
+                                          "required": [
+                                            "sourceType",
+                                            "sourceId"
+                                          ],
+                                          "example": {
+                                            "sourceType": "BET_RADAR",
+                                            "sourceId": "71945366"
+                                          }
+                                        }
+                                      },
+                                      "required": [
+                                        "preMatchSource",
+                                        "liveSource"
+                                      ],
+                                      "example": {
+                                        "preMatchSource": {
+                                          "sourceType": "BET_RADAR",
+                                          "sourceId": "71945366"
+                                        },
+                                        "liveSource": {
+                                          "sourceType": "BET_RADAR",
+                                          "sourceId": "71945366"
+                                        }
+                                      }
+                                    },
+                                    "containsPcbb": {
+                                      "type": "boolean",
+                                      "example": false
+                                    },
+                                    "banned": {
+                                      "type": "boolean",
+                                      "example": false
+                                    }
+                                  },
+                                  "required": [
+                                    "eventId",
+                                    "gameId",
+                                    "productStatus",
+                                    "estimateStartTime",
+                                    "status",
+                                    "matchStatus",
+                                    "homeTeamId",
+                                    "homeTeamName",
+                                    "awayTeamName",
+                                    "awayTeamId",
+                                    "sport",
+                                    "totalMarketSize",
+                                    "markets",
+                                    "bookingStatus",
+                                    "topTeam",
+                                    "fixtureVenue",
+                                    "giftGrabActivityResultVO",
+                                    "ai",
+                                    "bgEvent",
+                                    "matchTrackerNotAllowed",
+                                    "eventSource",
+                                    "containsPcbb",
+                                    "banned"
+                                  ],
+                                  "example": {
+                                    "eventId": "sr:match:71945366",
+                                    "gameId": "34800",
+                                    "productStatus": "0#0",
+                                    "estimateStartTime": 1793648700000,
+                                    "status": 0,
+                                    "matchStatus": "Not start",
+                                    "homeTeamId": "sr:competitor:2686",
+                                    "homeTeamName": "Atalanta"
+                                  }
+                                }
+                              },
+                              "categoryName": {
+                                "type": "string",
+                                "example": "Italy"
+                              },
+                              "categoryId": {
+                                "type": "string",
+                                "example": "sr:category:31"
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "name",
+                              "events",
+                              "categoryName",
+                              "categoryId"
+                            ],
+                            "example": {
+                              "id": "sr:tournament:23",
+                              "name": "Serie A",
+                              "events": [
+                                {
+                                  "eventId": "sr:match:71945366",
+                                  "gameId": "34800",
+                                  "productStatus": "0#0",
+                                  "estimateStartTime": 1793648700000,
+                                  "status": 0,
+                                  "matchStatus": "Not start",
+                                  "homeTeamId": "sr:competitor:2686",
+                                  "homeTeamName": "Atalanta"
+                                }
+                              ],
+                              "categoryName": "Italy",
+                              "categoryId": "sr:category:31"
+                            }
+                          },
+                          "example": [
+                            {
+                              "id": "sr:tournament:23",
+                              "name": "Serie A",
+                              "events": [
+                                {
+                                  "eventId": "sr:match:71945366",
+                                  "gameId": "34800",
+                                  "productStatus": "0#0",
+                                  "estimateStartTime": 1793648700000,
+                                  "status": 0,
+                                  "matchStatus": "Not start",
+                                  "homeTeamId": "sr:competitor:2686",
+                                  "homeTeamName": "Atalanta"
+                                }
+                              ],
+                              "categoryName": "Italy",
+                              "categoryId": "sr:category:31"
+                            }
+                          ]
+                        }
+                      },
+                      "required": [
+                        "totalNum",
+                        "tournaments"
+                      ],
+                      "example": {
+                        "totalNum": 1552,
+                        "tournaments": [
+                          {
+                            "id": "sr:tournament:23",
+                            "name": "Serie A",
+                            "events": [
+                              {
+                                "eventId": "sr:match:71945366",
+                                "gameId": "34800",
+                                "productStatus": "0#0",
+                                "estimateStartTime": 1793648700000,
+                                "status": 0,
+                                "matchStatus": "Not start",
+                                "homeTeamId": "sr:competitor:2686",
+                                "homeTeamName": "Atalanta"
+                              }
+                            ],
+                            "categoryName": "Italy",
+                            "categoryId": "sr:category:31"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "bizCode",
+                    "message",
+                    "data"
+                  ],
+                  "example": {
+                    "bizCode": 10000,
+                    "message": "0#0",
+                    "data": {
+                      "totalNum": 1552,
+                      "tournaments": [
+                        {
+                          "id": "sr:tournament:23",
+                          "name": "Serie A",
+                          "events": [
+                            {
+                              "eventId": "sr:match:71945366",
+                              "gameId": "34800",
+                              "productStatus": "0#0",
+                              "estimateStartTime": 1793648700000,
+                              "status": 0,
+                              "matchStatus": "Not start",
+                              "homeTeamId": "sr:competitor:2686",
+                              "homeTeamName": "Atalanta"
+                            }
+                          ],
+                          "categoryName": "Italy",
+                          "categoryId": "sr:category:31"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "A SportyBet error body: { bizCode, message, data }. bizCode 10000 is success; 19000 invalid, 19001 not found, 19003 forbidden."
+          }
+        },
+        "security": [],
+        "x-sportybet-path": "/api/ng/factsCenter/pcUpcomingEvents",
+        "x-auth-required": false,
+        "x-schema-source": "sample",
+        "x-probed-status": 200
+      }
+    },
+    "/api/ng/factsCenter/liveOrPrematchEvents": {
+      "get": {
+        "operationId": "getLiveEvents",
+        "summary": "Live (in-play) events",
+        "description": "Events currently in play, grouped by tournament, with live scores and the requested markets. Needs a session on some regions.",
+        "tags": [
+          "Events"
+        ],
+        "parameters": [
+          {
+            "name": "sportId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "sr:sport:1"
+            }
+          },
+          {
+            "name": "productId",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 3
+            },
+            "description": "3 = live."
+          },
+          {
+            "name": "marketId",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Comma-separated market ids."
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 100
+            }
+          },
+          {
+            "name": "pageNum",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "SportyBet's JSON response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "bizCode": {
+                      "type": "integer",
+                      "example": 10000
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "0#0"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "example": "sr:tournament:20178"
+                          },
+                          "name": {
+                            "type": "string",
+                            "example": "CONMEBOL Libertadores, Women"
+                          },
+                          "events": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "eventId": {
+                                  "type": "string",
+                                  "example": "sr:match:76167276"
+                                },
+                                "gameId": {
+                                  "type": "string",
+                                  "example": "31475"
+                                },
+                                "productStatus": {
+                                  "type": "string",
+                                  "example": "0#0"
+                                },
+                                "estimateStartTime": {
+                                  "type": "integer",
+                                  "example": 1793491200000
+                                },
+                                "status": {
+                                  "type": "integer",
+                                  "example": 1
+                                },
+                                "setScore": {
+                                  "type": "string",
+                                  "example": "1:0"
+                                },
+                                "gameScore": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string",
+                                    "example": "1:0"
+                                  }
+                                },
+                                "period": {
+                                  "type": "string",
+                                  "example": "1"
+                                },
+                                "matchStatus": {
+                                  "type": "string",
+                                  "example": "H1"
+                                },
+                                "playedSeconds": {
+                                  "type": "string",
+                                  "example": "8:57"
+                                },
+                                "homeTeamId": {
+                                  "type": "string",
+                                  "example": "sr:competitor:260739"
+                                },
+                                "homeTeamName": {
+                                  "type": "string",
+                                  "example": "SC Corinthians SP"
+                                },
+                                "awayTeamName": {
+                                  "type": "string",
+                                  "example": "Cruzeiro EC MG"
+                                },
+                                "awayTeamId": {
+                                  "type": "string",
+                                  "example": "sr:competitor:552283"
+                                },
+                                "sport": {
+                                  "type": "object",
+                                  "properties": {
+                                    "id": {
+                                      "type": "string",
+                                      "example": "sr:sport:1"
+                                    },
+                                    "name": {
+                                      "type": "string",
+                                      "example": "Football"
+                                    },
+                                    "category": {
+                                      "type": "object",
+                                      "properties": {
+                                        "id": {
+                                          "type": "string",
+                                          "example": "sr:category:393"
+                                        },
+                                        "name": {
+                                          "type": "string",
+                                          "example": "International Clubs"
+                                        },
+                                        "tournament": {
+                                          "type": "object",
+                                          "properties": {
+                                            "id": {
+                                              "type": "string",
+                                              "example": "sr:tournament:20178"
+                                            },
+                                            "name": {
+                                              "type": "string",
+                                              "example": "CONMEBOL Libertadores, Women"
+                                            }
+                                          },
+                                          "required": [
+                                            "id",
+                                            "name"
+                                          ],
+                                          "example": {
+                                            "id": "sr:tournament:20178",
+                                            "name": "CONMEBOL Libertadores, Women"
+                                          }
+                                        }
+                                      },
+                                      "required": [
+                                        "id",
+                                        "name",
+                                        "tournament"
+                                      ],
+                                      "example": {
+                                        "id": "sr:category:393",
+                                        "name": "International Clubs",
+                                        "tournament": {
+                                          "id": "sr:tournament:20178",
+                                          "name": "CONMEBOL Libertadores, Women"
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "required": [
+                                    "id",
+                                    "name",
+                                    "category"
+                                  ],
+                                  "example": {
+                                    "id": "sr:sport:1",
+                                    "name": "Football",
+                                    "category": {
+                                      "id": "sr:category:393",
+                                      "name": "International Clubs",
+                                      "tournament": {
+                                        "id": "sr:tournament:20178",
+                                        "name": "CONMEBOL Libertadores, Women"
+                                      }
+                                    }
+                                  }
+                                },
+                                "totalMarketSize": {
+                                  "type": "integer",
+                                  "example": 59
+                                },
+                                "markets": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object",
+                                    "properties": {
+                                      "id": {
+                                        "type": "string",
+                                        "example": "1"
+                                      },
+                                      "product": {
+                                        "type": "integer",
+                                        "example": 1
+                                      },
+                                      "desc": {
+                                        "type": "string",
+                                        "example": "1X2"
+                                      },
+                                      "status": {
+                                        "type": "integer",
+                                        "example": 0
+                                      },
+                                      "group": {
+                                        "type": "string",
+                                        "example": "Main"
+                                      },
+                                      "groupId": {
+                                        "type": "string",
+                                        "example": "171121135724MGI11262166"
+                                      },
+                                      "marketGuide": {
+                                        "type": "string",
+                                        "example": "Which team will win the match. Overtime not included."
+                                      },
+                                      "title": {
+                                        "type": "string",
+                                        "example": "1,X,2"
+                                      },
+                                      "name": {
+                                        "type": "string",
+                                        "example": "1X2"
+                                      },
+                                      "favourite": {
+                                        "type": "integer",
+                                        "example": 0
+                                      },
+                                      "outcomes": {
+                                        "type": "array",
+                                        "items": {
+                                          "type": "object",
+                                          "properties": {
+                                            "id": {
+                                              "type": "string",
+                                              "example": "1"
+                                            },
+                                            "odds": {
+                                              "type": "string",
+                                              "example": "1.25"
+                                            },
+                                            "probability": {
+                                              "type": "string",
+                                              "example": "0.7515221393"
+                                            },
+                                            "voidProbability": {
+                                              "type": "string",
+                                              "example": "0E-10"
+                                            },
+                                            "isActive": {
+                                              "type": "integer",
+                                              "example": 1
+                                            },
+                                            "desc": {
+                                              "type": "string",
+                                              "example": "Home"
+                                            },
+                                            "isWinning": {
+                                              "type": "integer",
+                                              "example": 1
+                                            },
+                                            "refundFactor": {
+                                              "type": "integer",
+                                              "example": 0
+                                            },
+                                            "deadHeatFactor": {
+                                              "type": "integer",
+                                              "example": 1
+                                            },
+                                            "cashOutIsActive": {
+                                              "type": "integer",
+                                              "example": 0
+                                            },
+                                            "oddsBoostLfb": {
+                                              "type": "boolean",
+                                              "example": false
+                                            }
+                                          },
+                                          "required": [
+                                            "id",
+                                            "odds",
+                                            "probability",
+                                            "voidProbability",
+                                            "isActive",
+                                            "desc"
+                                          ],
+                                          "example": {
+                                            "id": "1",
+                                            "odds": "1.25",
+                                            "probability": "0.7515221393",
+                                            "voidProbability": "0E-10",
+                                            "isActive": 1,
+                                            "desc": "Home"
+                                          }
+                                        }
+                                      },
+                                      "farNearOdds": {
+                                        "type": "integer",
+                                        "example": 0
+                                      },
+                                      "marketExtendVOS": {
+                                        "type": "array",
+                                        "items": {
+                                          "type": "object",
+                                          "properties": {
+                                            "name": {
+                                              "type": "string",
+                                              "example": "2UP"
+                                            },
+                                            "notSupport": {
+                                              "type": "boolean",
+                                              "example": true
+                                            },
+                                            "rootMarketId": {
+                                              "type": "string",
+                                              "example": "1"
+                                            },
+                                            "nodeMarketId": {
+                                              "type": "string",
+                                              "example": "60100"
+                                            }
+                                          },
+                                          "required": [
+                                            "name",
+                                            "notSupport"
+                                          ],
+                                          "example": {
+                                            "name": "2UP",
+                                            "notSupport": true
+                                          }
+                                        }
+                                      },
+                                      "sourceType": {
+                                        "type": "string",
+                                        "example": "BET_RADAR"
+                                      },
+                                      "availableScore": {
+                                        "type": "string",
+                                        "example": "1:0"
+                                      },
+                                      "lastOddsChangeTime": {
+                                        "type": "integer",
+                                        "example": 1793491769343
+                                      },
+                                      "earlyPayoutMarkets": {
+                                        "type": "array",
+                                        "items": {
+                                          "type": "object",
+                                          "properties": {
+                                            "name": {
+                                              "type": "string",
+                                              "example": "1UP"
+                                            },
+                                            "sourceMarketId": {
+                                              "type": "string",
+                                              "example": "1"
+                                            },
+                                            "sourceSpecifier": {
+                                              "type": "string",
+                                              "example": ""
+                                            },
+                                            "mappedMarketId": {
+                                              "type": "string",
+                                              "example": "60200"
+                                            },
+                                            "mappedSpecifier": {
+                                              "type": "string",
+                                              "example": ""
+                                            },
+                                            "supported": {
+                                              "type": "boolean",
+                                              "example": false
+                                            }
+                                          },
+                                          "required": [
+                                            "name",
+                                            "sourceMarketId",
+                                            "sourceSpecifier",
+                                            "mappedMarketId",
+                                            "mappedSpecifier",
+                                            "supported"
+                                          ],
+                                          "example": {
+                                            "name": "1UP",
+                                            "sourceMarketId": "1",
+                                            "sourceSpecifier": "",
+                                            "mappedMarketId": "60200",
+                                            "mappedSpecifier": "",
+                                            "supported": false
+                                          }
+                                        }
+                                      },
+                                      "banned": {
+                                        "type": "boolean",
+                                        "example": false
+                                      },
+                                      "specifier": {
+                                        "type": "string",
+                                        "example": "total=0.5"
+                                      },
+                                      "suspendedReason": {
+                                        "type": "string",
+                                        "example": "POSSIBLE_GOAL_HOME"
+                                      }
+                                    },
+                                    "required": [
+                                      "id",
+                                      "product",
+                                      "desc",
+                                      "status",
+                                      "group",
+                                      "groupId",
+                                      "marketGuide",
+                                      "title",
+                                      "name",
+                                      "favourite",
+                                      "outcomes",
+                                      "farNearOdds",
+                                      "sourceType",
+                                      "lastOddsChangeTime",
+                                      "banned"
+                                    ],
+                                    "example": {
+                                      "id": "1",
+                                      "product": 1,
+                                      "desc": "1X2",
+                                      "status": 0,
+                                      "group": "Main",
+                                      "groupId": "171121135724MGI11262166",
+                                      "marketGuide": "Which team will win the match. Overtime not included.",
+                                      "title": "1,X,2"
+                                    }
+                                  }
+                                },
+                                "bookingStatus": {
+                                  "type": "string",
+                                  "example": "Booked"
+                                },
+                                "topTeam": {
+                                  "type": "boolean",
+                                  "example": false
+                                },
+                                "fixtureVenue": {
+                                  "type": "object",
+                                  "properties": {
+                                    "name": {
+                                      "type": "string",
+                                      "example": "Estadio Municipal Prefeito Jose Liberatti"
+                                    }
+                                  },
+                                  "example": {
+                                    "name": "Estadio Municipal Prefeito Jose Liberatti"
+                                  }
+                                },
+                                "giftGrabActivityResultVO": {
+                                  "type": "object",
+                                  "properties": {
+                                    "activityEnabled": {
+                                      "type": "boolean",
+                                      "example": false
+                                    },
+                                    "enabled": {
+                                      "type": "boolean",
+                                      "example": false
+                                    }
+                                  },
+                                  "required": [
+                                    "activityEnabled",
+                                    "enabled"
+                                  ],
+                                  "example": {
+                                    "activityEnabled": false,
+                                    "enabled": false
+                                  }
+                                },
+                                "ai": {
+                                  "type": "boolean",
+                                  "example": false
+                                },
+                                "bgEvent": {
+                                  "type": "boolean",
+                                  "example": false
+                                },
+                                "matchTrackerNotAllowed": {
+                                  "type": "boolean",
+                                  "example": false
+                                },
+                                "eventSource": {
+                                  "type": "object",
+                                  "properties": {
+                                    "preMatchSource": {
+                                      "type": "object",
+                                      "properties": {
+                                        "sourceType": {
+                                          "type": "string",
+                                          "example": "BET_RADAR"
+                                        },
+                                        "sourceId": {
+                                          "type": "string",
+                                          "example": "76167276"
+                                        }
+                                      },
+                                      "required": [
+                                        "sourceType",
+                                        "sourceId"
+                                      ],
+                                      "example": {
+                                        "sourceType": "BET_RADAR",
+                                        "sourceId": "76167276"
+                                      }
+                                    },
+                                    "liveSource": {
+                                      "type": "object",
+                                      "properties": {
+                                        "sourceType": {
+                                          "type": "string",
+                                          "example": "BET_RADAR"
+                                        },
+                                        "sourceId": {
+                                          "type": "string",
+                                          "example": "76167276"
+                                        }
+                                      },
+                                      "required": [
+                                        "sourceType",
+                                        "sourceId"
+                                      ],
+                                      "example": {
+                                        "sourceType": "BET_RADAR",
+                                        "sourceId": "76167276"
+                                      }
+                                    }
+                                  },
+                                  "required": [
+                                    "liveSource"
+                                  ],
+                                  "example": {
+                                    "preMatchSource": {
+                                      "sourceType": "BET_RADAR",
+                                      "sourceId": "76167276"
+                                    },
+                                    "liveSource": {
+                                      "sourceType": "BET_RADAR",
+                                      "sourceId": "76167276"
+                                    }
+                                  }
+                                },
+                                "containsPcbb": {
+                                  "type": "boolean",
+                                  "example": false
+                                },
+                                "banned": {
+                                  "type": "boolean",
+                                  "example": false
+                                },
+                                "pointScore": {
+                                  "type": "string",
+                                  "example": "[\"2:1\",\"0:1\"]"
+                                },
+                                "remainingTimeInPeriod": {
+                                  "type": "string",
+                                  "example": "02:06"
+                                }
+                              },
+                              "required": [
+                                "eventId",
+                                "gameId",
+                                "productStatus",
+                                "estimateStartTime",
+                                "status",
+                                "setScore",
+                                "gameScore",
+                                "period",
+                                "matchStatus",
+                                "playedSeconds",
+                                "homeTeamId",
+                                "homeTeamName",
+                                "awayTeamName",
+                                "awayTeamId",
+                                "sport",
+                                "totalMarketSize",
+                                "markets",
+                                "bookingStatus",
+                                "topTeam",
+                                "fixtureVenue",
+                                "giftGrabActivityResultVO",
+                                "ai",
+                                "bgEvent",
+                                "matchTrackerNotAllowed",
+                                "eventSource",
+                                "containsPcbb",
+                                "banned"
+                              ],
+                              "example": {
+                                "eventId": "sr:match:76167276",
+                                "gameId": "31475",
+                                "productStatus": "0#0",
+                                "estimateStartTime": 1793491200000,
+                                "status": 1,
+                                "setScore": "1:0",
+                                "gameScore": [
+                                  "1:0"
+                                ],
+                                "period": "1"
+                              }
+                            }
+                          },
+                          "categoryName": {
+                            "type": "string",
+                            "example": "International Clubs"
+                          },
+                          "categoryId": {
+                            "type": "string",
+                            "example": "sr:category:393"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "name",
+                          "events",
+                          "categoryName",
+                          "categoryId"
+                        ],
+                        "example": {
+                          "id": "sr:tournament:20178",
+                          "name": "CONMEBOL Libertadores, Women",
+                          "events": [
+                            {
+                              "eventId": "sr:match:76167276",
+                              "gameId": "31475",
+                              "productStatus": "0#0",
+                              "estimateStartTime": 1793491200000,
+                              "status": 1,
+                              "setScore": "1:0",
+                              "gameScore": [
+                                "1:0"
+                              ],
+                              "period": "1"
+                            }
+                          ],
+                          "categoryName": "International Clubs",
+                          "categoryId": "sr:category:393"
+                        }
+                      },
+                      "example": [
+                        {
+                          "id": "sr:tournament:20178",
+                          "name": "CONMEBOL Libertadores, Women",
+                          "events": [
+                            {
+                              "eventId": "sr:match:76167276",
+                              "gameId": "31475",
+                              "productStatus": "0#0",
+                              "estimateStartTime": 1793491200000,
+                              "status": 1,
+                              "setScore": "1:0",
+                              "gameScore": [
+                                "1:0"
+                              ],
+                              "period": "1"
+                            }
+                          ],
+                          "categoryName": "International Clubs",
+                          "categoryId": "sr:category:393"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "bizCode",
+                    "message",
+                    "data"
+                  ],
+                  "example": {
+                    "bizCode": 10000,
+                    "message": "0#0",
+                    "data": [
+                      {
+                        "id": "sr:tournament:20178",
+                        "name": "CONMEBOL Libertadores, Women",
+                        "events": [
+                          {
+                            "eventId": "sr:match:76167276",
+                            "gameId": "31475",
+                            "productStatus": "0#0",
+                            "estimateStartTime": 1793491200000,
+                            "status": 1,
+                            "setScore": "1:0",
+                            "gameScore": [
+                              "1:0"
+                            ],
+                            "period": "1"
+                          }
+                        ],
+                        "categoryName": "International Clubs",
+                        "categoryId": "sr:category:393"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No valid session. Run `npm run login`, then retry."
+          },
+          "default": {
+            "description": "A SportyBet error body: { bizCode, message, data }. bizCode 10000 is success; 19000 invalid, 19001 not found, 19003 forbidden."
+          }
+        },
+        "security": [
+          {
+            "cookieAuth": []
+          }
+        ],
+        "x-sportybet-path": "/api/ng/factsCenter/liveOrPrematchEvents",
+        "x-auth-required": true,
+        "x-schema-source": "sample",
+        "x-probed-status": 200
+      }
+    },
+    "/api/ng/factsCenter/event": {
+      "get": {
+        "operationId": "getEvent",
+        "summary": "One event's full market list",
+        "description": "Every market and outcome for a single event, including odds. eventId comes from getUpcomingEvents or getLiveEvents.",
+        "tags": [
+          "Events"
+        ],
+        "parameters": [
+          {
+            "name": "sportId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "sr:sport:1"
+            }
+          },
+          {
+            "name": "eventId",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "sr:match:68931584"
+            },
+            "description": "Event id; omit for the site's default."
+          },
+          {
+            "name": "productId",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 3
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "SportyBet's JSON response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "bizCode": {
+                      "type": "integer",
+                      "example": 10000
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "0#0"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "eventId": {
+                          "type": "string",
+                          "example": "sr:match:68931584"
+                        },
+                        "gameId": {
+                          "type": "string",
+                          "example": "46392"
+                        },
+                        "productStatus": {
+                          "type": "string",
+                          "example": "0#0"
+                        },
+                        "estimateStartTime": {
+                          "type": "integer",
+                          "example": 1794599100000
+                        },
+                        "status": {
+                          "type": "integer",
+                          "example": 0
+                        },
+                        "matchStatus": {
+                          "type": "string",
+                          "example": "Not start"
+                        },
+                        "homeTeamId": {
+                          "type": "string",
+                          "example": "sr:competitor:4705"
+                        },
+                        "homeTeamName": {
+                          "type": "string",
+                          "example": "Netherlands"
+                        },
+                        "awayTeamName": {
+                          "type": "string",
+                          "example": "Greece"
+                        },
+                        "awayTeamId": {
+                          "type": "string",
+                          "example": "sr:competitor:4710"
+                        },
+                        "sport": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "example": "sr:sport:1"
+                            },
+                            "name": {
+                              "type": "string",
+                              "example": "Football"
+                            },
+                            "category": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "string",
+                                  "example": "sr:category:4"
+                                },
+                                "name": {
+                                  "type": "string",
+                                  "example": "International"
+                                },
+                                "tournament": {
+                                  "type": "object",
+                                  "properties": {
+                                    "id": {
+                                      "type": "string",
+                                      "example": "sr:tournament:23755"
+                                    },
+                                    "name": {
+                                      "type": "string",
+                                      "example": "UEFA Nations League"
+                                    }
+                                  },
+                                  "required": [
+                                    "id",
+                                    "name"
+                                  ],
+                                  "example": {
+                                    "id": "sr:tournament:23755",
+                                    "name": "UEFA Nations League"
+                                  }
+                                }
+                              },
+                              "required": [
+                                "id",
+                                "name",
+                                "tournament"
+                              ],
+                              "example": {
+                                "id": "sr:category:4",
+                                "name": "International",
+                                "tournament": {
+                                  "id": "sr:tournament:23755",
+                                  "name": "UEFA Nations League"
+                                }
+                              }
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "name",
+                            "category"
+                          ],
+                          "example": {
+                            "id": "sr:sport:1",
+                            "name": "Football",
+                            "category": {
+                              "id": "sr:category:4",
+                              "name": "International",
+                              "tournament": {
+                                "id": "sr:tournament:23755",
+                                "name": "UEFA Nations League"
+                              }
+                            }
+                          }
+                        },
+                        "markets": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "example": "1"
+                              },
+                              "product": {
+                                "type": "integer",
+                                "example": 3
+                              },
+                              "desc": {
+                                "type": "string",
+                                "example": "1X2"
+                              },
+                              "status": {
+                                "type": "integer",
+                                "example": 0
+                              },
+                              "group": {
+                                "type": "string",
+                                "example": "Main"
+                              },
+                              "groupId": {
+                                "type": "string",
+                                "example": "171121135724MGI11262166"
+                              },
+                              "marketGuide": {
+                                "type": "string",
+                                "example": "Which team will win the match. Overtime not included."
+                              },
+                              "title": {
+                                "type": "string",
+                                "example": "1,X,2"
+                              },
+                              "name": {
+                                "type": "string",
+                                "example": "1X2"
+                              },
+                              "favourite": {
+                                "type": "integer",
+                                "example": 0
+                              },
+                              "outcomes": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "id": {
+                                      "type": "string",
+                                      "example": "1"
+                                    },
+                                    "odds": {
+                                      "type": "string",
+                                      "example": "1.45"
+                                    },
+                                    "probability": {
+                                      "type": "string",
+                                      "example": "0.6701660000"
+                                    },
+                                    "voidProbability": {
+                                      "type": "string",
+                                      "example": "0E-10"
+                                    },
+                                    "isActive": {
+                                      "type": "integer",
+                                      "example": 1
+                                    },
+                                    "desc": {
+                                      "type": "string",
+                                      "example": "Home"
+                                    },
+                                    "cashOutIsActive": {
+                                      "type": "integer",
+                                      "example": 1
+                                    }
+                                  },
+                                  "required": [
+                                    "id",
+                                    "odds",
+                                    "probability",
+                                    "voidProbability",
+                                    "isActive",
+                                    "desc"
+                                  ],
+                                  "example": {
+                                    "id": "1",
+                                    "odds": "1.45",
+                                    "probability": "0.6701660000",
+                                    "voidProbability": "0E-10",
+                                    "isActive": 1,
+                                    "desc": "Home"
+                                  }
+                                }
+                              },
+                              "farNearOdds": {
+                                "type": "integer",
+                                "example": 0
+                              },
+                              "marketExtendVOS": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "name": {
+                                      "type": "string",
+                                      "example": "2UP"
+                                    },
+                                    "rootMarketId": {
+                                      "type": "string",
+                                      "example": "1"
+                                    },
+                                    "nodeMarketId": {
+                                      "type": "string",
+                                      "example": "60100"
+                                    },
+                                    "notSupport": {
+                                      "type": "boolean",
+                                      "example": false
+                                    }
+                                  },
+                                  "required": [
+                                    "name",
+                                    "rootMarketId",
+                                    "nodeMarketId",
+                                    "notSupport"
+                                  ],
+                                  "example": {
+                                    "name": "2UP",
+                                    "rootMarketId": "1",
+                                    "nodeMarketId": "60100",
+                                    "notSupport": false
+                                  }
+                                }
+                              },
+                              "sourceType": {
+                                "type": "string",
+                                "example": "BET_RADAR"
+                              },
+                              "lastOddsChangeTime": {
+                                "type": "integer",
+                                "example": 1793331776257
+                              },
+                              "earlyPayoutMarkets": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "name": {
+                                      "type": "string",
+                                      "example": "1UP"
+                                    },
+                                    "sourceMarketId": {
+                                      "type": "string",
+                                      "example": "1"
+                                    },
+                                    "sourceSpecifier": {
+                                      "type": "string",
+                                      "example": ""
+                                    },
+                                    "mappedMarketId": {
+                                      "type": "string",
+                                      "example": "60200"
+                                    },
+                                    "mappedSpecifier": {
+                                      "type": "string",
+                                      "example": ""
+                                    },
+                                    "supported": {
+                                      "type": "boolean",
+                                      "example": true
+                                    }
+                                  },
+                                  "required": [
+                                    "name",
+                                    "sourceMarketId",
+                                    "sourceSpecifier",
+                                    "mappedMarketId",
+                                    "mappedSpecifier",
+                                    "supported"
+                                  ],
+                                  "example": {
+                                    "name": "1UP",
+                                    "sourceMarketId": "1",
+                                    "sourceSpecifier": "",
+                                    "mappedMarketId": "60200",
+                                    "mappedSpecifier": "",
+                                    "supported": true
+                                  }
+                                }
+                              },
+                              "banned": {
+                                "type": "boolean",
+                                "example": false
+                              },
+                              "specifier": {
+                                "type": "string",
+                                "example": "total=1"
+                              },
+                              "mode": {
+                                "type": "string",
+                                "example": "slider"
+                              },
+                              "parameters": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string",
+                                  "example": "0"
+                                }
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "product",
+                              "desc",
+                              "status",
+                              "group",
+                              "groupId",
+                              "marketGuide",
+                              "title",
+                              "name",
+                              "favourite",
+                              "outcomes",
+                              "farNearOdds",
+                              "sourceType",
+                              "lastOddsChangeTime",
+                              "banned"
+                            ],
+                            "example": {
+                              "id": "1",
+                              "product": 3,
+                              "desc": "1X2",
+                              "status": 0,
+                              "group": "Main",
+                              "groupId": "171121135724MGI11262166",
+                              "marketGuide": "Which team will win the match. Overtime not included.",
+                              "title": "1,X,2"
+                            }
+                          },
+                          "example": [
+                            {
+                              "id": "1",
+                              "product": 3,
+                              "desc": "1X2",
+                              "status": 0,
+                              "group": "Main",
+                              "groupId": "171121135724MGI11262166",
+                              "marketGuide": "Which team will win the match. Overtime not included.",
+                              "title": "1,X,2"
+                            }
+                          ]
+                        },
+                        "bookingStatus": {
+                          "type": "string",
+                          "example": "Booked"
+                        },
+                        "topTeam": {
+                          "type": "boolean",
+                          "example": false
+                        },
+                        "homeTeamIcon": {
+                          "type": "string",
+                          "example": "https://s.sporty.net/common/main/res/5401cfea434ebdd232ead7a9ff890569.png"
+                        },
+                        "awayTeamIcon": {
+                          "type": "string",
+                          "example": "https://s.sporty.net/common/main/res/1efaabb8ae9fea9fe5baca3a3d523272.png"
+                        },
+                        "fixtureVenue": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string",
+                              "example": "Johan Cruijff ArenA"
+                            }
+                          },
+                          "required": [
+                            "name"
+                          ],
+                          "example": {
+                            "name": "Johan Cruijff ArenA"
+                          }
+                        },
+                        "giftGrabActivityResultVO": {
+                          "type": "object",
+                          "properties": {
+                            "activityEnabled": {
+                              "type": "boolean",
+                              "example": false
+                            },
+                            "enabled": {
+                              "type": "boolean",
+                              "example": false
+                            }
+                          },
+                          "required": [
+                            "activityEnabled",
+                            "enabled"
+                          ],
+                          "example": {
+                            "activityEnabled": false,
+                            "enabled": false
+                          }
+                        },
+                        "ai": {
+                          "type": "boolean",
+                          "example": false
+                        },
+                        "bgEvent": {
+                          "type": "boolean",
+                          "example": false
+                        },
+                        "matchTrackerNotAllowed": {
+                          "type": "boolean",
+                          "example": false
+                        },
+                        "eventSource": {
+                          "type": "object",
+                          "properties": {
+                            "preMatchSource": {
+                              "type": "object",
+                              "properties": {
+                                "sourceType": {
+                                  "type": "string",
+                                  "example": "BET_RADAR"
+                                },
+                                "sourceId": {
+                                  "type": "string",
+                                  "example": "68931584"
+                                }
+                              },
+                              "required": [
+                                "sourceType",
+                                "sourceId"
+                              ],
+                              "example": {
+                                "sourceType": "BET_RADAR",
+                                "sourceId": "68931584"
+                              }
+                            },
+                            "liveSource": {
+                              "type": "object",
+                              "properties": {
+                                "sourceType": {
+                                  "type": "string",
+                                  "example": "BET_RADAR"
+                                },
+                                "sourceId": {
+                                  "type": "string",
+                                  "example": "68931584"
+                                }
+                              },
+                              "required": [
+                                "sourceType",
+                                "sourceId"
+                              ],
+                              "example": {
+                                "sourceType": "BET_RADAR",
+                                "sourceId": "68931584"
+                              }
+                            }
+                          },
+                          "required": [
+                            "preMatchSource",
+                            "liveSource"
+                          ],
+                          "example": {
+                            "preMatchSource": {
+                              "sourceType": "BET_RADAR",
+                              "sourceId": "68931584"
+                            },
+                            "liveSource": {
+                              "sourceType": "BET_RADAR",
+                              "sourceId": "68931584"
+                            }
+                          }
+                        },
+                        "containsPcbb": {
+                          "type": "boolean",
+                          "example": false
+                        },
+                        "banned": {
+                          "type": "boolean",
+                          "example": false
+                        }
+                      },
+                      "required": [
+                        "eventId",
+                        "gameId",
+                        "productStatus",
+                        "estimateStartTime",
+                        "status",
+                        "matchStatus",
+                        "homeTeamId",
+                        "homeTeamName",
+                        "awayTeamName",
+                        "awayTeamId",
+                        "sport",
+                        "markets",
+                        "bookingStatus",
+                        "topTeam",
+                        "homeTeamIcon",
+                        "awayTeamIcon",
+                        "fixtureVenue",
+                        "giftGrabActivityResultVO",
+                        "ai",
+                        "bgEvent",
+                        "matchTrackerNotAllowed",
+                        "eventSource",
+                        "containsPcbb",
+                        "banned"
+                      ],
+                      "example": {
+                        "eventId": "sr:match:68931584",
+                        "gameId": "46392",
+                        "productStatus": "0#0",
+                        "estimateStartTime": 1794599100000,
+                        "status": 0,
+                        "matchStatus": "Not start",
+                        "homeTeamId": "sr:competitor:4705",
+                        "homeTeamName": "Netherlands"
+                      }
+                    }
+                  },
+                  "required": [
+                    "bizCode",
+                    "message",
+                    "data"
+                  ],
+                  "example": {
+                    "bizCode": 10000,
+                    "message": "0#0",
+                    "data": {
+                      "eventId": "sr:match:68931584",
+                      "gameId": "46392",
+                      "productStatus": "0#0",
+                      "estimateStartTime": 1794599100000,
+                      "status": 0,
+                      "matchStatus": "Not start",
+                      "homeTeamId": "sr:competitor:4705",
+                      "homeTeamName": "Netherlands"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "A SportyBet error body: { bizCode, message, data }. bizCode 10000 is success; 19000 invalid, 19001 not found, 19003 forbidden."
+          }
+        },
+        "security": [],
+        "x-sportybet-path": "/api/ng/factsCenter/event",
+        "x-auth-required": false,
+        "x-schema-source": "sample",
+        "x-probed-status": 200
+      }
+    },
+    "/api/ng/factsCenter/outrightEvents": {
+      "get": {
+        "operationId": "getOutrightEvents",
+        "summary": "Outright (winner) markets",
+        "description": "Outright markets for a sport (league winners, top scorer, and so on).",
+        "tags": [
+          "Events"
+        ],
+        "parameters": [
+          {
+            "name": "sportId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "sr:sport:1"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "SportyBet's JSON response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "bizCode": {
+                      "type": "integer",
+                      "example": 10000
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "0#0"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "eventId": {
+                            "type": "string",
+                            "example": "sr:season:137560"
+                          },
+                          "productStatus": {
+                            "type": "string",
+                            "example": "0#0"
+                          },
+                          "estimateStartTime": {
+                            "type": "integer",
+                            "example": 1844121600000
+                          },
+                          "estimateStopTime": {
+                            "type": "integer",
+                            "example": 1846713600000
+                          },
+                          "status": {
+                            "type": "integer",
+                            "example": 0
+                          },
+                          "homeTeamName": {
+                            "type": "null",
+                            "nullable": true
+                          },
+                          "awayTeamName": {
+                            "type": "null",
+                            "nullable": true
+                          },
+                          "sport": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "example": "sr:sport:1"
+                              },
+                              "name": {
+                                "type": "string",
+                                "example": "Football"
+                              },
+                              "category": {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "string",
+                                    "example": "sr:category:4"
+                                  },
+                                  "name": {
+                                    "type": "string",
+                                    "example": "International"
+                                  },
+                                  "tournament": {
+                                    "type": "object",
+                                    "properties": {
+                                      "id": {
+                                        "type": "string",
+                                        "example": "sr:tournament:1"
+                                      },
+                                      "name": {
+                                        "type": "string",
+                                        "example": "UEFA Euro 2028"
+                                      }
+                                    },
+                                    "required": [
+                                      "id",
+                                      "name"
+                                    ],
+                                    "example": {
+                                      "id": "sr:tournament:1",
+                                      "name": "UEFA Euro 2028"
+                                    }
+                                  }
+                                },
+                                "required": [
+                                  "id",
+                                  "name",
+                                  "tournament"
+                                ],
+                                "example": {
+                                  "id": "sr:category:4",
+                                  "name": "International",
+                                  "tournament": {
+                                    "id": "sr:tournament:1",
+                                    "name": "UEFA Euro 2028"
+                                  }
+                                }
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "name",
+                              "category"
+                            ],
+                            "example": {
+                              "id": "sr:sport:1",
+                              "name": "Football",
+                              "category": {
+                                "id": "sr:category:4",
+                                "name": "International",
+                                "tournament": {
+                                  "id": "sr:tournament:1",
+                                  "name": "UEFA Euro 2028"
+                                }
+                              }
+                            }
+                          },
+                          "topTeam": {
+                            "type": "boolean",
+                            "example": false
+                          },
+                          "oddsBoost": {
+                            "type": "boolean",
+                            "example": true
+                          },
+                          "fixtureVenue": {
+                            "type": "object",
+                            "properties": {},
+                            "example": {}
+                          },
+                          "giftGrabActivityResultVO": {
+                            "type": "object",
+                            "properties": {
+                              "activityEnabled": {
+                                "type": "boolean",
+                                "example": false
+                              },
+                              "enabled": {
+                                "type": "boolean",
+                                "example": false
+                              }
+                            },
+                            "required": [
+                              "activityEnabled",
+                              "enabled"
+                            ],
+                            "example": {
+                              "activityEnabled": false,
+                              "enabled": false
+                            }
+                          },
+                          "ai": {
+                            "type": "boolean",
+                            "example": false
+                          },
+                          "bgEvent": {
+                            "type": "boolean",
+                            "example": false
+                          },
+                          "matchTrackerNotAllowed": {
+                            "type": "boolean",
+                            "example": false
+                          },
+                          "eventSource": {
+                            "type": "object",
+                            "properties": {
+                              "preMatchSource": {
+                                "type": "object",
+                                "properties": {
+                                  "sourceType": {
+                                    "type": "string",
+                                    "example": "BET_RADAR"
+                                  },
+                                  "sourceId": {
+                                    "type": "string",
+                                    "example": "sr:season:137560"
+                                  }
+                                },
+                                "required": [
+                                  "sourceType",
+                                  "sourceId"
+                                ],
+                                "example": {
+                                  "sourceType": "BET_RADAR",
+                                  "sourceId": "sr:season:137560"
+                                }
+                              },
+                              "liveSource": {
+                                "type": "object",
+                                "properties": {
+                                  "sourceType": {
+                                    "type": "string",
+                                    "example": "BET_RADAR"
+                                  },
+                                  "sourceId": {
+                                    "type": "string",
+                                    "example": "sr:season:137560"
+                                  }
+                                },
+                                "required": [
+                                  "sourceType",
+                                  "sourceId"
+                                ],
+                                "example": {
+                                  "sourceType": "BET_RADAR",
+                                  "sourceId": "sr:season:137560"
+                                }
+                              }
+                            },
+                            "required": [
+                              "preMatchSource"
+                            ],
+                            "example": {
+                              "preMatchSource": {
+                                "sourceType": "BET_RADAR",
+                                "sourceId": "sr:season:137560"
+                              },
+                              "liveSource": {
+                                "sourceType": "BET_RADAR",
+                                "sourceId": "sr:season:137560"
+                              }
+                            }
+                          },
+                          "containsPcbb": {
+                            "type": "boolean",
+                            "example": false
+                          },
+                          "banned": {
+                            "type": "boolean",
+                            "example": false
+                          }
+                        },
+                        "required": [
+                          "eventId",
+                          "productStatus",
+                          "estimateStartTime",
+                          "estimateStopTime",
+                          "status",
+                          "homeTeamName",
+                          "awayTeamName",
+                          "sport",
+                          "topTeam",
+                          "fixtureVenue",
+                          "giftGrabActivityResultVO",
+                          "ai",
+                          "bgEvent",
+                          "matchTrackerNotAllowed",
+                          "containsPcbb",
+                          "banned"
+                        ],
+                        "example": {
+                          "eventId": "sr:season:137560",
+                          "productStatus": "0#0",
+                          "estimateStartTime": 1844121600000,
+                          "estimateStopTime": 1846713600000,
+                          "status": 0,
+                          "homeTeamName": null,
+                          "awayTeamName": null,
+                          "sport": {
+                            "id": "sr:sport:1",
+                            "name": "Football",
+                            "category": {
+                              "id": "sr:category:4",
+                              "name": "International",
+                              "tournament": {
+                                "id": "sr:tournament:1",
+                                "name": "UEFA Euro 2028"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "example": [
+                        {
+                          "eventId": "sr:season:137560",
+                          "productStatus": "0#0",
+                          "estimateStartTime": 1844121600000,
+                          "estimateStopTime": 1846713600000,
+                          "status": 0,
+                          "homeTeamName": null,
+                          "awayTeamName": null,
+                          "sport": {
+                            "id": "sr:sport:1",
+                            "name": "Football",
+                            "category": {
+                              "id": "sr:category:4",
+                              "name": "International",
+                              "tournament": {
+                                "id": "sr:tournament:1",
+                                "name": "UEFA Euro 2028"
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "bizCode",
+                    "message",
+                    "data"
+                  ],
+                  "example": {
+                    "bizCode": 10000,
+                    "message": "0#0",
+                    "data": [
+                      {
+                        "eventId": "sr:season:137560",
+                        "productStatus": "0#0",
+                        "estimateStartTime": 1844121600000,
+                        "estimateStopTime": 1846713600000,
+                        "status": 0,
+                        "homeTeamName": null,
+                        "awayTeamName": null,
+                        "sport": {
+                          "id": "sr:sport:1",
+                          "name": "Football",
+                          "category": {
+                            "id": "sr:category:4",
+                            "name": "International",
+                            "tournament": {
+                              "id": "sr:tournament:1",
+                              "name": "UEFA Euro 2028"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "A SportyBet error body: { bizCode, message, data }. bizCode 10000 is success; 19000 invalid, 19001 not found, 19003 forbidden."
+          }
+        },
+        "security": [],
+        "x-sportybet-path": "/api/ng/factsCenter/outrightEvents",
+        "x-auth-required": false,
+        "x-schema-source": "sample",
+        "x-probed-status": 200
+      }
+    },
+    "/api/ng/factsCenter/importantEvents": {
+      "get": {
+        "operationId": "getImportantEvents",
+        "summary": "Featured events",
+        "description": "The featured/important events the site pins for a sport.",
+        "tags": [
+          "Events"
+        ],
+        "parameters": [
+          {
+            "name": "sportId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "sr:sport:1"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "SportyBet's JSON response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "bizCode": {
+                      "type": "integer",
+                      "example": 10000
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "0#0"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "example": "sr:tournament:155"
+                          },
+                          "name": {
+                            "type": "string",
+                            "example": "Primera LPF"
+                          },
+                          "events": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "eventId": {
+                                  "type": "string",
+                                  "example": "sr:match:73265472"
+                                },
+                                "gameId": {
+                                  "type": "string",
+                                  "example": "18752"
+                                },
+                                "productStatus": {
+                                  "type": "string",
+                                  "example": "0#0"
+                                },
+                                "estimateStartTime": {
+                                  "type": "integer",
+                                  "example": 1793493000000
+                                },
+                                "status": {
+                                  "type": "integer",
+                                  "example": 0
+                                },
+                                "matchStatus": {
+                                  "type": "string",
+                                  "example": "Not start"
+                                },
+                                "homeTeamId": {
+                                  "type": "string",
+                                  "example": "sr:competitor:3206"
+                                },
+                                "homeTeamName": {
+                                  "type": "string",
+                                  "example": "Estudiantes de La Plata"
+                                },
+                                "awayTeamName": {
+                                  "type": "string",
+                                  "example": "Instituto AC Cordoba"
+                                },
+                                "awayTeamId": {
+                                  "type": "string",
+                                  "example": "sr:competitor:4937"
+                                },
+                                "sport": {
+                                  "type": "object",
+                                  "properties": {
+                                    "id": {
+                                      "type": "string",
+                                      "example": "sr:sport:1"
+                                    },
+                                    "name": {
+                                      "type": "string",
+                                      "example": "Football"
+                                    },
+                                    "category": {
+                                      "type": "object",
+                                      "properties": {
+                                        "id": {
+                                          "type": "string",
+                                          "example": "sr:category:48"
+                                        },
+                                        "name": {
+                                          "type": "string",
+                                          "example": "Argentina"
+                                        },
+                                        "tournament": {
+                                          "type": "object",
+                                          "properties": {
+                                            "id": {
+                                              "type": "string",
+                                              "example": "sr:tournament:155"
+                                            },
+                                            "name": {
+                                              "type": "string",
+                                              "example": "Primera LPF"
+                                            }
+                                          },
+                                          "required": [
+                                            "id",
+                                            "name"
+                                          ],
+                                          "example": {
+                                            "id": "sr:tournament:155",
+                                            "name": "Primera LPF"
+                                          }
+                                        }
+                                      },
+                                      "required": [
+                                        "id",
+                                        "name",
+                                        "tournament"
+                                      ],
+                                      "example": {
+                                        "id": "sr:category:48",
+                                        "name": "Argentina",
+                                        "tournament": {
+                                          "id": "sr:tournament:155",
+                                          "name": "Primera LPF"
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "required": [
+                                    "id",
+                                    "name",
+                                    "category"
+                                  ],
+                                  "example": {
+                                    "id": "sr:sport:1",
+                                    "name": "Football",
+                                    "category": {
+                                      "id": "sr:category:48",
+                                      "name": "Argentina",
+                                      "tournament": {
+                                        "id": "sr:tournament:155",
+                                        "name": "Primera LPF"
+                                      }
+                                    }
+                                  }
+                                },
+                                "totalMarketSize": {
+                                  "type": "integer",
+                                  "example": 898
+                                },
+                                "markets": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object",
+                                    "properties": {
+                                      "id": {
+                                        "type": "string",
+                                        "example": "1"
+                                      },
+                                      "product": {
+                                        "type": "integer",
+                                        "example": 3
+                                      },
+                                      "desc": {
+                                        "type": "string",
+                                        "example": "1X2"
+                                      },
+                                      "status": {
+                                        "type": "integer",
+                                        "example": 0
+                                      },
+                                      "group": {
+                                        "type": "string",
+                                        "example": "Main"
+                                      },
+                                      "groupId": {
+                                        "type": "string",
+                                        "example": "171121135724MGI11262166"
+                                      },
+                                      "marketGuide": {
+                                        "type": "string",
+                                        "example": "Which team will win the match. Overtime not included."
+                                      },
+                                      "title": {
+                                        "type": "string",
+                                        "example": "1,X,2"
+                                      },
+                                      "name": {
+                                        "type": "string",
+                                        "example": "1X2"
+                                      },
+                                      "favourite": {
+                                        "type": "integer",
+                                        "example": 0
+                                      },
+                                      "outcomes": {
+                                        "type": "array",
+                                        "items": {
+                                          "type": "object",
+                                          "properties": {
+                                            "id": {
+                                              "type": "string",
+                                              "example": "1"
+                                            },
+                                            "odds": {
+                                              "type": "string",
+                                              "example": "2.00"
+                                            },
+                                            "probability": {
+                                              "type": "string",
+                                              "example": "0.4691710000"
+                                            },
+                                            "voidProbability": {
+                                              "type": "string",
+                                              "example": "0E-10"
+                                            },
+                                            "isActive": {
+                                              "type": "integer",
+                                              "example": 1
+                                            },
+                                            "desc": {
+                                              "type": "string",
+                                              "example": "Home"
+                                            },
+                                            "cashOutIsActive": {
+                                              "type": "integer",
+                                              "example": 1
+                                            }
+                                          },
+                                          "required": [
+                                            "id",
+                                            "odds",
+                                            "probability",
+                                            "voidProbability",
+                                            "isActive",
+                                            "desc"
+                                          ],
+                                          "example": {
+                                            "id": "1",
+                                            "odds": "2.00",
+                                            "probability": "0.4691710000",
+                                            "voidProbability": "0E-10",
+                                            "isActive": 1,
+                                            "desc": "Home"
+                                          }
+                                        }
+                                      },
+                                      "farNearOdds": {
+                                        "type": "integer",
+                                        "example": 0
+                                      },
+                                      "marketExtendVOS": {
+                                        "type": "array",
+                                        "items": {
+                                          "type": "object",
+                                          "properties": {
+                                            "name": {
+                                              "type": "string",
+                                              "example": "2UP"
+                                            },
+                                            "rootMarketId": {
+                                              "type": "string",
+                                              "example": "1"
+                                            },
+                                            "nodeMarketId": {
+                                              "type": "string",
+                                              "example": "60100"
+                                            },
+                                            "notSupport": {
+                                              "type": "boolean",
+                                              "example": false
+                                            }
+                                          },
+                                          "required": [
+                                            "name",
+                                            "notSupport"
+                                          ],
+                                          "example": {
+                                            "name": "2UP",
+                                            "rootMarketId": "1",
+                                            "nodeMarketId": "60100",
+                                            "notSupport": false
+                                          }
+                                        }
+                                      },
+                                      "sourceType": {
+                                        "type": "string",
+                                        "example": "BET_RADAR"
+                                      },
+                                      "lastOddsChangeTime": {
+                                        "type": "integer",
+                                        "example": 1793491696088
+                                      },
+                                      "earlyPayoutMarkets": {
+                                        "type": "array",
+                                        "items": {
+                                          "type": "object",
+                                          "properties": {
+                                            "name": {
+                                              "type": "string",
+                                              "example": "1UP"
+                                            },
+                                            "sourceMarketId": {
+                                              "type": "string",
+                                              "example": "1"
+                                            },
+                                            "sourceSpecifier": {
+                                              "type": "string",
+                                              "example": ""
+                                            },
+                                            "mappedMarketId": {
+                                              "type": "string",
+                                              "example": "60200"
+                                            },
+                                            "mappedSpecifier": {
+                                              "type": "string",
+                                              "example": ""
+                                            },
+                                            "supported": {
+                                              "type": "boolean",
+                                              "example": true
+                                            }
+                                          },
+                                          "required": [
+                                            "name",
+                                            "sourceMarketId",
+                                            "sourceSpecifier",
+                                            "mappedMarketId",
+                                            "mappedSpecifier",
+                                            "supported"
+                                          ],
+                                          "example": {
+                                            "name": "1UP",
+                                            "sourceMarketId": "1",
+                                            "sourceSpecifier": "",
+                                            "mappedMarketId": "60200",
+                                            "mappedSpecifier": "",
+                                            "supported": true
+                                          }
+                                        }
+                                      },
+                                      "banned": {
+                                        "type": "boolean",
+                                        "example": false
+                                      },
+                                      "specifier": {
+                                        "type": "string",
+                                        "example": "total=1"
+                                      }
+                                    },
+                                    "required": [
+                                      "id",
+                                      "product",
+                                      "desc",
+                                      "status",
+                                      "group",
+                                      "groupId",
+                                      "marketGuide",
+                                      "title",
+                                      "name",
+                                      "favourite",
+                                      "outcomes",
+                                      "farNearOdds",
+                                      "sourceType",
+                                      "lastOddsChangeTime",
+                                      "banned"
+                                    ],
+                                    "example": {
+                                      "id": "1",
+                                      "product": 3,
+                                      "desc": "1X2",
+                                      "status": 0,
+                                      "group": "Main",
+                                      "groupId": "171121135724MGI11262166",
+                                      "marketGuide": "Which team will win the match. Overtime not included.",
+                                      "title": "1,X,2"
+                                    }
+                                  }
+                                },
+                                "bookingStatus": {
+                                  "type": "string",
+                                  "example": "Booked"
+                                },
+                                "topTeam": {
+                                  "type": "boolean",
+                                  "example": false
+                                },
+                                "fixtureVenue": {
+                                  "type": "object",
+                                  "properties": {
+                                    "name": {
+                                      "type": "string",
+                                      "example": "Estadio Jorge Luis Hirschi"
+                                    }
+                                  },
+                                  "example": {
+                                    "name": "Estadio Jorge Luis Hirschi"
+                                  }
+                                },
+                                "giftGrabActivityResultVO": {
+                                  "type": "object",
+                                  "properties": {
+                                    "activityEnabled": {
+                                      "type": "boolean",
+                                      "example": false
+                                    },
+                                    "enabled": {
+                                      "type": "boolean",
+                                      "example": false
+                                    }
+                                  },
+                                  "required": [
+                                    "activityEnabled",
+                                    "enabled"
+                                  ],
+                                  "example": {
+                                    "activityEnabled": false,
+                                    "enabled": false
+                                  }
+                                },
+                                "ai": {
+                                  "type": "boolean",
+                                  "example": false
+                                },
+                                "bgEvent": {
+                                  "type": "boolean",
+                                  "example": false
+                                },
+                                "matchTrackerNotAllowed": {
+                                  "type": "boolean",
+                                  "example": false
+                                },
+                                "eventSource": {
+                                  "type": "object",
+                                  "properties": {
+                                    "preMatchSource": {
+                                      "type": "object",
+                                      "properties": {
+                                        "sourceType": {
+                                          "type": "string",
+                                          "example": "BET_RADAR"
+                                        },
+                                        "sourceId": {
+                                          "type": "string",
+                                          "example": "73265472"
+                                        }
+                                      },
+                                      "required": [
+                                        "sourceType",
+                                        "sourceId"
+                                      ],
+                                      "example": {
+                                        "sourceType": "BET_RADAR",
+                                        "sourceId": "73265472"
+                                      }
+                                    },
+                                    "liveSource": {
+                                      "type": "object",
+                                      "properties": {
+                                        "sourceType": {
+                                          "type": "string",
+                                          "example": "BET_RADAR"
+                                        },
+                                        "sourceId": {
+                                          "type": "string",
+                                          "example": "73265472"
+                                        }
+                                      },
+                                      "required": [
+                                        "sourceType",
+                                        "sourceId"
+                                      ],
+                                      "example": {
+                                        "sourceType": "BET_RADAR",
+                                        "sourceId": "73265472"
+                                      }
+                                    }
+                                  },
+                                  "required": [
+                                    "preMatchSource",
+                                    "liveSource"
+                                  ],
+                                  "example": {
+                                    "preMatchSource": {
+                                      "sourceType": "BET_RADAR",
+                                      "sourceId": "73265472"
+                                    },
+                                    "liveSource": {
+                                      "sourceType": "BET_RADAR",
+                                      "sourceId": "73265472"
+                                    }
+                                  }
+                                },
+                                "containsPcbb": {
+                                  "type": "boolean",
+                                  "example": false
+                                },
+                                "banned": {
+                                  "type": "boolean",
+                                  "example": false
+                                }
+                              },
+                              "required": [
+                                "eventId",
+                                "gameId",
+                                "productStatus",
+                                "estimateStartTime",
+                                "status",
+                                "homeTeamId",
+                                "homeTeamName",
+                                "awayTeamName",
+                                "awayTeamId",
+                                "sport",
+                                "totalMarketSize",
+                                "markets",
+                                "bookingStatus",
+                                "topTeam",
+                                "fixtureVenue",
+                                "giftGrabActivityResultVO",
+                                "ai",
+                                "bgEvent",
+                                "matchTrackerNotAllowed",
+                                "eventSource",
+                                "containsPcbb",
+                                "banned"
+                              ],
+                              "example": {
+                                "eventId": "sr:match:73265472",
+                                "gameId": "18752",
+                                "productStatus": "0#0",
+                                "estimateStartTime": 1793493000000,
+                                "status": 0,
+                                "matchStatus": "Not start",
+                                "homeTeamId": "sr:competitor:3206",
+                                "homeTeamName": "Estudiantes de La Plata"
+                              }
+                            }
+                          },
+                          "categoryName": {
+                            "type": "string",
+                            "example": "Argentina"
+                          },
+                          "categoryId": {
+                            "type": "string",
+                            "example": "sr:category:48"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "name",
+                          "events",
+                          "categoryName",
+                          "categoryId"
+                        ],
+                        "example": {
+                          "id": "sr:tournament:155",
+                          "name": "Primera LPF",
+                          "events": [
+                            {
+                              "eventId": "sr:match:73265472",
+                              "gameId": "18752",
+                              "productStatus": "0#0",
+                              "estimateStartTime": 1793493000000,
+                              "status": 0,
+                              "matchStatus": "Not start",
+                              "homeTeamId": "sr:competitor:3206",
+                              "homeTeamName": "Estudiantes de La Plata"
+                            }
+                          ],
+                          "categoryName": "Argentina",
+                          "categoryId": "sr:category:48"
+                        }
+                      },
+                      "example": [
+                        {
+                          "id": "sr:tournament:155",
+                          "name": "Primera LPF",
+                          "events": [
+                            {
+                              "eventId": "sr:match:73265472",
+                              "gameId": "18752",
+                              "productStatus": "0#0",
+                              "estimateStartTime": 1793493000000,
+                              "status": 0,
+                              "matchStatus": "Not start",
+                              "homeTeamId": "sr:competitor:3206",
+                              "homeTeamName": "Estudiantes de La Plata"
+                            }
+                          ],
+                          "categoryName": "Argentina",
+                          "categoryId": "sr:category:48"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "bizCode",
+                    "message",
+                    "data"
+                  ],
+                  "example": {
+                    "bizCode": 10000,
+                    "message": "0#0",
+                    "data": [
+                      {
+                        "id": "sr:tournament:155",
+                        "name": "Primera LPF",
+                        "events": [
+                          {
+                            "eventId": "sr:match:73265472",
+                            "gameId": "18752",
+                            "productStatus": "0#0",
+                            "estimateStartTime": 1793493000000,
+                            "status": 0,
+                            "matchStatus": "Not start",
+                            "homeTeamId": "sr:competitor:3206",
+                            "homeTeamName": "Estudiantes de La Plata"
+                          }
+                        ],
+                        "categoryName": "Argentina",
+                        "categoryId": "sr:category:48"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "A SportyBet error body: { bizCode, message, data }. bizCode 10000 is success; 19000 invalid, 19001 not found, 19003 forbidden."
+          }
+        },
+        "security": [],
+        "x-sportybet-path": "/api/ng/factsCenter/importantEvents",
+        "x-auth-required": false,
+        "x-schema-source": "sample",
+        "x-probed-status": 200
+      }
+    },
+    "/api/ng/patron/isLoggedIn": {
+      "get": {
+        "operationId": "isLoggedIn",
+        "summary": "Whether the session is signed in",
+        "description": "Returns true when the stored session is a live signed-in session.",
+        "tags": [
+          "Account"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "SportyBet's JSON response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No valid session. Run `npm run login`, then retry."
+          },
+          "default": {
+            "description": "A SportyBet error body: { bizCode, message, data }. bizCode 10000 is success; 19000 invalid, 19001 not found, 19003 forbidden."
+          }
+        },
+        "security": [
+          {
+            "cookieAuth": []
+          }
+        ],
+        "x-sportybet-path": "/api/ng/patron/isLoggedIn",
+        "x-auth-required": true,
+        "x-schema-source": "static"
+      }
+    },
+    "/api/ng/patron/account/info": {
+      "get": {
+        "operationId": "getAccountInfo",
+        "summary": "Account profile",
+        "description": "The signed-in user's profile: name, email, loyalty tier and account settings.",
+        "tags": [
+          "Account"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "SportyBet's JSON response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "bizCode": {
+                      "type": "integer",
+                      "example": 10000
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "avatar": {
+                          "type": "string",
+                          "example": "common/avatar/21.png"
+                        },
+                        "avatarFrame": {
+                          "type": "object",
+                          "properties": {
+                            "frameApplied": {
+                              "type": "boolean",
+                              "example": true
+                            },
+                            "largeAvatarFrameUrl": {
+                              "type": "string",
+                              "example": "common/avatar_frame/tier_empty.png"
+                            },
+                            "smallAvatarFrameUrl": {
+                              "type": "string",
+                              "example": "common/avatar_frame/tier_empty.png"
+                            }
+                          },
+                          "required": [
+                            "frameApplied",
+                            "largeAvatarFrameUrl",
+                            "smallAvatarFrameUrl"
+                          ],
+                          "example": {
+                            "frameApplied": true,
+                            "largeAvatarFrameUrl": "common/avatar_frame/tier_empty.png",
+                            "smallAvatarFrameUrl": "common/avatar_frame/tier_empty.png"
+                          }
+                        },
+                        "betslipTheme": {
+                          "type": "string",
+                          "example": "common/betslip/theme/basic.png"
+                        },
+                        "createTime": {
+                          "type": "integer",
+                          "example": 1606474177354
+                        },
+                        "dobVerifiedByNin": {
+                          "type": "boolean",
+                          "example": false
+                        },
+                        "editableBirthday": {
+                          "type": "boolean",
+                          "example": true
+                        },
+                        "editableFirstName": {
+                          "type": "boolean",
+                          "example": false
+                        },
+                        "editableLastName": {
+                          "type": "boolean",
+                          "example": false
+                        },
+                        "email": {
+                          "type": "string",
+                          "example": "uchesaintbasil.o@gmail.com"
+                        },
+                        "firstName": {
+                          "type": "string",
+                          "example": "Uche"
+                        },
+                        "isCreator": {
+                          "type": "boolean",
+                          "example": false
+                        },
+                        "isTelegramBindEnabled": {
+                          "type": "boolean",
+                          "example": true
+                        },
+                        "isTelegramBound": {
+                          "type": "boolean",
+                          "example": false
+                        },
+                        "language": {
+                          "type": "string",
+                          "example": "en"
+                        },
+                        "lastName": {
+                          "type": "string",
+                          "example": "Bianca"
+                        },
+                        "loyaltyCurrentTier": {
+                          "type": "integer",
+                          "example": 0
+                        },
+                        "loyaltyHistoryHighestTier": {
+                          "type": "integer",
+                          "example": 0
+                        },
+                        "loyaltyLifeWager": {
+                          "type": "integer",
+                          "example": 0
+                        },
+                        "nicknameVerified": {
+                          "type": "boolean",
+                          "example": false
+                        },
+                        "ninDobVerificationEnabled": {
+                          "type": "boolean",
+                          "example": true
+                        },
+                        "ninEnabled": {
+                          "type": "boolean",
+                          "example": false
+                        },
+                        "ninNameUpdateEnabled": {
+                          "type": "boolean",
+                          "example": false
+                        },
+                        "phone": {
+                          "type": "string",
+                          "example": "9035537887"
+                        },
+                        "phoneCountryCode": {
+                          "type": "string",
+                          "example": "234"
+                        },
+                        "phoneNumberE164": {
+                          "type": "string",
+                          "example": "+2349035537887"
+                        },
+                        "qualifiedForNinDobGift": {
+                          "type": "boolean",
+                          "example": true
+                        },
+                        "theme": {
+                          "type": "string",
+                          "example": "Dark"
+                        }
+                      },
+                      "required": [
+                        "avatar",
+                        "avatarFrame",
+                        "betslipTheme",
+                        "createTime",
+                        "dobVerifiedByNin",
+                        "editableBirthday",
+                        "editableFirstName",
+                        "editableLastName",
+                        "email",
+                        "firstName",
+                        "isCreator",
+                        "isTelegramBindEnabled",
+                        "isTelegramBound",
+                        "language",
+                        "lastName",
+                        "loyaltyCurrentTier",
+                        "loyaltyHistoryHighestTier",
+                        "loyaltyLifeWager",
+                        "nicknameVerified",
+                        "ninDobVerificationEnabled",
+                        "ninEnabled",
+                        "ninNameUpdateEnabled",
+                        "phone",
+                        "phoneCountryCode",
+                        "phoneNumberE164",
+                        "qualifiedForNinDobGift",
+                        "theme"
+                      ],
+                      "example": {
+                        "avatar": "common/avatar/21.png",
+                        "avatarFrame": {
+                          "frameApplied": true,
+                          "largeAvatarFrameUrl": "common/avatar_frame/tier_empty.png",
+                          "smallAvatarFrameUrl": "common/avatar_frame/tier_empty.png"
+                        },
+                        "betslipTheme": "common/betslip/theme/basic.png",
+                        "createTime": 1606474177354,
+                        "dobVerifiedByNin": false,
+                        "editableBirthday": true,
+                        "editableFirstName": false,
+                        "editableLastName": false
+                      }
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Success"
+                    }
+                  },
+                  "required": [
+                    "bizCode",
+                    "data",
+                    "message"
+                  ],
+                  "example": {
+                    "bizCode": 10000,
+                    "data": {
+                      "avatar": "common/avatar/21.png",
+                      "avatarFrame": {
+                        "frameApplied": true,
+                        "largeAvatarFrameUrl": "common/avatar_frame/tier_empty.png",
+                        "smallAvatarFrameUrl": "common/avatar_frame/tier_empty.png"
+                      },
+                      "betslipTheme": "common/betslip/theme/basic.png",
+                      "createTime": 1606474177354,
+                      "dobVerifiedByNin": false,
+                      "editableBirthday": true,
+                      "editableFirstName": false,
+                      "editableLastName": false
+                    },
+                    "message": "Success"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No valid session. Run `npm run login`, then retry."
+          },
+          "default": {
+            "description": "A SportyBet error body: { bizCode, message, data }. bizCode 10000 is success; 19000 invalid, 19001 not found, 19003 forbidden."
+          }
+        },
+        "security": [
+          {
+            "cookieAuth": []
+          }
+        ],
+        "x-sportybet-path": "/api/ng/patron/account/info",
+        "x-auth-required": true,
+        "x-schema-source": "sample",
+        "x-probed-status": 200
+      }
+    },
+    "/api/ng/pocket/v1/finAccs/finAcc/userBal/{currency}": {
+      "get": {
+        "operationId": "getBalance",
+        "summary": "Wallet balance",
+        "description": "Available balance and coins for a currency (NGN, USD, ...).",
+        "tags": [
+          "Account"
+        ],
+        "parameters": [
+          {
+            "name": "currency",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "NGN"
+            },
+            "description": "ISO currency code."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "SportyBet's JSON response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "bizCode": {
+                      "type": "integer",
+                      "example": 10000
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "avlBal": {
+                          "type": "integer",
+                          "example": 1300
+                        },
+                        "status": {
+                          "type": "integer",
+                          "example": 20
+                        },
+                        "avlCoins": {
+                          "type": "integer",
+                          "example": 0
+                        },
+                        "coinsStatus": {
+                          "type": "integer",
+                          "example": 20
+                        },
+                        "lastUpdatedTime": {
+                          "type": "integer",
+                          "example": 1718206102000
+                        },
+                        "userFinAccNotExist": {
+                          "type": "boolean",
+                          "example": false
+                        }
+                      },
+                      "required": [
+                        "avlBal",
+                        "status",
+                        "avlCoins",
+                        "coinsStatus",
+                        "lastUpdatedTime",
+                        "userFinAccNotExist"
+                      ],
+                      "example": {
+                        "avlBal": 1300,
+                        "status": 20,
+                        "avlCoins": 0,
+                        "coinsStatus": 20,
+                        "lastUpdatedTime": 1718206102000,
+                        "userFinAccNotExist": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "bizCode",
+                    "message",
+                    "data"
+                  ],
+                  "example": {
+                    "bizCode": 10000,
+                    "message": "Success",
+                    "data": {
+                      "avlBal": 1300,
+                      "status": 20,
+                      "avlCoins": 0,
+                      "coinsStatus": 20,
+                      "lastUpdatedTime": 1718206102000,
+                      "userFinAccNotExist": false
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No valid session. Run `npm run login`, then retry."
+          },
+          "default": {
+            "description": "A SportyBet error body: { bizCode, message, data }. bizCode 10000 is success; 19000 invalid, 19001 not found, 19003 forbidden."
+          }
+        },
+        "security": [
+          {
+            "cookieAuth": []
+          }
+        ],
+        "x-sportybet-path": "/api/ng/pocket/v1/finAccs/finAcc/userBal/{currency}",
+        "x-auth-required": true,
+        "x-schema-source": "sample",
+        "x-probed-status": 200
+      }
+    },
+    "/api/ng/pocket/v1/wallet/assetsInfo": {
+      "get": {
+        "operationId": "getWalletAssets",
+        "summary": "Wallet assets summary",
+        "description": "Balance, gift counts and audit status for the wallet.",
+        "tags": [
+          "Account"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "SportyBet's JSON response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "bizCode": {
+                      "type": "integer",
+                      "example": 10000
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "balance": {
+                          "type": "integer",
+                          "example": 1300
+                        },
+                        "validGiftNum": {
+                          "type": "integer",
+                          "example": 0
+                        },
+                        "validGiftAmount": {
+                          "type": "integer",
+                          "example": 0
+                        },
+                        "coins": {
+                          "type": "integer",
+                          "example": 0
+                        },
+                        "auditStatus": {
+                          "type": "integer",
+                          "example": 0
+                        },
+                        "skipAuditPopup": {
+                          "type": "boolean",
+                          "example": false
+                        }
+                      },
+                      "required": [
+                        "balance",
+                        "validGiftNum",
+                        "validGiftAmount",
+                        "coins",
+                        "auditStatus",
+                        "skipAuditPopup"
+                      ],
+                      "example": {
+                        "balance": 1300,
+                        "validGiftNum": 0,
+                        "validGiftAmount": 0,
+                        "coins": 0,
+                        "auditStatus": 0,
+                        "skipAuditPopup": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "bizCode",
+                    "message",
+                    "data"
+                  ],
+                  "example": {
+                    "bizCode": 10000,
+                    "message": "Success",
+                    "data": {
+                      "balance": 1300,
+                      "validGiftNum": 0,
+                      "validGiftAmount": 0,
+                      "coins": 0,
+                      "auditStatus": 0,
+                      "skipAuditPopup": false
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No valid session. Run `npm run login`, then retry."
+          },
+          "default": {
+            "description": "A SportyBet error body: { bizCode, message, data }. bizCode 10000 is success; 19000 invalid, 19001 not found, 19003 forbidden."
+          }
+        },
+        "security": [
+          {
+            "cookieAuth": []
+          }
+        ],
+        "x-sportybet-path": "/api/ng/pocket/v1/wallet/assetsInfo",
+        "x-auth-required": true,
+        "x-schema-source": "sample",
+        "x-probed-status": 200
+      }
+    },
+    "/api/ng/orders/order/v2/realbetlist": {
+      "get": {
+        "operationId": "getBetHistory",
+        "summary": "Bet history",
+        "description": "Settled or unsettled bets for the signed-in user. Paginated by pageNo/pageSize; the response's totalNum says how many there are.",
+        "tags": [
+          "Account"
+        ],
+        "parameters": [
+          {
+            "name": "isSettled",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 10
+            },
+            "description": "10 = settled, other values = unsettled."
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 10
+            }
+          },
+          {
+            "name": "pageNo",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "SportyBet's JSON response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "bizCode": {
+                      "type": "integer",
+                      "example": 10000
+                    },
+                    "isAvailable": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "pageSize": {
+                          "type": "integer",
+                          "example": 3
+                        },
+                        "pageNo": {
+                          "type": "integer",
+                          "example": 1
+                        },
+                        "totalNum": {
+                          "type": "integer",
+                          "example": 0
+                        },
+                        "entityList": {
+                          "type": "array",
+                          "items": {},
+                          "example": []
+                        }
+                      },
+                      "required": [
+                        "pageSize",
+                        "pageNo",
+                        "totalNum",
+                        "entityList"
+                      ],
+                      "example": {
+                        "pageSize": 3,
+                        "pageNo": 1,
+                        "totalNum": 0,
+                        "entityList": []
+                      }
+                    }
+                  },
+                  "required": [
+                    "bizCode",
+                    "isAvailable",
+                    "message",
+                    "data"
+                  ],
+                  "example": {
+                    "bizCode": 10000,
+                    "isAvailable": true,
+                    "message": "Success",
+                    "data": {
+                      "pageSize": 3,
+                      "pageNo": 1,
+                      "totalNum": 0,
+                      "entityList": []
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No valid session. Run `npm run login`, then retry."
+          },
+          "default": {
+            "description": "A SportyBet error body: { bizCode, message, data }. bizCode 10000 is success; 19000 invalid, 19001 not found, 19003 forbidden."
+          }
+        },
+        "security": [
+          {
+            "cookieAuth": []
+          }
+        ],
+        "x-sportybet-path": "/api/ng/orders/order/v2/realbetlist",
+        "x-auth-required": true,
+        "x-schema-source": "sample",
+        "x-probed-status": 200
+      }
+    },
+    "/api/ng/inbox/v1/hasAnyUnreadMessages": {
+      "get": {
+        "operationId": "hasUnreadMessages",
+        "summary": "Unread inbox messages",
+        "description": "Whether the signed-in user has unread inbox messages.",
+        "tags": [
+          "Account"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "SportyBet's JSON response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No valid session. Run `npm run login`, then retry."
+          },
+          "default": {
+            "description": "A SportyBet error body: { bizCode, message, data }. bizCode 10000 is success; 19000 invalid, 19001 not found, 19003 forbidden."
+          }
+        },
+        "security": [
+          {
+            "cookieAuth": []
+          }
+        ],
+        "x-sportybet-path": "/api/ng/inbox/v1/hasAnyUnreadMessages",
+        "x-auth-required": true,
+        "x-schema-source": "static"
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "cookieAuth": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "accessToken",
+        "description": "SportyBet session cookies. This proxy adds them from the stored session file, so clients never handle them directly."
+      }
+    }
+  },
+  "x-generated-at": "2026-11-01T00:09:35.846Z",
+  "x-upstream": "https://www.sportybet.com",
+  "x-country": "ng"
+}
