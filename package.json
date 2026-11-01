@@ -13,7 +13,10 @@
     "start": "node src/server.mjs",
     "login": "node src/login.mjs",
     "smoke": "node test/smoke.mjs",
-    "test": "node --test \"test/*.test.mjs\""
+    "test": "node --test \"test/*.test.mjs\"",
+    "crawl": "node tools/crawl.mjs",
+    "wire": "node tools/wire.mjs",
+    "serve:dump": "node tools/serve-dump.mjs"
   },
   "optionalDependencies": {
     "playwright-core": "^1.40.0"

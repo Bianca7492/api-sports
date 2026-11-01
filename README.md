@@ -116,6 +116,39 @@ If a session expires the Account endpoints start answering `401`; run `npm run l
 | `SPORTYBET_PHONE` / `SPORTYBET_PASSWORD` | — | login credentials for `npm run login` |
 | `CHROMIUM_PATH` | auto-detect | browser binary for login |
 
+## UI dump
+
+`tools/` captures the site's rendered UI and serves it as a browsable mirror. The capture is
+regenerable and lives in `.dump/`, which is git-ignored; only the tooling is committed.
+
+```sh
+npm run login       # once; the crawl signs in so the account routes render
+npm run crawl       # walk the site from /ng/ and /ng/m/, capture every route
+npm run wire        # rewrite each page's links so they navigate inside the dump
+npm run serve:dump  # serve it (PORT defaults to 12001)
+```
+
+| path | what |
+|---|---|
+| `/` | the wired home page - the entry point; its links browse the whole dump |
+| `/routes` | index of every route, grouped, with status and sizes |
+| `/r/<slug>` | wired page (links navigate) |
+| `/r/<slug>/raw` | frozen capture, unwired |
+| `/r/<slug>/verbatim` | live DOM as captured |
+| `/r/<slug>/png` `/text` `/requests` | screenshot, visible text, the API calls the page made |
+| `/unmapped?to=...` | a link the crawl did not capture, reported rather than dead-ended |
+
+Notes:
+
+- Discovery and capture are one pass: each page is scanned for links as it is captured, so the
+  route list cannot drift from the dumps. Tournament pages are followed (40 max) but individual
+  fixtures are skipped - they are thousands of near-identical pages.
+- Desktop (`/ng/`) and mobile (`/ng/m/`) are separate sites and are kept separate; a mobile page
+  links to mobile routes.
+- **The account routes are captured signed in, so their dumps contain the user's real name and
+  phone number.** They are git-ignored along with the rest of `.dump/`, and the index carries a
+  warning. Do not publish them as-is.
+
 ## Tests
 
 ```sh
