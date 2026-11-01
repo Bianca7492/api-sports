@@ -92,6 +92,27 @@ export function deriveName(path) {
   return camel.replace(/[^A-Za-z0-9]/g, "") || "endpoint";
 }
 
+/**
+ * Extract the site's client routes: the pages its own single-page app serves.
+ *
+ * Every route returns the same empty shell server-side, so the pages exist only in the bundle's
+ * router table. Each entry is { path, name, params }, where params are the `:seg` placeholders.
+ */
+export function extractClientRoutes(js) {
+  const routes = new Map();
+  const pair = /path:"(\/[^"]*)",\s*name:"([^"]+)"/g;
+  const pairRev = /name:"([^"]+)",\s*path:"(\/[^"]*)"/g;
+  for (const m of js.matchAll(pair)) routes.set(m[1], m[2]);
+  for (const m of js.matchAll(pairRev)) if (!routes.has(m[2])) routes.set(m[2], m[1]);
+  return [...routes.entries()]
+    .map(([path, name]) => ({
+      path,
+      name,
+      params: [...path.matchAll(/:([A-Za-z0-9_]+)\??/g)].map((x) => x[1]),
+    }))
+    .sort((a, b) => a.path.localeCompare(b.path));
+}
+
 export function extractSignKey(js) {
   const start = js.indexOf("BEGIN PRIVATE KEY");
   if (start === -1) throw new Error("no signing key found in the bundle");
@@ -118,5 +139,11 @@ export async function extractFromSite(origin) {
       console.warn(`skip ${url}: ${err.message}`);
     }
   }
-  return { bundles, js, endpoints: extractEndpoints(js), keyPem: extractSignKey(js) };
+  return {
+    bundles,
+    js,
+    endpoints: extractEndpoints(js),
+    pages: extractClientRoutes(js),
+    keyPem: extractSignKey(js),
+  };
 }

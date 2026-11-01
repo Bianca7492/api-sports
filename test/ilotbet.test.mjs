@@ -9,7 +9,8 @@ import { signParams, sortParams, md5 } from "../src/ilotbet/sign.mjs";
 import { ENDPOINTS, ALIASES, WRITE_PATHS, findEndpoint, danglingAliases, loadSignKey } from "../src/ilotbet/catalog.mjs";
 import { buildOpenApi } from "../src/ilotbet/openapi.mjs";
 import { inventory } from "../src/ilotbet/routes.mjs";
-import { isApiPath, extractEndpoints, extractSignKey } from "../src/ilotbet/extract.mjs";
+import { isApiPath, extractEndpoints, extractSignKey, extractClientRoutes } from "../src/ilotbet/extract.mjs";
+import { fillParams } from "../src/ilotbet/pages.mjs";
 
 // A real request captured from the site's own browser session.
 const CAPTURED = {
@@ -90,6 +91,29 @@ test("isApiPath accepts service paths and rejects assets", () => {
   assert.ok(isApiPath("/sbu/un/m/featured/v2"));
   assert.ok(!isApiPath("/static/js/main.js"));
   assert.ok(!isApiPath("/img/logo.png"));
+});
+
+test("extractClientRoutes reads the router table and its params", () => {
+  const js = `
+    {path:"/home",name:"home",component:x},
+    {name:"casinoGame",path:"/casino/game/:id",component:y},
+    {path:"/link/:routerName?/:linkName?",name:"link",component:z},
+  `;
+  const routes = extractClientRoutes(js);
+  assert.deepEqual(
+    routes.map((r) => r.path),
+    ["/casino/game/:id", "/home", "/link/:routerName?/:linkName?"],
+  );
+  assert.deepEqual(routes.find((r) => r.name === "casinoGame").params, ["id"]);
+  assert.deepEqual(routes.find((r) => r.name === "link").params, ["routerName", "linkName"]);
+  assert.deepEqual(routes.find((r) => r.name === "home").params, []);
+});
+
+test("fillParams fills a template and reports a missing value", () => {
+  assert.equal(fillParams("/casino/game/:id", { id: "42" }), "/casino/game/42");
+  assert.equal(fillParams("/link/:routerName?/:linkName?", { routerName: "home", linkName: "x" }), "/link/home/x");
+  assert.equal(fillParams("/home", {}), "/home");
+  assert.equal(fillParams("/casino/game/:id", {}), null, "a missing required param is not guessed");
 });
 
 test("extractSignKey rebuilds a PEM", () => {

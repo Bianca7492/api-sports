@@ -83,6 +83,18 @@ async function handleIlotbet(url) {
       ? { status: 200, body: readFileSync(file, "utf8"), type: "text/html" }
       : { status: 404, body: "run `npm run routes:ilotbet` first", type: "text/plain" };
   }
+  if (url.pathname === `${ILOTBET_MOUNT}/pages`) {
+    const file = join(ROOT, "pages.ilotbet.html");
+    return existsSync(file)
+      ? { status: 200, body: readFileSync(file, "utf8"), type: "text/html" }
+      : { status: 404, body: "run `npm run pages:ilotbet` first", type: "text/plain" };
+  }
+  if (url.pathname === `${ILOTBET_MOUNT}/pages.json`) {
+    const file = join(ROOT, "pages.ilotbet.json");
+    return existsSync(file)
+      ? { status: 200, body: readFileSync(file, "utf8"), type: "application/json" }
+      : { status: 404, body: "run `npm run pages:ilotbet` first", type: "text/plain" };
+  }
   if (!url.pathname.startsWith(`${ILOTBET_MOUNT}/`)) return undefined;
 
   const path = url.pathname.slice(ILOTBET_MOUNT.length);

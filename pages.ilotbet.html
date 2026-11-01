@@ -1,0 +1,1038 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>iLOTBET client pages (121)</title>
+<style>
+  :root { color-scheme: dark; --bg:#0b0e14; --panel:#131824; --line:#232b3d; --ink:#e6e9f0; --dim:#8b93a7; --accent:#58a6ff; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:14px/1.5 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,sans-serif; }
+  header { padding:26px 24px 10px; border-bottom:1px solid var(--line); }
+  h1 { margin:0 0 6px; font-size:20px; }
+  .meta { color:var(--dim); font-size:13px; }
+  .meta code { color:var(--ink); }
+  nav { display:flex; flex-wrap:wrap; gap:8px; padding:12px 24px; border-bottom:1px solid var(--line); position:sticky; top:0; background:rgba(11,14,20,.95); backdrop-filter:blur(6px); z-index:5; }
+  nav a { color:var(--ink); text-decoration:none; background:var(--panel); border:1px solid var(--line); border-radius:999px; padding:4px 10px; font-size:12px; }
+  nav a:hover { border-color:var(--dim); }
+  main { padding:8px 24px 60px; }
+  section { margin-top:28px; }
+  h2 { font-size:14px; text-transform:uppercase; letter-spacing:.06em; color:var(--dim); margin:0 0 12px; }
+  .count { color:var(--dim); font-weight:400; font-size:11px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(360px,1fr)); gap:16px; }
+  .card { margin:0; background:var(--panel); border:1px solid var(--line); border-radius:12px; overflow:hidden; }
+  figcaption { display:flex; align-items:center; gap:8px; padding:8px 10px; border-bottom:1px solid var(--line); font-size:12px; }
+  figcaption code { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:12px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .nm { color:var(--dim); font-style:italic; margin-left:auto; }
+  .open { color:var(--accent); text-decoration:none; white-space:nowrap; }
+  .frame { height:260px; background:#fff; position:relative; overflow:hidden; }
+  iframe { width:1100px; height:780px; border:0; transform:scale(.32); transform-origin:0 0; }
+  .card:hover .frame { height:520px; }
+  .card:hover iframe { transform:scale(.64); }
+  .note { color:var(--dim); font-size:12.5px; margin-top:8px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>iLOTBET client pages</h1>
+  <div class="meta">121 landing pages &middot; 5 groups &middot; live iframes of <code>https://www.ilotbet.com</code></div>
+  <div class="note">Every route is a Vue page, so the server returns the same shell for all of them; the previews below load the real pages in the browser. Hover a card to enlarge it. Pages needing a signed-in account will show the site's own login or redirect.</div>
+</header>
+<nav><a href="#account-bets">account &amp; bets <span class="count">19</span></a><a href="#promotions-money">promotions &amp; money <span class="count">32</span></a><a href="#betting-games">betting &amp; games <span class="count">31</span></a><a href="#site-support">site &amp; support <span class="count">20</span></a><a href="#auth-security">auth &amp; security <span class="count">19</span></a></nav>
+<main>
+  <section id="account-bets">
+    <h2>account &amp; bets <span class="count">19</span></h2>
+    <div class="grid">
+      <figure class="card" data-path="/account" data-name="account">
+        <figcaption>
+          <code>https://www.ilotbet.com/account</code>
+          <span class="nm">account</span>
+          <a class="open" href="https://www.ilotbet.com/account" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/account" title="account"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/account/bonusesList" data-name="bonusesList">
+        <figcaption>
+          <code>https://www.ilotbet.com/account/bonusesList</code>
+          <span class="nm">bonusesList</span>
+          <a class="open" href="https://www.ilotbet.com/account/bonusesList" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/account/bonusesList" title="bonusesList"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/account/deletion" data-name="accountDeletion">
+        <figcaption>
+          <code>https://www.ilotbet.com/account/deletion</code>
+          <span class="nm">accountDeletion</span>
+          <a class="open" href="https://www.ilotbet.com/account/deletion" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/account/deletion" title="accountDeletion"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/account/editNickname" data-name="editNickname">
+        <figcaption>
+          <code>https://www.ilotbet.com/account/editNickname</code>
+          <span class="nm">editNickname</span>
+          <a class="open" href="https://www.ilotbet.com/account/editNickname" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/account/editNickname" title="editNickname"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/account/editProfile" data-name="editProfile">
+        <figcaption>
+          <code>https://www.ilotbet.com/account/editProfile</code>
+          <span class="nm">editProfile</span>
+          <a class="open" href="https://www.ilotbet.com/account/editProfile" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/account/editProfile" title="editProfile"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/account/freeBetCoupon" data-name="freeBetCoupon">
+        <figcaption>
+          <code>https://www.ilotbet.com/account/freeBetCoupon</code>
+          <span class="nm">freeBetCoupon</span>
+          <a class="open" href="https://www.ilotbet.com/account/freeBetCoupon" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/account/freeBetCoupon" title="freeBetCoupon"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/account/giftList" data-name="giftList">
+        <figcaption>
+          <code>https://www.ilotbet.com/account/giftList</code>
+          <span class="nm">giftList</span>
+          <a class="open" href="https://www.ilotbet.com/account/giftList" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/account/giftList" title="giftList"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/account/transactions" data-name="transactions">
+        <figcaption>
+          <code>https://www.ilotbet.com/account/transactions</code>
+          <span class="nm">transactions</span>
+          <a class="open" href="https://www.ilotbet.com/account/transactions" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/account/transactions" title="transactions"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/accountActivation" data-name="accountActivation">
+        <figcaption>
+          <code>https://www.ilotbet.com/accountActivation</code>
+          <span class="nm">accountActivation</span>
+          <a class="open" href="https://www.ilotbet.com/accountActivation" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/accountActivation" title="accountActivation"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/accountSecurity" data-name="accountSecurity">
+        <figcaption>
+          <code>https://www.ilotbet.com/accountSecurity</code>
+          <span class="nm">accountSecurity</span>
+          <a class="open" href="https://www.ilotbet.com/accountSecurity" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/accountSecurity" title="accountSecurity"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/bet-history" data-name="betHistory">
+        <figcaption>
+          <code>https://www.ilotbet.com/bet-history</code>
+          <span class="nm">betHistory</span>
+          <a class="open" href="https://www.ilotbet.com/bet-history" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/bet-history" title="betHistory"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/feedback" data-name="feedback">
+        <figcaption>
+          <code>https://www.ilotbet.com/feedback</code>
+          <span class="nm">feedback</span>
+          <a class="open" href="https://www.ilotbet.com/feedback" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/feedback" title="feedback"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/jackpotBetHistory" data-name="jackpotBetHistory">
+        <figcaption>
+          <code>https://www.ilotbet.com/jackpotBetHistory</code>
+          <span class="nm">jackpotBetHistory</span>
+          <a class="open" href="https://www.ilotbet.com/jackpotBetHistory" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/jackpotBetHistory" title="jackpotBetHistory"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/jackpotTicketDetail/:orderId?" data-name="jackpotTicketDetail">
+        <figcaption>
+          <code>https://www.ilotbet.com/jackpotTicketDetail/1</code>
+          <span class="nm">jackpotTicketDetail</span>
+          <a class="open" href="https://www.ilotbet.com/jackpotTicketDetail/1" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/jackpotTicketDetail/1" title="jackpotTicketDetail"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/message" data-name="message">
+        <figcaption>
+          <code>https://www.ilotbet.com/message</code>
+          <span class="nm">message</span>
+          <a class="open" href="https://www.ilotbet.com/message" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/message" title="message"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/messageDetail" data-name="messageDetail">
+        <figcaption>
+          <code>https://www.ilotbet.com/messageDetail</code>
+          <span class="nm">messageDetail</span>
+          <a class="open" href="https://www.ilotbet.com/messageDetail" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/messageDetail" title="messageDetail"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/my-bets" data-name="myBets">
+        <figcaption>
+          <code>https://www.ilotbet.com/my-bets</code>
+          <span class="nm">myBets</span>
+          <a class="open" href="https://www.ilotbet.com/my-bets" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/my-bets" title="myBets"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/sportBetHistory" data-name="sportBetHistory">
+        <figcaption>
+          <code>https://www.ilotbet.com/sportBetHistory</code>
+          <span class="nm">sportBetHistory</span>
+          <a class="open" href="https://www.ilotbet.com/sportBetHistory" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/sportBetHistory" title="sportBetHistory"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/ticketDetail" data-name="ticketDetail">
+        <figcaption>
+          <code>https://www.ilotbet.com/ticketDetail</code>
+          <span class="nm">ticketDetail</span>
+          <a class="open" href="https://www.ilotbet.com/ticketDetail" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/ticketDetail" title="ticketDetail"></iframe></div>
+      </figure>
+    </div>
+  </section>
+  <section id="promotions-money">
+    <h2>promotions &amp; money <span class="count">32</span></h2>
+    <div class="grid">
+      <figure class="card" data-path="/addBankCard" data-name="addBankCard">
+        <figcaption>
+          <code>https://www.ilotbet.com/addBankCard</code>
+          <span class="nm">addBankCard</span>
+          <a class="open" href="https://www.ilotbet.com/addBankCard" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/addBankCard" title="addBankCard"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/affiliates" data-name="affiliates">
+        <figcaption>
+          <code>https://www.ilotbet.com/affiliates</code>
+          <span class="nm">affiliates</span>
+          <a class="open" href="https://www.ilotbet.com/affiliates" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/affiliates" title="affiliates"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/agentApplyForm" data-name="agentApplyForm">
+        <figcaption>
+          <code>https://www.ilotbet.com/agentApplyForm</code>
+          <span class="nm">agentApplyForm</span>
+          <a class="open" href="https://www.ilotbet.com/agentApplyForm" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/agentApplyForm" title="agentApplyForm"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/agentDetail/:shareChannel?" data-name="agentDetail">
+        <figcaption>
+          <code>https://www.ilotbet.com/agentDetail/whatsapp</code>
+          <span class="nm">agentDetail</span>
+          <a class="open" href="https://www.ilotbet.com/agentDetail/whatsapp" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/agentDetail/whatsapp" title="agentDetail"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/bankAccount" data-name="bankAccount">
+        <figcaption>
+          <code>https://www.ilotbet.com/bankAccount</code>
+          <span class="nm">bankAccount</span>
+          <a class="open" href="https://www.ilotbet.com/bankAccount" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/bankAccount" title="bankAccount"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/betBonusLeague/:type?" data-name="betBonusLeague">
+        <figcaption>
+          <code>https://www.ilotbet.com/betBonusLeague/1</code>
+          <span class="nm">betBonusLeague</span>
+          <a class="open" href="https://www.ilotbet.com/betBonusLeague/1" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/betBonusLeague/1" title="betBonusLeague"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/betBonusLeaguePlatform/:type?" data-name="betBonusLeaguePlatform">
+        <figcaption>
+          <code>https://www.ilotbet.com/betBonusLeaguePlatform/1</code>
+          <span class="nm">betBonusLeaguePlatform</span>
+          <a class="open" href="https://www.ilotbet.com/betBonusLeaguePlatform/1" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/betBonusLeaguePlatform/1" title="betBonusLeaguePlatform"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/creat-virtual-bank" data-name="createVirtualBank">
+        <figcaption>
+          <code>https://www.ilotbet.com/creat-virtual-bank</code>
+          <span class="nm">createVirtualBank</span>
+          <a class="open" href="https://www.ilotbet.com/creat-virtual-bank" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/creat-virtual-bank" title="createVirtualBank"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/depositBonus" data-name="depositBonus">
+        <figcaption>
+          <code>https://www.ilotbet.com/depositBonus</code>
+          <span class="nm">depositBonus</span>
+          <a class="open" href="https://www.ilotbet.com/depositBonus" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/depositBonus" title="depositBonus"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/friendHelp" data-name="friendHelp">
+        <figcaption>
+          <code>https://www.ilotbet.com/friendHelp</code>
+          <span class="nm">friendHelp</span>
+          <a class="open" href="https://www.ilotbet.com/friendHelp" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/friendHelp" title="friendHelp"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/friendHelp/:shareCode/:shareChannel" data-name="friendHelpS">
+        <figcaption>
+          <code>https://www.ilotbet.com/friendHelp/demo/whatsapp</code>
+          <span class="nm">friendHelpS</span>
+          <a class="open" href="https://www.ilotbet.com/friendHelp/demo/whatsapp" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/friendHelp/demo/whatsapp" title="friendHelpS"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/ilot-bank-deposit" data-name="ilotBankDeposit">
+        <figcaption>
+          <code>https://www.ilotbet.com/ilot-bank-deposit</code>
+          <span class="nm">ilotBankDeposit</span>
+          <a class="open" href="https://www.ilotbet.com/ilot-bank-deposit" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/ilot-bank-deposit" title="ilotBankDeposit"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/invitedActivity" data-name="invitedActivity">
+        <figcaption>
+          <code>https://www.ilotbet.com/invitedActivity</code>
+          <span class="nm">invitedActivity</span>
+          <a class="open" href="https://www.ilotbet.com/invitedActivity" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/invitedActivity" title="invitedActivity"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/momoRechargeConfirm" data-name="momoRechargeConfirm">
+        <figcaption>
+          <code>https://www.ilotbet.com/momoRechargeConfirm</code>
+          <span class="nm">momoRechargeConfirm</span>
+          <a class="open" href="https://www.ilotbet.com/momoRechargeConfirm" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/momoRechargeConfirm" title="momoRechargeConfirm"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/multiple-cashback" data-name="multipleCashback">
+        <figcaption>
+          <code>https://www.ilotbet.com/multiple-cashback</code>
+          <span class="nm">multipleCashback</span>
+          <a class="open" href="https://www.ilotbet.com/multiple-cashback" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/multiple-cashback" title="multipleCashback"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/new-season-free-bet" data-name="newSeasonFreeBet">
+        <figcaption>
+          <code>https://www.ilotbet.com/new-season-free-bet</code>
+          <span class="nm">newSeasonFreeBet</span>
+          <a class="open" href="https://www.ilotbet.com/new-season-free-bet" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/new-season-free-bet" title="newSeasonFreeBet"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/opayActivity/:shareChannel?" data-name="opayActivity">
+        <figcaption>
+          <code>https://www.ilotbet.com/opayActivity/whatsapp</code>
+          <span class="nm">opayActivity</span>
+          <a class="open" href="https://www.ilotbet.com/opayActivity/whatsapp" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/opayActivity/whatsapp" title="opayActivity"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/opayActivity1/:shareChannel?" data-name="opayActivity1">
+        <figcaption>
+          <code>https://www.ilotbet.com/opayActivity1/whatsapp</code>
+          <span class="nm">opayActivity1</span>
+          <a class="open" href="https://www.ilotbet.com/opayActivity1/whatsapp" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/opayActivity1/whatsapp" title="opayActivity1"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/promotion" data-name="promotion">
+        <figcaption>
+          <code>https://www.ilotbet.com/promotion</code>
+          <span class="nm">promotion</span>
+          <a class="open" href="https://www.ilotbet.com/promotion" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/promotion" title="promotion"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/promotion/friendActivity" data-name="friendActivity">
+        <figcaption>
+          <code>https://www.ilotbet.com/promotion/friendActivity</code>
+          <span class="nm">friendActivity</span>
+          <a class="open" href="https://www.ilotbet.com/promotion/friendActivity" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/promotion/friendActivity" title="friendActivity"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/promotion/registerGift" data-name="registerGift">
+        <figcaption>
+          <code>https://www.ilotbet.com/promotion/registerGift</code>
+          <span class="nm">registerGift</span>
+          <a class="open" href="https://www.ilotbet.com/promotion/registerGift" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/promotion/registerGift" title="registerGift"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/recharge" data-name="recharge">
+        <figcaption>
+          <code>https://www.ilotbet.com/recharge</code>
+          <span class="nm">recharge</span>
+          <a class="open" href="https://www.ilotbet.com/recharge" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/recharge" title="recharge"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/recharge-activity" data-name="rechargeActivity">
+        <figcaption>
+          <code>https://www.ilotbet.com/recharge-activity</code>
+          <span class="nm">rechargeActivity</span>
+          <a class="open" href="https://www.ilotbet.com/recharge-activity" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/recharge-activity" title="rechargeActivity"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/rechargeConfirm" data-name="rechargeConfirm">
+        <figcaption>
+          <code>https://www.ilotbet.com/rechargeConfirm</code>
+          <span class="nm">rechargeConfirm</span>
+          <a class="open" href="https://www.ilotbet.com/rechargeConfirm" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/rechargeConfirm" title="rechargeConfirm"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/rechargeInquiry" data-name="rechargeInquiry">
+        <figcaption>
+          <code>https://www.ilotbet.com/rechargeInquiry</code>
+          <span class="nm">rechargeInquiry</span>
+          <a class="open" href="https://www.ilotbet.com/rechargeInquiry" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/rechargeInquiry" title="rechargeInquiry"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/rechargeSuccess" data-name="rechargeSuccess">
+        <figcaption>
+          <code>https://www.ilotbet.com/rechargeSuccess</code>
+          <span class="nm">rechargeSuccess</span>
+          <a class="open" href="https://www.ilotbet.com/rechargeSuccess" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/rechargeSuccess" title="rechargeSuccess"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/signInGift/:shareChannel?" data-name="signInGift">
+        <figcaption>
+          <code>https://www.ilotbet.com/signInGift/whatsapp</code>
+          <span class="nm">signInGift</span>
+          <a class="open" href="https://www.ilotbet.com/signInGift/whatsapp" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/signInGift/whatsapp" title="signInGift"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/sportBetBonus" data-name="sportBetBonus">
+        <figcaption>
+          <code>https://www.ilotbet.com/sportBetBonus</code>
+          <span class="nm">sportBetBonus</span>
+          <a class="open" href="https://www.ilotbet.com/sportBetBonus" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/sportBetBonus" title="sportBetBonus"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/withdraw" data-name="withdraw">
+        <figcaption>
+          <code>https://www.ilotbet.com/withdraw</code>
+          <span class="nm">withdraw</span>
+          <a class="open" href="https://www.ilotbet.com/withdraw" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/withdraw" title="withdraw"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/withdrawalsSuccess" data-name="withdrawalsSuccess">
+        <figcaption>
+          <code>https://www.ilotbet.com/withdrawalsSuccess</code>
+          <span class="nm">withdrawalsSuccess</span>
+          <a class="open" href="https://www.ilotbet.com/withdrawalsSuccess" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/withdrawalsSuccess" title="withdrawalsSuccess"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/withdrawPending" data-name="withdrawPending">
+        <figcaption>
+          <code>https://www.ilotbet.com/withdrawPending</code>
+          <span class="nm">withdrawPending</span>
+          <a class="open" href="https://www.ilotbet.com/withdrawPending" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/withdrawPending" title="withdrawPending"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/withdrawRecord" data-name="withdrawRecord">
+        <figcaption>
+          <code>https://www.ilotbet.com/withdrawRecord</code>
+          <span class="nm">withdrawRecord</span>
+          <a class="open" href="https://www.ilotbet.com/withdrawRecord" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/withdrawRecord" title="withdrawRecord"></iframe></div>
+      </figure>
+    </div>
+  </section>
+  <section id="betting-games">
+    <h2>betting &amp; games <span class="count">31</span></h2>
+    <div class="grid">
+      <figure class="card" data-path="/az-menu" data-name="azMenu">
+        <figcaption>
+          <code>https://www.ilotbet.com/az-menu</code>
+          <span class="nm">azMenu</span>
+          <a class="open" href="https://www.ilotbet.com/az-menu" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/az-menu" title="azMenu"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/bet-builder" data-name="betBuilder">
+        <figcaption>
+          <code>https://www.ilotbet.com/bet-builder</code>
+          <span class="nm">betBuilder</span>
+          <a class="open" href="https://www.ilotbet.com/bet-builder" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/bet-builder" title="betBuilder"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/betslip" data-name="betSlip">
+        <figcaption>
+          <code>https://www.ilotbet.com/betslip</code>
+          <span class="nm">betSlip</span>
+          <a class="open" href="https://www.ilotbet.com/betslip" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/betslip" title="betSlip"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/big-5-new-season" data-name="big5NewSeason">
+        <figcaption>
+          <code>https://www.ilotbet.com/big-5-new-season</code>
+          <span class="nm">big5NewSeason</span>
+          <a class="open" href="https://www.ilotbet.com/big-5-new-season" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/big-5-new-season" title="big5NewSeason"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/big-5-new-season-matches" data-name="big5NewSeasonMatches">
+        <figcaption>
+          <code>https://www.ilotbet.com/big-5-new-season-matches</code>
+          <span class="nm">big5NewSeasonMatches</span>
+          <a class="open" href="https://www.ilotbet.com/big-5-new-season-matches" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/big-5-new-season-matches" title="big5NewSeasonMatches"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/casino" data-name="casino">
+        <figcaption>
+          <code>https://www.ilotbet.com/casino</code>
+          <span class="nm">casino</span>
+          <a class="open" href="https://www.ilotbet.com/casino" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/casino" title="casino"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/casino/bestshooter" data-name="bestShooter">
+        <figcaption>
+          <code>https://www.ilotbet.com/casino/bestshooter</code>
+          <span class="nm">bestShooter</span>
+          <a class="open" href="https://www.ilotbet.com/casino/bestshooter" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/casino/bestshooter" title="bestShooter"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/casino/game/:id" data-name="casinoGame">
+        <figcaption>
+          <code>https://www.ilotbet.com/casino/game/1</code>
+          <span class="nm">casinoGame</span>
+          <a class="open" href="https://www.ilotbet.com/casino/game/1" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/casino/game/1" title="casinoGame"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/casino/gameList" data-name="casinoList">
+        <figcaption>
+          <code>https://www.ilotbet.com/casino/gameList</code>
+          <span class="nm">casinoList</span>
+          <a class="open" href="https://www.ilotbet.com/casino/gameList" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/casino/gameList" title="casinoList"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/casino/roulette" data-name="roulette">
+        <figcaption>
+          <code>https://www.ilotbet.com/casino/roulette</code>
+          <span class="nm">roulette</span>
+          <a class="open" href="https://www.ilotbet.com/casino/roulette" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/casino/roulette" title="roulette"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/casino/search" data-name="casinoSearch">
+        <figcaption>
+          <code>https://www.ilotbet.com/casino/search</code>
+          <span class="nm">casinoSearch</span>
+          <a class="open" href="https://www.ilotbet.com/casino/search" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/casino/search" title="casinoSearch"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/collection" data-name="collection">
+        <figcaption>
+          <code>https://www.ilotbet.com/collection</code>
+          <span class="nm">collection</span>
+          <a class="open" href="https://www.ilotbet.com/collection" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/collection" title="collection"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/crash-game-list" data-name="crashGameList">
+        <figcaption>
+          <code>https://www.ilotbet.com/crash-game-list</code>
+          <span class="nm">crashGameList</span>
+          <a class="open" href="https://www.ilotbet.com/crash-game-list" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/crash-game-list" title="crashGameList"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/headtohead" data-name="headtohead">
+        <figcaption>
+          <code>https://www.ilotbet.com/headtohead</code>
+          <span class="nm">headtohead</span>
+          <a class="open" href="https://www.ilotbet.com/headtohead" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/headtohead" title="headtohead"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/hot-match-page" data-name="hotMatchPage">
+        <figcaption>
+          <code>https://www.ilotbet.com/hot-match-page</code>
+          <span class="nm">hotMatchPage</span>
+          <a class="open" href="https://www.ilotbet.com/hot-match-page" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/hot-match-page" title="hotMatchPage"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/jackpot" data-name="jackpot">
+        <figcaption>
+          <code>https://www.ilotbet.com/jackpot</code>
+          <span class="nm">jackpot</span>
+          <a class="open" href="https://www.ilotbet.com/jackpot" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/jackpot" title="jackpot"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/jackpot-game-list" data-name="jackpotGameList">
+        <figcaption>
+          <code>https://www.ilotbet.com/jackpot-game-list</code>
+          <span class="nm">jackpotGameList</span>
+          <a class="open" href="https://www.ilotbet.com/jackpot-game-list" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/jackpot-game-list" title="jackpotGameList"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/lives" data-name="lives">
+        <figcaption>
+          <code>https://www.ilotbet.com/lives</code>
+          <span class="nm">lives</span>
+          <a class="open" href="https://www.ilotbet.com/lives" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/lives" title="lives"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/livesBetting" data-name="livesBetting">
+        <figcaption>
+          <code>https://www.ilotbet.com/livesBetting</code>
+          <span class="nm">livesBetting</span>
+          <a class="open" href="https://www.ilotbet.com/livesBetting" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/livesBetting" title="livesBetting"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/livescore" data-name="livescore">
+        <figcaption>
+          <code>https://www.ilotbet.com/livescore</code>
+          <span class="nm">livescore</span>
+          <a class="open" href="https://www.ilotbet.com/livescore" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/livescore" title="livescore"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/lmt" data-name="LMT">
+        <figcaption>
+          <code>https://www.ilotbet.com/lmt</code>
+          <span class="nm">LMT</span>
+          <a class="open" href="https://www.ilotbet.com/lmt" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/lmt" title="LMT"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/quick-bet" data-name="quickBet">
+        <figcaption>
+          <code>https://www.ilotbet.com/quick-bet</code>
+          <span class="nm">quickBet</span>
+          <a class="open" href="https://www.ilotbet.com/quick-bet" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/quick-bet" title="quickBet"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/search" data-name="search">
+        <figcaption>
+          <code>https://www.ilotbet.com/search</code>
+          <span class="nm">search</span>
+          <a class="open" href="https://www.ilotbet.com/search" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/search" title="search"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/search-list" data-name="searchList">
+        <figcaption>
+          <code>https://www.ilotbet.com/search-list</code>
+          <span class="nm">searchList</span>
+          <a class="open" href="https://www.ilotbet.com/search-list" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/search-list" title="searchList"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/simulate-user-guide" data-name="simuUserGuide">
+        <figcaption>
+          <code>https://www.ilotbet.com/simulate-user-guide</code>
+          <span class="nm">simuUserGuide</span>
+          <a class="open" href="https://www.ilotbet.com/simulate-user-guide" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/simulate-user-guide" title="simuUserGuide"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/sports" data-name="sports">
+        <figcaption>
+          <code>https://www.ilotbet.com/sports</code>
+          <span class="nm">sports</span>
+          <a class="open" href="https://www.ilotbet.com/sports" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/sports" title="sports"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/sports-comment" data-name="SportsComment">
+        <figcaption>
+          <code>https://www.ilotbet.com/sports-comment</code>
+          <span class="nm">SportsComment</span>
+          <a class="open" href="https://www.ilotbet.com/sports-comment" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/sports-comment" title="SportsComment"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/sports/:tab" data-name="sportsTab">
+        <figcaption>
+          <code>https://www.ilotbet.com/sports/1</code>
+          <span class="nm">sportsTab</span>
+          <a class="open" href="https://www.ilotbet.com/sports/1" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/sports/1" title="sportsTab"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/sportsBetting" data-name="sportsBetting">
+        <figcaption>
+          <code>https://www.ilotbet.com/sportsBetting</code>
+          <span class="nm">sportsBetting</span>
+          <a class="open" href="https://www.ilotbet.com/sportsBetting" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/sportsBetting" title="sportsBetting"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/videoVirtual" data-name="videoVirtual">
+        <figcaption>
+          <code>https://www.ilotbet.com/videoVirtual</code>
+          <span class="nm">videoVirtual</span>
+          <a class="open" href="https://www.ilotbet.com/videoVirtual" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/videoVirtual" title="videoVirtual"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/worldcup2026" data-name="worldcup2026">
+        <figcaption>
+          <code>https://www.ilotbet.com/worldcup2026</code>
+          <span class="nm">worldcup2026</span>
+          <a class="open" href="https://www.ilotbet.com/worldcup2026" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/worldcup2026" title="worldcup2026"></iframe></div>
+      </figure>
+    </div>
+  </section>
+  <section id="site-support">
+    <h2>site &amp; support <span class="count">20</span></h2>
+    <div class="grid">
+      <figure class="card" data-path="/bet-game-page" data-name="betGamePage">
+        <figcaption>
+          <code>https://www.ilotbet.com/bet-game-page</code>
+          <span class="nm">betGamePage</span>
+          <a class="open" href="https://www.ilotbet.com/bet-game-page" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/bet-game-page" title="betGamePage"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/cashout-rules" data-name="cashoutRules">
+        <figcaption>
+          <code>https://www.ilotbet.com/cashout-rules</code>
+          <span class="nm">cashoutRules</span>
+          <a class="open" href="https://www.ilotbet.com/cashout-rules" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/cashout-rules" title="cashoutRules"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/code-hub" data-name="codeHub">
+        <figcaption>
+          <code>https://www.ilotbet.com/code-hub</code>
+          <span class="nm">codeHub</span>
+          <a class="open" href="https://www.ilotbet.com/code-hub" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/code-hub" title="codeHub"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/d-page-lite/:routeName/:pageChannel?" data-name="DynamicPageLite">
+        <figcaption>
+          <code>https://www.ilotbet.com/d-page-lite/home/ilot</code>
+          <span class="nm">DynamicPageLite</span>
+          <a class="open" href="https://www.ilotbet.com/d-page-lite/home/ilot" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/d-page-lite/home/ilot" title="DynamicPageLite"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/d-page/:routeName/:pageChannel?" data-name="DynamicPage">
+        <figcaption>
+          <code>https://www.ilotbet.com/d-page/home/ilot</code>
+          <span class="nm">DynamicPage</span>
+          <a class="open" href="https://www.ilotbet.com/d-page/home/ilot" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/d-page/home/ilot" title="DynamicPage"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/download/:type?" data-name="download">
+        <figcaption>
+          <code>https://www.ilotbet.com/download/1</code>
+          <span class="nm">download</span>
+          <a class="open" href="https://www.ilotbet.com/download/1" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/download/1" title="download"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/fulliframe" data-name="fulliframe">
+        <figcaption>
+          <code>https://www.ilotbet.com/fulliframe</code>
+          <span class="nm">fulliframe</span>
+          <a class="open" href="https://www.ilotbet.com/fulliframe" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/fulliframe" title="fulliframe"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/help" data-name="help">
+        <figcaption>
+          <code>https://www.ilotbet.com/help</code>
+          <span class="nm">help</span>
+          <a class="open" href="https://www.ilotbet.com/help" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/help" title="help"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/helpEntry" data-name="helpEntry">
+        <figcaption>
+          <code>https://www.ilotbet.com/helpEntry</code>
+          <span class="nm">helpEntry</span>
+          <a class="open" href="https://www.ilotbet.com/helpEntry" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/helpEntry" title="helpEntry"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/home" data-name="home">
+        <figcaption>
+          <code>https://www.ilotbet.com/home</code>
+          <span class="nm">home</span>
+          <a class="open" href="https://www.ilotbet.com/home" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/home" title="home"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/iframe" data-name="iframe">
+        <figcaption>
+          <code>https://www.ilotbet.com/iframe</code>
+          <span class="nm">iframe</span>
+          <a class="open" href="https://www.ilotbet.com/iframe" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/iframe" title="iframe"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/ilot/luckywinner" data-name="luckyWinner">
+        <figcaption>
+          <code>https://www.ilotbet.com/ilot/luckywinner</code>
+          <span class="nm">luckyWinner</span>
+          <a class="open" href="https://www.ilotbet.com/ilot/luckywinner" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/ilot/luckywinner" title="luckyWinner"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/link/:routerName?/:linkName?" data-name="link">
+        <figcaption>
+          <code>https://www.ilotbet.com/link/home/home</code>
+          <span class="nm">link</span>
+          <a class="open" href="https://www.ilotbet.com/link/home/home" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/link/home/home" title="link"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/mapping/:routerName/:channelName" data-name="redirect">
+        <figcaption>
+          <code>https://www.ilotbet.com/mapping/home/ilot</code>
+          <span class="nm">redirect</span>
+          <a class="open" href="https://www.ilotbet.com/mapping/home/ilot" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/mapping/home/ilot" title="redirect"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/news-list" data-name="news">
+        <figcaption>
+          <code>https://www.ilotbet.com/news-list</code>
+          <span class="nm">news</span>
+          <a class="open" href="https://www.ilotbet.com/news-list" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/news-list" title="news"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/online-service" data-name="onlineService">
+        <figcaption>
+          <code>https://www.ilotbet.com/online-service</code>
+          <span class="nm">onlineService</span>
+          <a class="open" href="https://www.ilotbet.com/online-service" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/online-service" title="onlineService"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/pc" data-name="pc">
+        <figcaption>
+          <code>https://www.ilotbet.com/pc</code>
+          <span class="nm">pc</span>
+          <a class="open" href="https://www.ilotbet.com/pc" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/pc" title="pc"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/serviceunavailable" data-name="ServiceUnavailable">
+        <figcaption>
+          <code>https://www.ilotbet.com/serviceunavailable</code>
+          <span class="nm">ServiceUnavailable</span>
+          <a class="open" href="https://www.ilotbet.com/serviceunavailable" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/serviceunavailable" title="ServiceUnavailable"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/sport/list/:slot/:category/:tournament/:country/:time" data-name="list">
+        <figcaption>
+          <code>https://www.ilotbet.com/sport/list/1/1/1/1/0</code>
+          <span class="nm">list</span>
+          <a class="open" href="https://www.ilotbet.com/sport/list/1/1/1/1/0" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/sport/list/1/1/1/1/0" title="list"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/theme" data-name="theme">
+        <figcaption>
+          <code>https://www.ilotbet.com/theme</code>
+          <span class="nm">theme</span>
+          <a class="open" href="https://www.ilotbet.com/theme" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/theme" title="theme"></iframe></div>
+      </figure>
+    </div>
+  </section>
+  <section id="auth-security">
+    <h2>auth &amp; security <span class="count">19</span></h2>
+    <div class="grid">
+      <figure class="card" data-path="/ext-auth" data-name="ExternalAuth">
+        <figcaption>
+          <code>https://www.ilotbet.com/ext-auth</code>
+          <span class="nm">ExternalAuth</span>
+          <a class="open" href="https://www.ilotbet.com/ext-auth" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/ext-auth" title="ExternalAuth"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/login" data-name="login">
+        <figcaption>
+          <code>https://www.ilotbet.com/login</code>
+          <span class="nm">login</span>
+          <a class="open" href="https://www.ilotbet.com/login" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/login" title="login"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/loginRegister" data-name="loginRegister">
+        <figcaption>
+          <code>https://www.ilotbet.com/loginRegister</code>
+          <span class="nm">loginRegister</span>
+          <a class="open" href="https://www.ilotbet.com/loginRegister" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/loginRegister" title="loginRegister"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/PalmPayActivity" data-name="PalmPayActivity">
+        <figcaption>
+          <code>https://www.ilotbet.com/PalmPayActivity</code>
+          <span class="nm">PalmPayActivity</span>
+          <a class="open" href="https://www.ilotbet.com/PalmPayActivity" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/PalmPayActivity" title="PalmPayActivity"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/palmPayAuth" data-name="palmPayAuth">
+        <figcaption>
+          <code>https://www.ilotbet.com/palmPayAuth</code>
+          <span class="nm">palmPayAuth</span>
+          <a class="open" href="https://www.ilotbet.com/palmPayAuth" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/palmPayAuth" title="palmPayAuth"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/paymentPassword" data-name="paymentPassword">
+        <figcaption>
+          <code>https://www.ilotbet.com/paymentPassword</code>
+          <span class="nm">paymentPassword</span>
+          <a class="open" href="https://www.ilotbet.com/paymentPassword" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/paymentPassword" title="paymentPassword"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/realNameAuth" data-name="realNameAuth">
+        <figcaption>
+          <code>https://www.ilotbet.com/realNameAuth</code>
+          <span class="nm">realNameAuth</span>
+          <a class="open" href="https://www.ilotbet.com/realNameAuth" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/realNameAuth" title="realNameAuth"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/realNameInfo" data-name="realNameInfo">
+        <figcaption>
+          <code>https://www.ilotbet.com/realNameInfo</code>
+          <span class="nm">realNameInfo</span>
+          <a class="open" href="https://www.ilotbet.com/realNameInfo" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/realNameInfo" title="realNameInfo"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/realNameSuccess" data-name="realNameSuccess">
+        <figcaption>
+          <code>https://www.ilotbet.com/realNameSuccess</code>
+          <span class="nm">realNameSuccess</span>
+          <a class="open" href="https://www.ilotbet.com/realNameSuccess" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/realNameSuccess" title="realNameSuccess"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/recaptcha" data-name="recaptcha">
+        <figcaption>
+          <code>https://www.ilotbet.com/recaptcha</code>
+          <span class="nm">recaptcha</span>
+          <a class="open" href="https://www.ilotbet.com/recaptcha" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/recaptcha" title="recaptcha"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/register" data-name="register">
+        <figcaption>
+          <code>https://www.ilotbet.com/register</code>
+          <span class="nm">register</span>
+          <a class="open" href="https://www.ilotbet.com/register" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/register" title="register"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/registerSure" data-name="registerSure">
+        <figcaption>
+          <code>https://www.ilotbet.com/registerSure</code>
+          <span class="nm">registerSure</span>
+          <a class="open" href="https://www.ilotbet.com/registerSure" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/registerSure" title="registerSure"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/resetPassword" data-name="resetPassword">
+        <figcaption>
+          <code>https://www.ilotbet.com/resetPassword</code>
+          <span class="nm">resetPassword</span>
+          <a class="open" href="https://www.ilotbet.com/resetPassword" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/resetPassword" title="resetPassword"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/resetPasswordSuccess" data-name="resetPasswordSuccess">
+        <figcaption>
+          <code>https://www.ilotbet.com/resetPasswordSuccess</code>
+          <span class="nm">resetPasswordSuccess</span>
+          <a class="open" href="https://www.ilotbet.com/resetPasswordSuccess" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/resetPasswordSuccess" title="resetPasswordSuccess"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/retrievePassword" data-name="retrievePassword">
+        <figcaption>
+          <code>https://www.ilotbet.com/retrievePassword</code>
+          <span class="nm">retrievePassword</span>
+          <a class="open" href="https://www.ilotbet.com/retrievePassword" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/retrievePassword" title="retrievePassword"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/self-exclusion" data-name="selfExclusion">
+        <figcaption>
+          <code>https://www.ilotbet.com/self-exclusion</code>
+          <span class="nm">selfExclusion</span>
+          <a class="open" href="https://www.ilotbet.com/self-exclusion" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/self-exclusion" title="selfExclusion"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/self-exclusion-time/:hours/:time" data-name="selfExclusionTime">
+        <figcaption>
+          <code>https://www.ilotbet.com/self-exclusion-time/24/0</code>
+          <span class="nm">selfExclusionTime</span>
+          <a class="open" href="https://www.ilotbet.com/self-exclusion-time/24/0" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/self-exclusion-time/24/0" title="selfExclusionTime"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/setPassword" data-name="setPassword">
+        <figcaption>
+          <code>https://www.ilotbet.com/setPassword</code>
+          <span class="nm">setPassword</span>
+          <a class="open" href="https://www.ilotbet.com/setPassword" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/setPassword" title="setPassword"></iframe></div>
+      </figure>
+      <figure class="card" data-path="/silent-recall" data-name="silentRecall">
+        <figcaption>
+          <code>https://www.ilotbet.com/silent-recall</code>
+          <span class="nm">silentRecall</span>
+          <a class="open" href="https://www.ilotbet.com/silent-recall" target="_blank" rel="noopener">open &#8599;</a>
+        </figcaption>
+        <div class="frame"><iframe loading="lazy" src="https://www.ilotbet.com/silent-recall" title="silentRecall"></iframe></div>
+      </figure>
+    </div>
+  </section>
+</main>
+</body>
+</html>

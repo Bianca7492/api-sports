@@ -11,6 +11,7 @@
     "generate": "node src/generate.mjs",
     "generate:ilotbet": "node src/ilotbet/generate.mjs",
     "routes:ilotbet": "node src/ilotbet/routes.mjs",
+    "pages:ilotbet": "node src/ilotbet/pages.mjs",
     "serve": "node src/server.mjs",
     "start": "node src/server.mjs",
     "login": "node src/login.mjs",

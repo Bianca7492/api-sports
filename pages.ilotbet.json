@@ -1,0 +1,1014 @@
+[
+  {
+    "path": "/account",
+    "name": "account",
+    "params": [],
+    "group": "account & bets",
+    "url": "https://www.ilotbet.com/account",
+    "templated": false
+  },
+  {
+    "path": "/account/bonusesList",
+    "name": "bonusesList",
+    "params": [],
+    "group": "account & bets",
+    "url": "https://www.ilotbet.com/account/bonusesList",
+    "templated": false
+  },
+  {
+    "path": "/account/deletion",
+    "name": "accountDeletion",
+    "params": [],
+    "group": "account & bets",
+    "url": "https://www.ilotbet.com/account/deletion",
+    "templated": false
+  },
+  {
+    "path": "/account/editNickname",
+    "name": "editNickname",
+    "params": [],
+    "group": "account & bets",
+    "url": "https://www.ilotbet.com/account/editNickname",
+    "templated": false
+  },
+  {
+    "path": "/account/editProfile",
+    "name": "editProfile",
+    "params": [],
+    "group": "account & bets",
+    "url": "https://www.ilotbet.com/account/editProfile",
+    "templated": false
+  },
+  {
+    "path": "/account/freeBetCoupon",
+    "name": "freeBetCoupon",
+    "params": [],
+    "group": "account & bets",
+    "url": "https://www.ilotbet.com/account/freeBetCoupon",
+    "templated": false
+  },
+  {
+    "path": "/account/giftList",
+    "name": "giftList",
+    "params": [],
+    "group": "account & bets",
+    "url": "https://www.ilotbet.com/account/giftList",
+    "templated": false
+  },
+  {
+    "path": "/account/transactions",
+    "name": "transactions",
+    "params": [],
+    "group": "account & bets",
+    "url": "https://www.ilotbet.com/account/transactions",
+    "templated": false
+  },
+  {
+    "path": "/accountActivation",
+    "name": "accountActivation",
+    "params": [],
+    "group": "account & bets",
+    "url": "https://www.ilotbet.com/accountActivation",
+    "templated": false
+  },
+  {
+    "path": "/accountSecurity",
+    "name": "accountSecurity",
+    "params": [],
+    "group": "account & bets",
+    "url": "https://www.ilotbet.com/accountSecurity",
+    "templated": false
+  },
+  {
+    "path": "/addBankCard",
+    "name": "addBankCard",
+    "params": [],
+    "group": "promotions & money",
+    "url": "https://www.ilotbet.com/addBankCard",
+    "templated": false
+  },
+  {
+    "path": "/affiliates",
+    "name": "affiliates",
+    "params": [],
+    "group": "promotions & money",
+    "url": "https://www.ilotbet.com/affiliates",
+    "templated": false
+  },
+  {
+    "path": "/agentApplyForm",
+    "name": "agentApplyForm",
+    "params": [],
+    "group": "promotions & money",
+    "url": "https://www.ilotbet.com/agentApplyForm",
+    "templated": false
+  },
+  {
+    "path": "/agentDetail/:shareChannel?",
+    "name": "agentDetail",
+    "params": [
+      "shareChannel"
+    ],
+    "group": "promotions & money",
+    "url": "https://www.ilotbet.com/agentDetail/whatsapp",
+    "templated": true
+  },
+  {
+    "path": "/az-menu",
+    "name": "azMenu",
+    "params": [],
+    "group": "betting & games",
+    "url": "https://www.ilotbet.com/az-menu",
+    "templated": false
+  },
+  {
+    "path": "/bankAccount",
+    "name": "bankAccount",
+    "params": [],
+    "group": "promotions & money",
+    "url": "https://www.ilotbet.com/bankAccount",
+    "templated": false
+  },
+  {
+    "path": "/bet-builder",
+    "name": "betBuilder",
+    "params": [],
+    "group": "betting & games",
+    "url": "https://www.ilotbet.com/bet-builder",
+    "templated": false
+  },
+  {
+    "path": "/bet-game-page",
+    "name": "betGamePage",
+    "params": [],
+    "group": "site & support",
+    "url": "https://www.ilotbet.com/bet-game-page",
+    "templated": false
+  },
+  {
+    "path": "/bet-history",
+    "name": "betHistory",
+    "params": [],
+    "group": "account & bets",
+    "url": "https://www.ilotbet.com/bet-history",
+    "templated": false
+  },
+  {
+    "path": "/betBonusLeague/:type?",
+    "name": "betBonusLeague",
+    "params": [
+      "type"
+    ],
+    "group": "promotions & money",
+    "url": "https://www.ilotbet.com/betBonusLeague/1",
+    "templated": true
+  },
+  {
+    "path": "/betBonusLeaguePlatform/:type?",
+    "name": "betBonusLeaguePlatform",
+    "params": [
+      "type"
+    ],
+    "group": "promotions & money",
+    "url": "https://www.ilotbet.com/betBonusLeaguePlatform/1",
+    "templated": true
+  },
+  {
+    "path": "/betslip",
+    "name": "betSlip",
+    "params": [],
+    "group": "betting & games",
+    "url": "https://www.ilotbet.com/betslip",
+    "templated": false
+  },
+  {
+    "path": "/big-5-new-season",
+    "name": "big5NewSeason",
+    "params": [],
+    "group": "betting & games",
+    "url": "https://www.ilotbet.com/big-5-new-season",
+    "templated": false
+  },
+  {
+    "path": "/big-5-new-season-matches",
+    "name": "big5NewSeasonMatches",
+    "params": [],
+    "group": "betting & games",
+    "url": "https://www.ilotbet.com/big-5-new-season-matches",
+    "templated": false
+  },
+  {
+    "path": "/cashout-rules",
+    "name": "cashoutRules",
+    "params": [],
+    "group": "site & support",
+    "url": "https://www.ilotbet.com/cashout-rules",
+    "templated": false
+  },
+  {
+    "path": "/casino",
+    "name": "casino",
+    "params": [],
+    "group": "betting & games",
+    "url": "https://www.ilotbet.com/casino",
+    "templated": false
+  },
+  {
+    "path": "/casino/bestshooter",
+    "name": "bestShooter",
+    "params": [],
+    "group": "betting & games",
+    "url": "https://www.ilotbet.com/casino/bestshooter",
+    "templated": false
+  },
+  {
+    "path": "/casino/game/:id",
+    "name": "casinoGame",
+    "params": [
+      "id"
+    ],
+    "group": "betting & games",
+    "url": "https://www.ilotbet.com/casino/game/1",
+    "templated": true
+  },
+  {
+    "path": "/casino/gameList",
+    "name": "casinoList",
+    "params": [],
+    "group": "betting & games",
+    "url": "https://www.ilotbet.com/casino/gameList",
+    "templated": false
+  },
+  {
+    "path": "/casino/roulette",
+    "name": "roulette",
+    "params": [],
+    "group": "betting & games",
+    "url": "https://www.ilotbet.com/casino/roulette",
+    "templated": false
+  },
+  {
+    "path": "/casino/search",
+    "name": "casinoSearch",
+    "params": [],
+    "group": "betting & games",
+    "url": "https://www.ilotbet.com/casino/search",
+    "templated": false
+  },
+  {
+    "path": "/code-hub",
+    "name": "codeHub",
+    "params": [],
+    "group": "site & support",
+    "url": "https://www.ilotbet.com/code-hub",
+    "templated": false
+  },
+  {
+    "path": "/collection",
+    "name": "collection",
+    "params": [],
+    "group": "betting & games",
+    "url": "https://www.ilotbet.com/collection",
+    "templated": false
+  },
+  {
+    "path": "/crash-game-list",
+    "name": "crashGameList",
+    "params": [],
+    "group": "betting & games",
+    "url": "https://www.ilotbet.com/crash-game-list",
+    "templated": false
+  },
+  {
+    "path": "/creat-virtual-bank",
+    "name": "createVirtualBank",
+    "params": [],
+    "group": "promotions & money",
+    "url": "https://www.ilotbet.com/creat-virtual-bank",
+    "templated": false
+  },
+  {
+    "path": "/d-page-lite/:routeName/:pageChannel?",
+    "name": "DynamicPageLite",
+    "params": [
+      "routeName",
+      "pageChannel"
+    ],
+    "group": "site & support",
+    "url": "https://www.ilotbet.com/d-page-lite/home/ilot",
+    "templated": true
+  },
+  {
+    "path": "/d-page/:routeName/:pageChannel?",
+    "name": "DynamicPage",
+    "params": [
+      "routeName",
+      "pageChannel"
+    ],
+    "group": "site & support",
+    "url": "https://www.ilotbet.com/d-page/home/ilot",
+    "templated": true
+  },
+  {
+    "path": "/depositBonus",
+    "name": "depositBonus",
+    "params": [],
+    "group": "promotions & money",
+    "url": "https://www.ilotbet.com/depositBonus",
+    "templated": false
+  },
+  {
+    "path": "/download/:type?",
+    "name": "download",
+    "params": [
+      "type"
+    ],
+    "group": "site & support",
+    "url": "https://www.ilotbet.com/download/1",
+    "templated": true
+  },
+  {
+    "path": "/ext-auth",
+    "name": "ExternalAuth",
+    "params": [],
+    "group": "auth & security",
+    "url": "https://www.ilotbet.com/ext-auth",
+    "templated": false
+  },
+  {
+    "path": "/feedback",
+    "name": "feedback",
+    "params": [],
+    "group": "account & bets",
+    "url": "https://www.ilotbet.com/feedback",
+    "templated": false
+  },
+  {
+    "path": "/friendHelp",
+    "name": "friendHelp",
+    "params": [],
+    "group": "promotions & money",
+    "url": "https://www.ilotbet.com/friendHelp",
+    "templated": false
+  },
+  {
+    "path": "/friendHelp/:shareCode/:shareChannel",
+    "name": "friendHelpS",
+    "params": [
+      "shareCode",
+      "shareChannel"
+    ],
+    "group": "promotions & money",
+    "url": "https://www.ilotbet.com/friendHelp/demo/whatsapp",
+    "templated": true
+  },
+  {
+    "path": "/fulliframe",
+    "name": "fulliframe",
+    "params": [],
+    "group": "site & support",
+    "url": "https://www.ilotbet.com/fulliframe",
+    "templated": false
+  },
+  {
+    "path": "/headtohead",
+    "name": "headtohead",
+    "params": [],
+    "group": "betting & games",
+    "url": "https://www.ilotbet.com/headtohead",
+    "templated": false
+  },
+  {
+    "path": "/help",
+    "name": "help",
+    "params": [],
+    "group": "site & support",
+    "url": "https://www.ilotbet.com/help",
+    "templated": false
+  },
+  {
+    "path": "/helpEntry",
+    "name": "helpEntry",
+    "params": [],
+    "group": "site & support",
+    "url": "https://www.ilotbet.com/helpEntry",
+    "templated": false
+  },
+  {
+    "path": "/home",
+    "name": "home",
+    "params": [],
+    "group": "site & support",
+    "url": "https://www.ilotbet.com/home",
+    "templated": false
+  },
+  {
+    "path": "/hot-match-page",
+    "name": "hotMatchPage",
+    "params": [],
+    "group": "betting & games",
+    "url": "https://www.ilotbet.com/hot-match-page",
+    "templated": false
+  },
+  {
+    "path": "/iframe",
+    "name": "iframe",
+    "params": [],
+    "group": "site & support",
+    "url": "https://www.ilotbet.com/iframe",
+    "templated": false
+  },
+  {
+    "path": "/ilot-bank-deposit",
+    "name": "ilotBankDeposit",
+    "params": [],
+    "group": "promotions & money",
+    "url": "https://www.ilotbet.com/ilot-bank-deposit",
+    "templated": false
+  },
+  {
+    "path": "/ilot/luckywinner",
+    "name": "luckyWinner",
+    "params": [],
+    "group": "site & support",
+    "url": "https://www.ilotbet.com/ilot/luckywinner",
+    "templated": false
+  },
+  {
+    "path": "/invitedActivity",
+    "name": "invitedActivity",
+    "params": [],
+    "group": "promotions & money",
+    "url": "https://www.ilotbet.com/invitedActivity",
+    "templated": false
+  },
+  {
+    "path": "/jackpot",
+    "name": "jackpot",
+    "params": [],
+    "group": "betting & games",
+    "url": "https://www.ilotbet.com/jackpot",
+    "templated": false
+  },
+  {
+    "path": "/jackpot-game-list",
+    "name": "jackpotGameList",
+    "params": [],
+    "group": "betting & games",
+    "url": "https://www.ilotbet.com/jackpot-game-list",
+    "templated": false
+  },
+  {
+    "path": "/jackpotBetHistory",
+    "name": "jackpotBetHistory",
+    "params": [],
+    "group": "account & bets",
+    "url": "https://www.ilotbet.com/jackpotBetHistory",
+    "templated": false
+  },
+  {
+    "path": "/jackpotTicketDetail/:orderId?",
+    "name": "jackpotTicketDetail",
+    "params": [
+      "orderId"
+    ],
+    "group": "account & bets",
+    "url": "https://www.ilotbet.com/jackpotTicketDetail/1",
+    "templated": true
+  },
+  {
+    "path": "/link/:routerName?/:linkName?",
+    "name": "link",
+    "params": [
+      "routerName",
+      "linkName"
+    ],
+    "group": "site & support",
+    "url": "https://www.ilotbet.com/link/home/home",
+    "templated": true
+  },
+  {
+    "path": "/lives",
+    "name": "lives",
+    "params": [],
+    "group": "betting & games",
+    "url": "https://www.ilotbet.com/lives",
+    "templated": false
+  },
+  {
+    "path": "/livesBetting",
+    "name": "livesBetting",
+    "params": [],
+    "group": "betting & games",
+    "url": "https://www.ilotbet.com/livesBetting",
+    "templated": false
+  },
+  {
+    "path": "/livescore",
+    "name": "livescore",
+    "params": [],
+    "group": "betting & games",
+    "url": "https://www.ilotbet.com/livescore",
+    "templated": false
+  },
+  {
+    "path": "/lmt",
+    "name": "LMT",
+    "params": [],
+    "group": "betting & games",
+    "url": "https://www.ilotbet.com/lmt",
+    "templated": false
+  },
+  {
+    "path": "/login",
+    "name": "login",
+    "params": [],
+    "group": "auth & security",
+    "url": "https://www.ilotbet.com/login",
+    "templated": false
+  },
+  {
+    "path": "/loginRegister",
+    "name": "loginRegister",
+    "params": [],
+    "group": "auth & security",
+    "url": "https://www.ilotbet.com/loginRegister",
+    "templated": false
+  },
+  {
+    "path": "/mapping/:routerName/:channelName",
+    "name": "redirect",
+    "params": [
+      "routerName",
+      "channelName"
+    ],
+    "group": "site & support",
+    "url": "https://www.ilotbet.com/mapping/home/ilot",
+    "templated": true
+  },
+  {
+    "path": "/message",
+    "name": "message",
+    "params": [],
+    "group": "account & bets",
+    "url": "https://www.ilotbet.com/message",
+    "templated": false
+  },
+  {
+    "path": "/messageDetail",
+    "name": "messageDetail",
+    "params": [],
+    "group": "account & bets",
+    "url": "https://www.ilotbet.com/messageDetail",
+    "templated": false
+  },
+  {
+    "path": "/momoRechargeConfirm",
+    "name": "momoRechargeConfirm",
+    "params": [],
+    "group": "promotions & money",
+    "url": "https://www.ilotbet.com/momoRechargeConfirm",
+    "templated": false
+  },
+  {
+    "path": "/multiple-cashback",
+    "name": "multipleCashback",
+    "params": [],
+    "group": "promotions & money",
+    "url": "https://www.ilotbet.com/multiple-cashback",
+    "templated": false
+  },
+  {
+    "path": "/my-bets",
+    "name": "myBets",
+    "params": [],
+    "group": "account & bets",
+    "url": "https://www.ilotbet.com/my-bets",
+    "templated": false
+  },
+  {
+    "path": "/new-season-free-bet",
+    "name": "newSeasonFreeBet",
+    "params": [],
+    "group": "promotions & money",
+    "url": "https://www.ilotbet.com/new-season-free-bet",
+    "templated": false
+  },
+  {
+    "path": "/news-list",
+    "name": "news",
+    "params": [],
+    "group": "site & support",
+    "url": "https://www.ilotbet.com/news-list",
+    "templated": false
+  },
+  {
+    "path": "/online-service",
+    "name": "onlineService",
+    "params": [],
+    "group": "site & support",
+    "url": "https://www.ilotbet.com/online-service",
+    "templated": false
+  },
+  {
+    "path": "/opayActivity/:shareChannel?",
+    "name": "opayActivity",
+    "params": [
+      "shareChannel"
+    ],
+    "group": "promotions & money",
+    "url": "https://www.ilotbet.com/opayActivity/whatsapp",
+    "templated": true
+  },
+  {
+    "path": "/opayActivity1/:shareChannel?",
+    "name": "opayActivity1",
+    "params": [
+      "shareChannel"
+    ],
+    "group": "promotions & money",
+    "url": "https://www.ilotbet.com/opayActivity1/whatsapp",
+    "templated": true
+  },
+  {
+    "path": "/PalmPayActivity",
+    "name": "PalmPayActivity",
+    "params": [],
+    "group": "auth & security",
+    "url": "https://www.ilotbet.com/PalmPayActivity",
+    "templated": false
+  },
+  {
+    "path": "/palmPayAuth",
+    "name": "palmPayAuth",
+    "params": [],
+    "group": "auth & security",
+    "url": "https://www.ilotbet.com/palmPayAuth",
+    "templated": false
+  },
+  {
+    "path": "/paymentPassword",
+    "name": "paymentPassword",
+    "params": [],
+    "group": "auth & security",
+    "url": "https://www.ilotbet.com/paymentPassword",
+    "templated": false
+  },
+  {
+    "path": "/pc",
+    "name": "pc",
+    "params": [],
+    "group": "site & support",
+    "url": "https://www.ilotbet.com/pc",
+    "templated": false
+  },
+  {
+    "path": "/promotion",
+    "name": "promotion",
+    "params": [],
+    "group": "promotions & money",
+    "url": "https://www.ilotbet.com/promotion",
+    "templated": false
+  },
+  {
+    "path": "/promotion/friendActivity",
+    "name": "friendActivity",
+    "params": [],
+    "group": "promotions & money",
+    "url": "https://www.ilotbet.com/promotion/friendActivity",
+    "templated": false
+  },
+  {
+    "path": "/promotion/registerGift",
+    "name": "registerGift",
+    "params": [],
+    "group": "promotions & money",
+    "url": "https://www.ilotbet.com/promotion/registerGift",
+    "templated": false
+  },
+  {
+    "path": "/quick-bet",
+    "name": "quickBet",
+    "params": [],
+    "group": "betting & games",
+    "url": "https://www.ilotbet.com/quick-bet",
+    "templated": false
+  },
+  {
+    "path": "/realNameAuth",
+    "name": "realNameAuth",
+    "params": [],
+    "group": "auth & security",
+    "url": "https://www.ilotbet.com/realNameAuth",
+    "templated": false
+  },
+  {
+    "path": "/realNameInfo",
+    "name": "realNameInfo",
+    "params": [],
+    "group": "auth & security",
+    "url": "https://www.ilotbet.com/realNameInfo",
+    "templated": false
+  },
+  {
+    "path": "/realNameSuccess",
+    "name": "realNameSuccess",
+    "params": [],
+    "group": "auth & security",
+    "url": "https://www.ilotbet.com/realNameSuccess",
+    "templated": false
+  },
+  {
+    "path": "/recaptcha",
+    "name": "recaptcha",
+    "params": [],
+    "group": "auth & security",
+    "url": "https://www.ilotbet.com/recaptcha",
+    "templated": false
+  },
+  {
+    "path": "/recharge",
+    "name": "recharge",
+    "params": [],
+    "group": "promotions & money",
+    "url": "https://www.ilotbet.com/recharge",
+    "templated": false
+  },
+  {
+    "path": "/recharge-activity",
+    "name": "rechargeActivity",
+    "params": [],
+    "group": "promotions & money",
+    "url": "https://www.ilotbet.com/recharge-activity",
+    "templated": false
+  },
+  {
+    "path": "/rechargeConfirm",
+    "name": "rechargeConfirm",
+    "params": [],
+    "group": "promotions & money",
+    "url": "https://www.ilotbet.com/rechargeConfirm",
+    "templated": false
+  },
+  {
+    "path": "/rechargeInquiry",
+    "name": "rechargeInquiry",
+    "params": [],
+    "group": "promotions & money",
+    "url": "https://www.ilotbet.com/rechargeInquiry",
+    "templated": false
+  },
+  {
+    "path": "/rechargeSuccess",
+    "name": "rechargeSuccess",
+    "params": [],
+    "group": "promotions & money",
+    "url": "https://www.ilotbet.com/rechargeSuccess",
+    "templated": false
+  },
+  {
+    "path": "/register",
+    "name": "register",
+    "params": [],
+    "group": "auth & security",
+    "url": "https://www.ilotbet.com/register",
+    "templated": false
+  },
+  {
+    "path": "/registerSure",
+    "name": "registerSure",
+    "params": [],
+    "group": "auth & security",
+    "url": "https://www.ilotbet.com/registerSure",
+    "templated": false
+  },
+  {
+    "path": "/resetPassword",
+    "name": "resetPassword",
+    "params": [],
+    "group": "auth & security",
+    "url": "https://www.ilotbet.com/resetPassword",
+    "templated": false
+  },
+  {
+    "path": "/resetPasswordSuccess",
+    "name": "resetPasswordSuccess",
+    "params": [],
+    "group": "auth & security",
+    "url": "https://www.ilotbet.com/resetPasswordSuccess",
+    "templated": false
+  },
+  {
+    "path": "/retrievePassword",
+    "name": "retrievePassword",
+    "params": [],
+    "group": "auth & security",
+    "url": "https://www.ilotbet.com/retrievePassword",
+    "templated": false
+  },
+  {
+    "path": "/search",
+    "name": "search",
+    "params": [],
+    "group": "betting & games",
+    "url": "https://www.ilotbet.com/search",
+    "templated": false
+  },
+  {
+    "path": "/search-list",
+    "name": "searchList",
+    "params": [],
+    "group": "betting & games",
+    "url": "https://www.ilotbet.com/search-list",
+    "templated": false
+  },
+  {
+    "path": "/self-exclusion",
+    "name": "selfExclusion",
+    "params": [],
+    "group": "auth & security",
+    "url": "https://www.ilotbet.com/self-exclusion",
+    "templated": false
+  },
+  {
+    "path": "/self-exclusion-time/:hours/:time",
+    "name": "selfExclusionTime",
+    "params": [
+      "hours",
+      "time"
+    ],
+    "group": "auth & security",
+    "url": "https://www.ilotbet.com/self-exclusion-time/24/0",
+    "templated": true
+  },
+  {
+    "path": "/serviceunavailable",
+    "name": "ServiceUnavailable",
+    "params": [],
+    "group": "site & support",
+    "url": "https://www.ilotbet.com/serviceunavailable",
+    "templated": false
+  },
+  {
+    "path": "/setPassword",
+    "name": "setPassword",
+    "params": [],
+    "group": "auth & security",
+    "url": "https://www.ilotbet.com/setPassword",
+    "templated": false
+  },
+  {
+    "path": "/signInGift/:shareChannel?",
+    "name": "signInGift",
+    "params": [
+      "shareChannel"
+    ],
+    "group": "promotions & money",
+    "url": "https://www.ilotbet.com/signInGift/whatsapp",
+    "templated": true
+  },
+  {
+    "path": "/silent-recall",
+    "name": "silentRecall",
+    "params": [],
+    "group": "auth & security",
+    "url": "https://www.ilotbet.com/silent-recall",
+    "templated": false
+  },
+  {
+    "path": "/simulate-user-guide",
+    "name": "simuUserGuide",
+    "params": [],
+    "group": "betting & games",
+    "url": "https://www.ilotbet.com/simulate-user-guide",
+    "templated": false
+  },
+  {
+    "path": "/sport/list/:slot/:category/:tournament/:country/:time",
+    "name": "list",
+    "params": [
+      "slot",
+      "category",
+      "tournament",
+      "country",
+      "time"
+    ],
+    "group": "site & support",
+    "url": "https://www.ilotbet.com/sport/list/1/1/1/1/0",
+    "templated": true
+  },
+  {
+    "path": "/sportBetBonus",
+    "name": "sportBetBonus",
+    "params": [],
+    "group": "promotions & money",
+    "url": "https://www.ilotbet.com/sportBetBonus",
+    "templated": false
+  },
+  {
+    "path": "/sportBetHistory",
+    "name": "sportBetHistory",
+    "params": [],
+    "group": "account & bets",
+    "url": "https://www.ilotbet.com/sportBetHistory",
+    "templated": false
+  },
+  {
+    "path": "/sports",
+    "name": "sports",
+    "params": [],
+    "group": "betting & games",
+    "url": "https://www.ilotbet.com/sports",
+    "templated": false
+  },
+  {
+    "path": "/sports-comment",
+    "name": "SportsComment",
+    "params": [],
+    "group": "betting & games",
+    "url": "https://www.ilotbet.com/sports-comment",
+    "templated": false
+  },
+  {
+    "path": "/sports/:tab",
+    "name": "sportsTab",
+    "params": [
+      "tab"
+    ],
+    "group": "betting & games",
+    "url": "https://www.ilotbet.com/sports/1",
+    "templated": true
+  },
+  {
+    "path": "/sportsBetting",
+    "name": "sportsBetting",
+    "params": [],
+    "group": "betting & games",
+    "url": "https://www.ilotbet.com/sportsBetting",
+    "templated": false
+  },
+  {
+    "path": "/theme",
+    "name": "theme",
+    "params": [],
+    "group": "site & support",
+    "url": "https://www.ilotbet.com/theme",
+    "templated": false
+  },
+  {
+    "path": "/ticketDetail",
+    "name": "ticketDetail",
+    "params": [],
+    "group": "account & bets",
+    "url": "https://www.ilotbet.com/ticketDetail",
+    "templated": false
+  },
+  {
+    "path": "/videoVirtual",
+    "name": "videoVirtual",
+    "params": [],
+    "group": "betting & games",
+    "url": "https://www.ilotbet.com/videoVirtual",
+    "templated": false
+  },
+  {
+    "path": "/withdraw",
+    "name": "withdraw",
+    "params": [],
+    "group": "promotions & money",
+    "url": "https://www.ilotbet.com/withdraw",
+    "templated": false
+  },
+  {
+    "path": "/withdrawalsSuccess",
+    "name": "withdrawalsSuccess",
+    "params": [],
+    "group": "promotions & money",
+    "url": "https://www.ilotbet.com/withdrawalsSuccess",
+    "templated": false
+  },
+  {
+    "path": "/withdrawPending",
+    "name": "withdrawPending",
+    "params": [],
+    "group": "promotions & money",
+    "url": "https://www.ilotbet.com/withdrawPending",
+    "templated": false
+  },
+  {
+    "path": "/withdrawRecord",
+    "name": "withdrawRecord",
+    "params": [],
+    "group": "promotions & money",
+    "url": "https://www.ilotbet.com/withdrawRecord",
+    "templated": false
+  },
+  {
+    "path": "/worldcup2026",
+    "name": "worldcup2026",
+    "params": [],
+    "group": "betting & games",
+    "url": "https://www.ilotbet.com/worldcup2026",
+    "templated": false
+  }
+]
