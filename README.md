@@ -136,3 +136,32 @@ npm run smoke # live: starts a server, calls public and account endpoints
 - Response bodies are returned unchanged, including SportyBet's `bizCode` envelope
   (`10000` = success, `19000` invalid, `19001` not found, `19003` forbidden).
 - Use it within SportyBet's terms and at human volume. The session is your own account's.
+
+## UI
+
+`src/ilotbet/ui.mjs` serves the iLOTBET web app for local viewing. The app is a Vue
+single-page bundle, so this is a reverse proxy rather than a dump: assets, fonts and images
+stream from the live site unmodified, which keeps the UI, the CSS, the animations and the
+responsive breakpoints the site's own. The one edit is rewriting the API base inside the JS
+bundles to same-origin, so the app's calls come back to this server.
+
+```sh
+npm run ui:ilotbet          # http://localhost:12000
+PORT=8080 npm run ui:ilotbet
+```
+
+| variable | default | purpose |
+|---|---|---|
+| `PORT` | `12000` | listen port |
+| `ILOTBET_UI_UPSTREAM` | `https://sw.ilotbet.com` | origin the bundles are fetched from |
+| `ILOTBET_UI_API` | `mock` | `mock` answers the API from `ui-mock.mjs`; `upstream` forwards to iLOTBET |
+
+**Why the API is mocked by default.** iLOTBET geolocates by IP (see the note above): from an
+unsupported region every call answers `403` while the homepage still loads, so the app boots
+against an empty backend and the UI shows a shell - no matches, news or winners. `ui-mock.mjs`
+answers those calls with data shaped from the field names the app's own components read, so the
+real components render. The values are representative samples, not live odds.
+
+From a region iLOTBET serves, set `ILOTBET_UI_API=upstream` and the real backend fills in.
+
+Fetched assets are cached under `.dump/ilotbet-ui-cache/` (git-ignored); delete it to refresh.
