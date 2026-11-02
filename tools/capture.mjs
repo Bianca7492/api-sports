@@ -4,6 +4,7 @@
  *
  *   node capture.mjs                    # then browse http://localhost:12000
  *   node capture.mjs --upload           # same, and send the file back on exit
+ *   node capture.mjs --login            # also record the signed-in routes
  *   node capture.mjs --port 8080
  *
  * Run this on a device whose network iLOTBET accepts (a phone on mobile data in a served
@@ -17,8 +18,12 @@
  * Then send `capture.json` back so the UI can be served with real data everywhere:
  *   curl -X POST --data-binary @capture.json <upload-url>/upload
  *
- * Public endpoints only by default. Account endpoints return your own name, phone and balance -
- * do not capture those unless you mean to share them. `--include-account` overrides.
+ * Public endpoints only by default, and no login is asked for. Account endpoints return your
+ * own name, phone and balance - do not capture those unless you mean to share them. `--login`
+ * adds the signed-in routes; `--include-account` also records the wallet and profile ones.
+ *
+ * Credentials, when a login is wanted, come from `ILOTBET_ACCOUNT` and `ILOTBET_PASSWORD`, or
+ * `ILOTBET_TOKEN` for a session already in hand. With none set, `--login` prompts.
  *
  * Requires Node 18+ (uses global fetch).
  */
@@ -148,28 +153,45 @@ const filterAccount = (a) => {
 };
 
 /**
- * Read the account and password from the terminal, hiding the password as it is typed.
+ * Read the account and password.
  *
- * One readline interface serves both questions. A second interface on the same stdin loses
- * whatever was already buffered, which hangs the password prompt when input is piped.
+ * Credentials come from the environment when set, so a scripted run never waits on a prompt:
+ * `ILOTBET_ACCOUNT` and `ILOTBET_PASSWORD`, or `ILOTBET_TOKEN` to skip the login entirely.
+ *
+ * Otherwise it reads two lines. This uses a plain line reader rather than a raw-mode one: the
+ * raw-mode reader depends on the terminal delivering keystrokes, and when stdin is a pipe, a
+ * closed descriptor, or a terminal that does not report Enter the way it expects, the prompt
+ * echoes what was typed and then waits forever. A plain reader lets the terminal do the line
+ * editing and hands over whole lines, which behaves the same everywhere.
+ *
+ * The password is visible as it is typed, since hiding it needs the raw-mode reader. For a
+ * scripted run that is moot; for an interactive one, prefer `ILOTBET_TOKEN`.
  */
-function readCredentials() {
+function readLine(question) {
   return new Promise((resolve) => {
-    const rl = createInterface({ input: process.stdin, output: process.stdout, terminal: true });
-    let muted = false;
-    rl._writeToOutput = function (s) {
-      if (!muted) rl.output.write(s);
-    };
-    rl.question("Phone number or email: ", (account) => {
-      muted = true;
-      process.stdout.write("Password (not shown): ");
-      rl.question("", (password) => {
-        process.stdout.write("\n");
-        rl.close();
-        resolve({ account: account.trim(), password: password.trim() });
-      });
+    const rl = createInterface({ input: process.stdin, output: process.stdout, terminal: false, crlfDelay: Infinity });
+    rl.question(question, (answer) => {
+      rl.close();
+      resolve(answer.trim());
     });
   });
+}
+
+async function readCredentials() {
+  const account = process.env.ILOTBET_ACCOUNT || "";
+  const password = process.env.ILOTBET_PASSWORD || "";
+  if (account && password) {
+    console.error("Using ILOTBET_ACCOUNT and ILOTBET_PASSWORD.\n");
+    return { account, password };
+  }
+  if (!process.stdin.isTTY) {
+    console.error("--login needs a terminal to prompt on, and stdin is not one.");
+    console.error("Set ILOTBET_ACCOUNT and ILOTBET_PASSWORD, or ILOTBET_TOKEN.\n");
+    return { account: "", password: "" };
+  }
+  const a = account || (await readLine("Phone number or email: "));
+  const p = password || (await readLine("Password (visible): "));
+  return { account: a, password: p };
 }
 
 let TOKEN = "";
@@ -180,6 +202,12 @@ let TOKEN = "";
  * the credentials itself.
  */
 async function login() {
+  // A token already in hand skips the login call and the prompt with it.
+  if (process.env.ILOTBET_TOKEN) {
+    TOKEN = process.env.ILOTBET_TOKEN;
+    console.error("Using ILOTBET_TOKEN; signed-in routes will be recorded.\n");
+    return;
+  }
   const { account, password } = await readCredentials();
   if (!account || !password) {
     console.error("No credentials given, continuing without login.\n");
@@ -335,7 +363,13 @@ server.listen(PORT, "0.0.0.0", async () => {
   } else {
     console.log("Scope: " + SCOPE + " - account and wallet routes are skipped.\n");
   }
-  if (process.env.ILOTBET_NO_LOGIN !== "1") {
+  // Logging in is opt-in: the public routes are what the UI needs, and a prompt in the way of
+  // starting is worse than the extra signed-in routes are worth. `--login` asks for an account.
+  const wantsLogin =
+    process.argv.includes("--login") ||
+    Boolean(process.env.ILOTBET_ACCOUNT && process.env.ILOTBET_PASSWORD) ||
+    Boolean(process.env.ILOTBET_TOKEN);
+  if (wantsLogin) {
     await login();
   }
   console.log(`Open this in the device's browser and click around:`);
