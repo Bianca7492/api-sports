@@ -2,8 +2,9 @@
 /**
  * Capture the iLOTBET API from a region iLOTBET serves.
  *
- *   node tools/capture.mjs              # then browse http://localhost:12000
- *   node tools/capture.mjs --port 8080
+ *   node capture.mjs                    # then browse http://localhost:12000
+ *   node capture.mjs --upload           # same, and send the file back on exit
+ *   node capture.mjs --port 8080
  *
  * Run this on a device whose network iLOTBET accepts (a phone on mobile data in a served
  * region). It is the same reverse proxy as `src/ilotbet/ui.mjs`, with one addition: every
@@ -346,8 +347,32 @@ server.listen(PORT, "0.0.0.0", async () => {
   }
 });
 
-process.on("SIGINT", () => {
+/**
+ * Send the capture back. `--upload` does it on exit, so one command covers recording and
+ * delivery; without the flag the upload stays a separate step.
+ */
+async function upload() {
+  try {
+    const body = readFileSync(OUT);
+    const r = await fetch(UPLOAD, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body,
+    });
+    const text = await r.text();
+    console.error(`\nuploaded ${OUT} (${body.length} bytes) -> ${r.status} ${text.slice(0, 200)}`);
+  } catch (e) {
+    console.error(`\nupload failed: ${e.message}`);
+    console.error(`send it yourself: curl -X POST --data-binary @${OUT} ${UPLOAD}`);
+  }
+}
+
+let leaving = false;
+process.on("SIGINT", async () => {
+  if (leaving) return;
+  leaving = true;
   save();
   console.log(`\nsaved ${Object.keys(captured).length} responses to ${OUT}`);
+  if (process.argv.includes("--upload")) await upload();
   process.exit(0);
 });
