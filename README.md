@@ -165,3 +165,47 @@ real components render. The values are representative samples, not live odds.
 From a region iLOTBET serves, set `ILOTBET_UI_API=upstream` and the real backend fills in.
 
 Fetched assets are cached under `.dump/ilotbet-ui-cache/` (git-ignored); delete it to refresh.
+
+### Real data from a served region
+
+The mock is a stand-in. To have the UI show what the site actually returned, capture it from a
+device iLOTBET serves and feed it back. The proxy records every API response the app receives,
+and the UI prefers a recorded answer over the mock, so the two blend: captured routes are real,
+the rest stay mocked.
+
+```sh
+npm run capture:ilotbet           # run on the phone; browse the site
+# then, from the phone:
+curl -X POST --data-binary @capture.json <upload-url>/upload
+```
+
+`src/ilotbet/capture-store.mjs` reads the capture and re-reads it when the file changes, so an
+upload takes effect without a restart. A request it does not hold falls back to `ui-mock.mjs`.
+The query string is part of the lookup key, because the same path answers differently for
+different parameters.
+
+| variable | default | purpose |
+|---|---|---|
+| `ILOTBET_CAPTURE` | `.dump/ilotbet-capture.json` | the recorded answers to serve |
+
+### Reading the API directly
+
+`tools/probe-api.mjs` drives the same endpoints without a browser: it signs its requests the way
+the app does, logs in, and reports what each route answers. It needs an account, and the game
+routes need a session.
+
+```sh
+npm run probe:ilotbet -- --login          # prompts for the account and password
+npm run probe:ilotbet -- --resolve-urls   # resolve each game id to its launch url
+npm run probe:ilotbet -- --dump-list      # write the game list and the object shapes
+```
+
+| flag | purpose |
+|---|---|
+| `--login` | prompt for the account and password |
+| `--token <t>` | use a session token instead of logging in |
+| `--resolve-urls` | ask the game routes for each game's launch url |
+| `--dump-list` | write the game list and the object shapes to `.dump/` |
+| `--out <file>` | where to write the report |
+
+Account and password come from `ILOTBET_ACCOUNT` and `ILOTBET_PASSWORD`, else the prompt.

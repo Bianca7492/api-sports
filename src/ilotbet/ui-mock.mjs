@@ -77,6 +77,85 @@ function match(i, home, away, league, tourId, { live = true, odds = ["1.85", "3.
 export const liveMatches = (n = 10) => FOOTBALL.slice(0, n).map(([h, a, lg, t], i) => match(i, h, a, lg, t, { live: true }));
 export const preMatches = (n = 10) => FOOTBALL.slice(0, n).map(([h, a, lg, t], i) => match(i, h, a, lg, t, { live: false }));
 
+/**
+ * The games the app lists, in the shape its own list component reads: `id` is the game's own
+ * number, `ilotGameId` is the separate number used to match it to a jackpot pool, and
+ * `developerId` decides which launch call the app makes (10 is iLOTBET's own, anything else is
+ * a third-party provider). The values are taken from the real list so the grid, the provider
+ * names and the jackpot flags all render as the site's do.
+ */
+const GAME_ROWS = [
+  ["BEST AVIATOR", 2382, 60012, 10, "ilotbet", true, false, "Crash game, Win Millions"],
+  ["Bottle Spin", 5264, 60024, 10, "ilotbet", false, false, ""],
+  ["Greek Gods", 5823, 60035, 10, "ilotbet", false, true, ""],
+  ["Cash Bandits", 2641, 60016, 10, "ilotbet", false, true, "Crash game, Million Jackpot"],
+  ["Cash Goal", 6922, 60302, 10, "ilotbet", false, true, ""],
+  ["IRON FRONT CRX", 7038, 60304, 10, "ilotbet", false, false, ""],
+  ["Roulette Euro", 2, 60011, 10, "ilotbet", true, false, "Classic with high RTP"],
+  ["AVIATOR", 403, 70000, 11, "Spribe", false, false, ""],
+  ["Hot to Burn", 363, 70184, 11, "Pragmatic Play", false, false, ""],
+  ["Navigator", 6752, 70362, 11, "Solidicon", false, false, ""],
+  ["American Roulette", 638, 70014, 11, "Red Rake Gaming", false, false, ""],
+  ["Spaceman", 901, 70031, 11, "Pragmatic Play", false, false, ""],
+  ["Mines", 902, 70032, 11, "Spribe", false, false, ""],
+  ["Plinko", 903, 70033, 11, "Spribe", false, false, ""],
+  ["Sweet Bonanza", 904, 70101, 11, "Pragmatic Play", false, false, ""],
+  ["Gates of Olympus", 905, 70102, 11, "Pragmatic Play", false, false, ""],
+  ["Big Bass Bonanza", 906, 70103, 11, "Pragmatic Play", false, false, ""],
+  ["Wild West Gold", 907, 70104, 11, "Pragmatic Play", false, false, ""],
+  ["Book of Dead", 908, 70105, 11, "Play'n GO", false, false, ""],
+  ["Reactoonz", 909, 70106, 11, "Play'n GO", false, false, ""],
+  ["Wolf Gold", 910, 70107, 11, "Pragmatic Play", false, false, ""],
+  ["Blackjack Classic", 911, 70041, 11, "Evolution", false, false, ""],
+  ["Lightning Roulette", 912, 70042, 11, "Evolution", false, false, ""],
+  ["Crazy Time", 913, 70043, 11, "Evolution", false, false, ""],
+];
+
+const thumb = (id) => `https://file.ilotbet.com/server-prod/2026/01/game-${id}.png`;
+
+const GAME_LIST = GAME_ROWS.map(
+  ([gameName, id, ilotGameId, developerId, provider, freebet, jackpotEnabled, subTitle]) => {
+    const g = {
+      aliasName: gameName,
+      showName: false,
+      imgThumb: thumb(id),
+      freebet,
+      jackpotEnabled,
+      ilotGameId,
+      developerId,
+      gameName,
+      provider,
+      id,
+      live: false,
+    };
+    if (subTitle) g.subTitle = subTitle;
+    if (jackpotEnabled) g.jackpotPool = 997866.12 + id;
+    return g;
+  },
+);
+
+/** Casino lobby tags (`/casino/un/tags`), read by the category rail. */
+const CASINO_TAGS = [
+  { id: 1, tag: "home", tagName: "Home" },
+  { id: 2, tag: "hot", tagName: "Hot" },
+  { id: 3, tag: "slots", tagName: "Slots" },
+  { id: 4, tag: "live", tagName: "Live Casino" },
+  { id: 5, tag: "crash", tagName: "Crash" },
+  { id: 6, tag: "jackpot", tagName: "Jackpot" },
+  { id: 7, tag: "new", tagName: "New" },
+  { id: 8, tag: "roulette", tagName: "Roulette" },
+  { id: 9, tag: "cards", tagName: "Cards" },
+  { id: 10, tag: "dice", tagName: "Dice" },
+];
+
+/** The casino lobby groups games under a tag, which is what the grid renders. */
+const CASINO_HOME = CASINO_TAGS.slice(0, 4).map((t) => ({
+  id: t.id,
+  tag: t.tag,
+  tagName: t.tagName,
+  games: GAME_LIST.filter((g, i) => i % 4 === t.id - 1),
+}));
+
 /** Sport menu with live counts (`/sbu/un/m/live/sports`). */
 export const LIVE_SPORTS = [
   { sportId: "sr:sport:1", sportName: "Football", matchCount: 10, liveCount: 10 },
@@ -140,6 +219,9 @@ export const VIRTUAL = {
   },
 };
 
+export const GAMES = GAME_LIST;
+export const CASINO = CASINO_HOME;
+
 export const PROMOTIONS = [
   { id: 1, name: "Register Gift", moduleName: "Register Gift", imgUrl: "" },
   { id: 2, name: "Check In", moduleName: "Check In", imgUrl: "" },
@@ -169,6 +251,18 @@ export function responseFor(pathname) {
   else if (p.includes("/sbt/un/api/rec")) data = [];
   else if (p.includes("/virtualgame/un/agg_tour_info")) data = VIRTUAL;
   else if (p.includes("/virtualgame/")) data = [];
+  // The games section. The lobby groups by tag; the flat list and the search answer a list.
+  else if (p.includes("/casino/un/game/home")) data = CASINO_HOME;
+  else if (p.includes("/casino/un/tags") || p.includes("/casino/api/tags")) data = CASINO_TAGS;
+  else if (p.includes("/casino/un/game_search")) data = { list: GAME_LIST, total: GAME_LIST.length };
+  else if (p.includes("/casino/un/games/recommend")) data = GAME_LIST.slice(0, 12);
+  else if (p.includes("/casino/un/games")) data = { list: GAME_LIST, total: GAME_LIST.length, pages: 1 };
+  else if (p.includes("/game/un/gameList"))
+    data = { list: GAME_LIST, total: GAME_LIST.length, pages: 1, pageNum: 1 };
+  // Launching a game returns its url. A real one is a signed link to the provider; this is a
+  // stand-in so the app follows its own flow, and it is what `--resolve-urls` collects live.
+  else if (p.includes("/casino/api/game/play") || p.includes("/casino/un/game/play") || p.includes("/game/un/gamePlayUrl"))
+    data = { url: "https://www.ilotbet.com/game/launch", gameId: 2382 };
 
   return { code: 0, msg: "success", data, timestamp: Date.now() };
 }

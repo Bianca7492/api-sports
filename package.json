@@ -8,13 +8,15 @@
     "node": ">=18"
   },
   "scripts": {
+    "capture:ilotbet": "node tools/capture.mjs",
     "generate": "node src/generate.mjs",
-    "serve": "node src/server.mjs",
-    "start": "node src/server.mjs",
     "login": "node src/login.mjs",
+    "probe:ilotbet": "node tools/probe-api.mjs",
+    "serve": "node src/server.mjs",
     "smoke": "node test/smoke.mjs",
-    "ui:ilotbet": "node src/ilotbet/ui.mjs",
-    "test": "node --test \"test/*.test.mjs\""
+    "start": "node src/server.mjs",
+    "test": "node --test \"test/*.test.mjs\"",
+    "ui:ilotbet": "node src/ilotbet/ui.mjs"
   },
   "optionalDependencies": {
     "playwright-core": "^1.40.0"

@@ -21,10 +21,11 @@
 
 import { createServer } from "node:http";
 import { createHash } from "node:crypto";
-import { mkdirSync, existsSync, readFileSync, writeFileSync } from "node:fs";
+import { mkdirSync, existsSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import { responseFor } from "./ui-mock.mjs";
+import { responseFromCapture, captureInfo } from "./capture-store.mjs";
 
 const ROOT = dirname(dirname(dirname(fileURLToPath(import.meta.url))));
 const CACHE = join(ROOT, ".dump", "ilotbet-ui-cache");
@@ -102,11 +103,17 @@ async function asset(path) {
 const server = createServer(async (req, res) => {
   const path = req.url;
   try {
-    // The app's API calls. The query string is irrelevant to the mock.
+    // The app's API calls. Real answers come first when a capture is present, so the UI shows
+    // what the site actually returned; the mock fills in the rest. The query string is
+    // significant to a capture (it is part of the key) and irrelevant to the mock.
     if (path.startsWith("/api/") || path.startsWith("/api?")) {
       if (API === "upstream") {
         const r = await upstream(path);
         return send(res, r.status, r.body, r.type);
+      }
+      const captured = responseFromCapture(path);
+      if (captured) {
+        return send(res, 200, Buffer.from(JSON.stringify(captured)), "application/json;charset=UTF-8");
       }
       return send(res, 200, Buffer.from(JSON.stringify(responseFor(path))), "application/json;charset=UTF-8");
     }
@@ -131,9 +138,11 @@ const server = createServer(async (req, res) => {
 });
 
 server.listen(PORT, "0.0.0.0", () => {
+  const cap = captureInfo();
   process.stderr.write(
     `ilotbet-ui listening on http://localhost:${PORT}\n` +
       `  upstream: ${ORIGIN}\n` +
-      `  api:      ${API}${API === "mock" ? " (sample data; iLOTBET blocks this region)" : ""}\n`,
+      `  api:      ${API}${API === "mock" ? " (sample data; iLOTBET blocks this region)" : ""}\n` +
+      `  capture:  ${cap ? `${cap.routes} routes from ${cap.path}` : "none - serving the mock"}\n`,
   );
 });
